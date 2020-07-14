@@ -1,6 +1,6 @@
 function forCoder(seed) %#codegen
 
-numberOfGridPoints = [601 1801 1]; % ЗДЕСЬ НУЖНО ЗАМЕНИТЬ 181 на 1801 и 61 на 601 !!!!!
+numberOfGridPoints = [601 181 1]; % ЗДЕСЬ НУЖНО ЗАМЕНИТЬ 181 на 1801 и 61 на 601 !!!!!
 spotfi_dir = "experiment_spotfi/";
 winner_dir = "experiment/winner_csi/";
 

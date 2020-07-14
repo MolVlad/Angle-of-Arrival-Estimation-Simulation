@@ -2,7 +2,7 @@
  * File: imregionalmax.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 13-Jul-2020 18:10:32
+ * C/C++ source code generated on  : 14-Jul-2020 11:32:44
  */
 
 /* Include Files */
@@ -14,11 +14,11 @@
 /* Function Definitions */
 
 /*
- * Arguments    : const double varargin_1[1082401]
- *                boolean_T BW[1082401]
+ * Arguments    : const double varargin_1[108781]
+ *                boolean_T BW[108781]
  * Return Type  : void
  */
-void imregionalmax(const double varargin_1[1082401], boolean_T BW[1082401])
+void imregionalmax(const double varargin_1[108781], boolean_T BW[108781])
 {
   int i14;
   boolean_T conn[9];
@@ -30,7 +30,7 @@ void imregionalmax(const double varargin_1[1082401], boolean_T BW[1082401])
 
   imSizeT[0] = 601.0;
   connSizeT[0] = 3.0;
-  imSizeT[1] = 1801.0;
+  imSizeT[1] = 181.0;
   connSizeT[1] = 3.0;
   imregionalmax_real64(varargin_1, BW, 2.0, imSizeT, conn, 2.0, connSizeT);
 }

@@ -2,7 +2,7 @@
  * File: forCoder_types.h
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 13-Jul-2020 18:10:32
+ * C/C++ source code generated on  : 14-Jul-2020 11:32:44
  */
 
 #ifndef FORCODER_TYPES_H
@@ -67,27 +67,6 @@ typedef struct {
 } emxArray_creal_T;
 
 #endif                                 /*typedef_emxArray_creal_T*/
-
-#ifndef struct_emxArray_int16_T
-#define struct_emxArray_int16_T
-
-struct emxArray_int16_T
-{
-  short *data;
-  int *size;
-  int allocatedSize;
-  int numDimensions;
-  boolean_T canFreeData;
-};
-
-#endif                                 /*struct_emxArray_int16_T*/
-
-#ifndef typedef_emxArray_int16_T
-#define typedef_emxArray_int16_T
-
-typedef struct emxArray_int16_T emxArray_int16_T;
-
-#endif                                 /*typedef_emxArray_int16_T*/
 
 #ifndef struct_emxArray_int32_T
 #define struct_emxArray_int32_T

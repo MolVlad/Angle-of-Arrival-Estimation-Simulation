@@ -2,7 +2,7 @@
  * File: abs.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 13-Jul-2020 18:10:32
+ * C/C++ source code generated on  : 14-Jul-2020 11:32:44
  */
 
 /* Include Files */
@@ -38,14 +38,14 @@ void b_abs(const emxArray_creal_T *x, emxArray_real_T *y)
 }
 
 /*
- * Arguments    : const creal_T x[1082401]
- *                double y[1082401]
+ * Arguments    : const creal_T x[108781]
+ *                double y[108781]
  * Return Type  : void
  */
-void c_abs(const creal_T x[1082401], double y[1082401])
+void c_abs(const creal_T x[108781], double y[108781])
 {
   int k;
-  for (k = 0; k < 1082401; k++) {
+  for (k = 0; k < 108781; k++) {
     y[k] = rt_hypotd_snf(x[k].re, x[k].im);
   }
 }

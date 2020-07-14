@@ -2,7 +2,7 @@
  * File: str2double.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 13-Jul-2020 18:10:32
+ * C/C++ source code generated on  : 14-Jul-2020 11:32:44
  */
 
 /* Include Files */

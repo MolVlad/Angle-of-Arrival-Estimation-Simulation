@@ -2,7 +2,7 @@
 ## Makefile generated for MATLAB file/project 'forCoder'. 
 ## 
 ## Makefile     : forCoder_rtw.mk
-## Generated on : Mon Jul 13 18:10:46 2020
+## Generated on : Tue Jul 14 11:32:59 2020
 ## MATLAB Coder version: 4.1 (R2018b)
 ## 
 ## Build Info:
@@ -197,7 +197,7 @@ DEFINES = $(DEFINES_STANDARD)
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)/forCoder_rtwutil.c $(START_DIR)/forCoder_data.c $(START_DIR)/forCoder_initialize.c $(START_DIR)/forCoder_terminate.c $(START_DIR)/forCoder.c $(START_DIR)/string1.c $(START_DIR)/sprintf.c $(START_DIR)/char.c $(START_DIR)/fclose.c $(START_DIR)/fileManager.c $(START_DIR)/fseek.c $(START_DIR)/isfinite.c $(START_DIR)/ftell.c $(START_DIR)/fread.c $(START_DIR)/str2double.c $(START_DIR)/abs.c $(START_DIR)/hankel.c $(START_DIR)/sind.c $(START_DIR)/exp.c $(START_DIR)/kron.c $(START_DIR)/eig.c $(START_DIR)/anyNonFinite.c $(START_DIR)/ishermitian.c $(START_DIR)/schur.c $(START_DIR)/triu.c $(START_DIR)/xgehrd.c $(START_DIR)/xzlarfg.c $(START_DIR)/xnrm2.c $(START_DIR)/sqrt.c $(START_DIR)/xdlapy3.c $(START_DIR)/xscal.c $(START_DIR)/recip.c $(START_DIR)/xzlarf.c $(START_DIR)/xgemv.c $(START_DIR)/xgerc.c $(START_DIR)/xungorghr.c $(START_DIR)/xzungqr.c $(START_DIR)/xhseqr.c $(START_DIR)/xzhseqr.c $(START_DIR)/xzgeev.c $(START_DIR)/xzggev.c $(START_DIR)/xzlangeM.c $(START_DIR)/xzlascl.c $(START_DIR)/xzggbal.c $(START_DIR)/xzgghrd.c $(START_DIR)/xzlartg.c $(START_DIR)/xzhgeqz.c $(START_DIR)/xztgevc.c $(START_DIR)/xzggbak.c $(START_DIR)/diag.c $(START_DIR)/sort1.c $(START_DIR)/nonSingletonDim.c $(START_DIR)/sortIdx.c $(START_DIR)/sum.c $(START_DIR)/imregionalmax.c $(START_DIR)/forCoder_emxutil.c $(START_DIR)/rt_nonfinite.c $(START_DIR)/rtGetNaN.c $(START_DIR)/rtGetInf.c
+SRCS = $(START_DIR)/forCoder_rtwutil.c $(START_DIR)/forCoder_data.c $(START_DIR)/forCoder_initialize.c $(START_DIR)/forCoder_terminate.c $(START_DIR)/forCoder.c $(START_DIR)/string1.c $(START_DIR)/sprintf.c $(START_DIR)/char.c $(START_DIR)/fclose.c $(START_DIR)/fileManager.c $(START_DIR)/fseek.c $(START_DIR)/isfinite.c $(START_DIR)/ftell.c $(START_DIR)/fread.c $(START_DIR)/str2double.c $(START_DIR)/abs.c $(START_DIR)/hankel.c $(START_DIR)/exp.c $(START_DIR)/kron.c $(START_DIR)/eig.c $(START_DIR)/anyNonFinite.c $(START_DIR)/ishermitian.c $(START_DIR)/schur.c $(START_DIR)/triu.c $(START_DIR)/xgehrd.c $(START_DIR)/xzlarfg.c $(START_DIR)/xnrm2.c $(START_DIR)/sqrt.c $(START_DIR)/xdlapy3.c $(START_DIR)/xscal.c $(START_DIR)/recip.c $(START_DIR)/xzlarf.c $(START_DIR)/xgemv.c $(START_DIR)/xgerc.c $(START_DIR)/xungorghr.c $(START_DIR)/xzungqr.c $(START_DIR)/xhseqr.c $(START_DIR)/xzhseqr.c $(START_DIR)/xzgeev.c $(START_DIR)/xzggev.c $(START_DIR)/xzlangeM.c $(START_DIR)/xzlascl.c $(START_DIR)/xzggbal.c $(START_DIR)/xzgghrd.c $(START_DIR)/xzlartg.c $(START_DIR)/xzhgeqz.c $(START_DIR)/xztgevc.c $(START_DIR)/xzggbak.c $(START_DIR)/diag.c $(START_DIR)/sort1.c $(START_DIR)/nonSingletonDim.c $(START_DIR)/sortIdx.c $(START_DIR)/sum.c $(START_DIR)/imregionalmax.c $(START_DIR)/forCoder_emxutil.c $(START_DIR)/rt_nonfinite.c $(START_DIR)/rtGetNaN.c $(START_DIR)/rtGetInf.c
 
 ALL_SRCS = $(SRCS)
 
@@ -205,7 +205,7 @@ ALL_SRCS = $(SRCS)
 ## OBJECTS
 ###########################################################################
 
-OBJS = forCoder_rtwutil.o forCoder_data.o forCoder_initialize.o forCoder_terminate.o forCoder.o string1.o sprintf.o char.o fclose.o fileManager.o fseek.o isfinite.o ftell.o fread.o str2double.o abs.o hankel.o sind.o exp.o kron.o eig.o anyNonFinite.o ishermitian.o schur.o triu.o xgehrd.o xzlarfg.o xnrm2.o sqrt.o xdlapy3.o xscal.o recip.o xzlarf.o xgemv.o xgerc.o xungorghr.o xzungqr.o xhseqr.o xzhseqr.o xzgeev.o xzggev.o xzlangeM.o xzlascl.o xzggbal.o xzgghrd.o xzlartg.o xzhgeqz.o xztgevc.o xzggbak.o diag.o sort1.o nonSingletonDim.o sortIdx.o sum.o imregionalmax.o forCoder_emxutil.o rt_nonfinite.o rtGetNaN.o rtGetInf.o
+OBJS = forCoder_rtwutil.o forCoder_data.o forCoder_initialize.o forCoder_terminate.o forCoder.o string1.o sprintf.o char.o fclose.o fileManager.o fseek.o isfinite.o ftell.o fread.o str2double.o abs.o hankel.o exp.o kron.o eig.o anyNonFinite.o ishermitian.o schur.o triu.o xgehrd.o xzlarfg.o xnrm2.o sqrt.o xdlapy3.o xscal.o recip.o xzlarf.o xgemv.o xgerc.o xungorghr.o xzungqr.o xhseqr.o xzhseqr.o xzgeev.o xzggev.o xzlangeM.o xzlascl.o xzggbal.o xzgghrd.o xzlartg.o xzhgeqz.o xztgevc.o xzggbak.o diag.o sort1.o nonSingletonDim.o sortIdx.o sum.o imregionalmax.o forCoder_emxutil.o rt_nonfinite.o rtGetNaN.o rtGetInf.o
 
 ALL_OBJS = $(OBJS)
 

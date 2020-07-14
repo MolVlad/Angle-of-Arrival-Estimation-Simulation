@@ -2,7 +2,7 @@
  * File: sum.h
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 13-Jul-2020 18:10:32
+ * C/C++ source code generated on  : 14-Jul-2020 11:32:44
  */
 
 #ifndef SUM_H
@@ -15,7 +15,7 @@
 #include "forCoder_types.h"
 
 /* Function Declarations */
-extern void sum(const emxArray_creal_T *x, creal_T y[1082401]);
+extern void sum(const emxArray_creal_T *x, creal_T y[108781]);
 
 #endif
 

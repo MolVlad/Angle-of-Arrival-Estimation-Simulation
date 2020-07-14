@@ -2,7 +2,7 @@
  * File: imregionalmax.h
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 13-Jul-2020 18:10:32
+ * C/C++ source code generated on  : 14-Jul-2020 11:32:44
  */
 
 #ifndef IMREGIONALMAX_H
@@ -15,7 +15,7 @@
 #include "forCoder_types.h"
 
 /* Function Declarations */
-extern void imregionalmax(const double varargin_1[1082401], boolean_T BW[1082401]);
+extern void imregionalmax(const double varargin_1[108781], boolean_T BW[108781]);
 
 #endif
 
