@@ -2,7 +2,7 @@
  * File: sum.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 14-Jul-2020 11:32:44
+ * C/C++ source code generated on  : 15-Jul-2020 12:14:31
  */
 
 /* Include Files */
@@ -23,7 +23,7 @@ void sum(const emxArray_creal_T *x, creal_T y[108781])
   int j;
   int k;
   int xoffset;
-  int i13;
+  int i11;
   vlen = x->size[1];
   if (x->size[1] == 0) {
     for (vlen = 0; vlen < 108781; vlen++) {
@@ -38,9 +38,9 @@ void sum(const emxArray_creal_T *x, creal_T y[108781])
     for (k = 2; k <= vlen; k++) {
       xoffset = (k - 1) * 108781;
       for (j = 0; j < 108781; j++) {
-        i13 = xoffset + j;
-        y[j].re += x->data[i13].re;
-        y[j].im += x->data[i13].im;
+        i11 = xoffset + j;
+        y[j].re += x->data[i11].re;
+        y[j].im += x->data[i11].im;
       }
     }
   }

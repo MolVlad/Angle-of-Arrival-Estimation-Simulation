@@ -39,7 +39,7 @@
 #include "forCoder_types.h"
 
 /* Function Declarations */
-extern int main(int argc, const char * const argv[]);
+extern int main(int argc, char * const argv[]);
 
 #endif
 

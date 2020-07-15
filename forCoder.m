@@ -1,8 +1,8 @@
 function forCoder(seed) %#codegen
 
 numberOfGridPoints = [601 181 1]; % ЗДЕСЬ НУЖНО ЗАМЕНИТЬ 181 на 1801 и 61 на 601 !!!!!
-spotfi_dir = "experiment_spotfi/";
-winner_dir = "experiment/winner_csi/";
+spotfi_dir = "./";
+winner_dir = "./";
 
 s=sprintf('%d',int32(seed)); seed_str = '00000'; seed_str(end+1-length(s):end) = s;
 filename = winner_dir+"csi_" + seed_str + ".txt";
@@ -64,7 +64,7 @@ sourceMatrixCSI = reshape(y,120,8,30);
 packetNum = [30 10];
 packetPerSpectrum = [2 1];
 antennasNum = [8 4];
-bandwidth = [40 20];
+bandwidth = [20];
 subcarrierDecimationUsed = [0 1];
 backwardSmoothing = [1 0];
 useSmothing = [1 0];

@@ -37,6 +37,10 @@
 #include "forCoder_initialize.h"
 #include "stdio.h"
 #include "stdlib.h"
+#include"string.h"
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 /* Function Declarations */
 static double argInit_real_T(void);
@@ -64,13 +68,38 @@ static void main_forCoder(int seed)
   forCoder(seed);
 }
 
+char* concat(char *s1, char *s2) {
+
+        size_t len1 = strlen(s1);
+        size_t len2 = strlen(s2);
+
+        char *result = malloc(len1 + len2 + 1);
+
+        if (!result) {
+            fprintf(stderr, "malloc() failed: insufficient memory!\n");
+            return NULL;
+        }
+
+        memcpy(result, s1, len1);
+        memcpy(result + len1, s2, len2 + 1);
+
+        return result;
+    }
+
+
 /*
  * Arguments    : int argc
  *                const char * const argv[]
  * Return Type  : int
  */
-int main(int argc, const char * const argv[])
+int main(int argc, char * const argv[])
 {
+  char name[] = "music_";
+  char *s = concat(name, argv[1]);
+  mkdir(s, S_IRUSR | S_IWUSR);
+  chdir(s);
+  free(s);
+
   (void)argc;
   (void)argv;
 

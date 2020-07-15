@@ -2,7 +2,7 @@
  * File: eig.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 14-Jul-2020 11:32:44
+ * C/C++ source code generated on  : 15-Jul-2020 12:14:31
  */
 
 /* Include Files */
@@ -62,23 +62,23 @@ static void diagDiagUpperHessNoImag(emxArray_creal_T *D)
 static void makeD(const creal_T alpha1_data[], const int alpha1_size[1], const
                   creal_T beta1_data[], emxArray_creal_T *D)
 {
-  int i12;
+  int i10;
   int loop_ub;
   double brm;
   double bim;
   double d;
-  i12 = D->size[0] * D->size[1];
+  i10 = D->size[0] * D->size[1];
   D->size[0] = alpha1_size[0];
   D->size[1] = alpha1_size[0];
-  emxEnsureCapacity_creal_T(D, i12);
+  emxEnsureCapacity_creal_T(D, i10);
   loop_ub = alpha1_size[0] * alpha1_size[0];
-  for (i12 = 0; i12 < loop_ub; i12++) {
-    D->data[i12].re = 0.0;
-    D->data[i12].im = 0.0;
+  for (i10 = 0; i10 < loop_ub; i10++) {
+    D->data[i10].re = 0.0;
+    D->data[i10].im = 0.0;
   }
 
-  i12 = alpha1_size[0];
-  for (loop_ub = 0; loop_ub < i12; loop_ub++) {
+  i10 = alpha1_size[0];
+  for (loop_ub = 0; loop_ub < i10; loop_ub++) {
     if (beta1_data[loop_ub].im == 0.0) {
       if (alpha1_data[loop_ub].im == 0.0) {
         D->data[loop_ub + D->size[0] * loop_ub].re = alpha1_data[loop_ub].re /
@@ -155,10 +155,10 @@ static void makeD(const creal_T alpha1_data[], const int alpha1_size[1], const
  */
 static void setDiag(emxArray_creal_T *D, const creal_T val)
 {
-  int i25;
+  int i22;
   int k;
-  i25 = D->size[0];
-  for (k = 0; k < i25; k++) {
+  i22 = D->size[0];
+  for (k = 0; k < i22; k++) {
     D->data[k + D->size[0] * k] = val;
   }
 }
@@ -174,100 +174,100 @@ void eig(emxArray_creal_T *A, emxArray_creal_T *V)
     0.0                                /* im */
   };
 
-  int i23;
-  short unnamed_idx_0;
+  int i20;
+  unsigned char unnamed_idx_0;
   int info;
-  creal_T alpha1_data[464];
+  creal_T alpha1_data[224];
   int alpha1_size[1];
-  creal_T beta1_data[464];
+  creal_T beta1_data[224];
   int beta1_size[1];
   emxArray_creal_T *b_A;
-  short unnamed_idx_1;
+  unsigned char unnamed_idx_1;
   int loop_ub;
-  int i24;
+  int i21;
   dc0.re = rtGetNaN();
   if ((A->size[0] == 0) || (A->size[1] == 0)) {
-    i23 = V->size[0] * V->size[1];
+    i20 = V->size[0] * V->size[1];
     V->size[0] = A->size[0];
     V->size[1] = A->size[1];
-    emxEnsureCapacity_creal_T(V, i23);
+    emxEnsureCapacity_creal_T(V, i20);
     info = A->size[0] * A->size[1];
-    for (i23 = 0; i23 < info; i23++) {
-      V->data[i23] = A->data[i23];
+    for (i20 = 0; i20 < info; i20++) {
+      V->data[i20] = A->data[i20];
     }
   } else if (anyNonFinite(A)) {
     if ((A->size[0] == 1) && (A->size[1] == 1)) {
-      unnamed_idx_0 = (short)A->size[0];
-      unnamed_idx_1 = (short)A->size[1];
-      i23 = V->size[0] * V->size[1];
+      unnamed_idx_0 = (unsigned char)A->size[0];
+      unnamed_idx_1 = (unsigned char)A->size[1];
+      i20 = V->size[0] * V->size[1];
       V->size[0] = unnamed_idx_0;
       V->size[1] = unnamed_idx_1;
-      emxEnsureCapacity_creal_T(V, i23);
+      emxEnsureCapacity_creal_T(V, i20);
       info = unnamed_idx_0 * unnamed_idx_1;
-      for (i23 = 0; i23 < info; i23++) {
-        V->data[i23] = dc0;
+      for (i20 = 0; i20 < info; i20++) {
+        V->data[i20] = dc0;
       }
 
-      i23 = A->size[0] * A->size[1];
-      emxEnsureCapacity_creal_T(A, i23);
+      i20 = A->size[0] * A->size[1];
+      emxEnsureCapacity_creal_T(A, i20);
       info = A->size[1];
-      for (i23 = 0; i23 < info; i23++) {
+      for (i20 = 0; i20 < info; i20++) {
         loop_ub = A->size[0];
-        for (i24 = 0; i24 < loop_ub; i24++) {
-          A->data[i24 + A->size[0] * i23] = dc0;
+        for (i21 = 0; i21 < loop_ub; i21++) {
+          A->data[i21 + A->size[0] * i20] = dc0;
         }
       }
     } else {
-      unnamed_idx_0 = (short)A->size[0];
-      unnamed_idx_1 = (short)A->size[1];
-      i23 = V->size[0] * V->size[1];
+      unnamed_idx_0 = (unsigned char)A->size[0];
+      unnamed_idx_1 = (unsigned char)A->size[1];
+      i20 = V->size[0] * V->size[1];
       V->size[0] = unnamed_idx_0;
       V->size[1] = unnamed_idx_1;
-      emxEnsureCapacity_creal_T(V, i23);
+      emxEnsureCapacity_creal_T(V, i20);
       info = unnamed_idx_0 * unnamed_idx_1;
-      for (i23 = 0; i23 < info; i23++) {
-        V->data[i23].re = rtNaN;
-        V->data[i23].im = 0.0;
+      for (i20 = 0; i20 < info; i20++) {
+        V->data[i20].re = rtNaN;
+        V->data[i20].im = 0.0;
       }
 
-      unnamed_idx_0 = (short)A->size[0];
-      unnamed_idx_1 = (short)A->size[1];
-      i23 = A->size[0] * A->size[1];
+      unnamed_idx_0 = (unsigned char)A->size[0];
+      unnamed_idx_1 = (unsigned char)A->size[1];
+      i20 = A->size[0] * A->size[1];
       A->size[0] = unnamed_idx_0;
       A->size[1] = unnamed_idx_1;
-      emxEnsureCapacity_creal_T(A, i23);
+      emxEnsureCapacity_creal_T(A, i20);
       info = unnamed_idx_1;
-      for (i23 = 0; i23 < info; i23++) {
+      for (i20 = 0; i20 < info; i20++) {
         loop_ub = unnamed_idx_0;
-        for (i24 = 0; i24 < loop_ub; i24++) {
-          A->data[i24 + A->size[0] * i23].re = 0.0;
-          A->data[i24 + A->size[0] * i23].im = 0.0;
+        for (i21 = 0; i21 < loop_ub; i21++) {
+          A->data[i21 + A->size[0] * i20].re = 0.0;
+          A->data[i21 + A->size[0] * i20].im = 0.0;
         }
       }
 
       setDiag(A, dc0);
     }
   } else if ((A->size[0] == 1) && (A->size[1] == 1)) {
-    unnamed_idx_0 = (short)A->size[0];
-    unnamed_idx_1 = (short)A->size[1];
-    i23 = V->size[0] * V->size[1];
+    unnamed_idx_0 = (unsigned char)A->size[0];
+    unnamed_idx_1 = (unsigned char)A->size[1];
+    i20 = V->size[0] * V->size[1];
     V->size[0] = unnamed_idx_0;
     V->size[1] = unnamed_idx_1;
-    emxEnsureCapacity_creal_T(V, i23);
+    emxEnsureCapacity_creal_T(V, i20);
     info = unnamed_idx_0 * unnamed_idx_1;
-    for (i23 = 0; i23 < info; i23++) {
-      V->data[i23].re = 1.0;
-      V->data[i23].im = 0.0;
+    for (i20 = 0; i20 < info; i20++) {
+      V->data[i20].re = 1.0;
+      V->data[i20].im = 0.0;
     }
   } else if (ishermitian(A)) {
     emxInit_creal_T(&b_A, 2);
-    i23 = b_A->size[0] * b_A->size[1];
+    i20 = b_A->size[0] * b_A->size[1];
     b_A->size[0] = A->size[0];
     b_A->size[1] = A->size[1];
-    emxEnsureCapacity_creal_T(b_A, i23);
+    emxEnsureCapacity_creal_T(b_A, i20);
     info = A->size[0] * A->size[1];
-    for (i23 = 0; i23 < info; i23++) {
-      b_A->data[i23] = A->data[i23];
+    for (i20 = 0; i20 < info; i20++) {
+      b_A->data[i20] = A->data[i20];
     }
 
     schur(b_A, V, A);

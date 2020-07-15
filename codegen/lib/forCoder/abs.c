@@ -2,7 +2,7 @@
  * File: abs.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 14-Jul-2020 11:32:44
+ * C/C++ source code generated on  : 15-Jul-2020 12:14:31
  */
 
 /* Include Files */
@@ -22,12 +22,12 @@
 void b_abs(const emxArray_creal_T *x, emxArray_real_T *y)
 {
   int nx;
-  short unnamed_idx_0;
-  short unnamed_idx_1;
+  unsigned char unnamed_idx_0;
+  unsigned char unnamed_idx_1;
   int k;
   nx = x->size[0] * x->size[1];
-  unnamed_idx_0 = (short)x->size[0];
-  unnamed_idx_1 = (short)x->size[1];
+  unnamed_idx_0 = (unsigned char)x->size[0];
+  unnamed_idx_1 = (unsigned char)x->size[1];
   k = y->size[0] * y->size[1];
   y->size[0] = unnamed_idx_0;
   y->size[1] = unnamed_idx_1;

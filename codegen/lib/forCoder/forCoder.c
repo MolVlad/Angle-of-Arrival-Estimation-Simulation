@@ -2,7 +2,7 @@
  * File: forCoder.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 14-Jul-2020 11:32:44
+ * C/C++ source code generated on  : 15-Jul-2020 12:14:31
  */
 
 /* Include Files */
@@ -97,10 +97,8 @@ void forCoder(double seed)
   char seed_str[5];
   int loop_ub;
   int i1;
-  char filename_Value[35];
-  static const char cv0[26] = { 'e', 'x', 'p', 'e', 'r', 'i', 'm', 'e', 'n', 't',
-    '/', 'w', 'i', 'n', 'n', 'e', 'r', '_', 'c', 's', 'i', '/', 'c', 's', 'i',
-    '_' };
+  char filename_Value[15];
+  static const char cv0[6] = { '.', '/', 'c', 's', 'i', '_' };
 
   signed char fileid;
   static unsigned char buffer[2097152];
@@ -118,7 +116,7 @@ void forCoder(double seed)
   emxArray_char_T *b_str;
   int i;
   int j;
-  unsigned char u0;
+  unsigned char start_idx;
   emxArray_creal_T *matrixCSI;
   emxArray_creal_T *smoothedMatrixCSI;
   emxArray_creal_T *D;
@@ -134,19 +132,17 @@ void forCoder(double seed)
   emxArray_boolean_T *isStrongEnough;
   emxArray_real_T *newEstimation;
   emxArray_creal_T *Utmp;
-  emxArray_creal_T *r1;
+  emxArray_boolean_T *r1;
   emxArray_boolean_T *r2;
-  emxArray_boolean_T *r3;
+  emxArray_int32_T *r3;
   emxArray_int32_T *r4;
-  emxArray_int32_T *r5;
   emxArray_creal_T *b;
   emxArray_creal_T *b_y;
   emxArray_int32_T *ii;
   emxArray_uint8_T *vk;
   emxArray_real_T *varargin_1;
-  emxArray_creal_T *r6;
-  emxArray_creal_T *r7;
-  emxArray_real_T *r8;
+  emxArray_creal_T *r5;
+  emxArray_real_T *r6;
   emxArray_creal_T *b_steeringVector;
   emxArray_real_T *b_newEstimation;
   emxArray_real_T *b_nsDelayAngleSpotfiEstimated;
@@ -157,16 +153,13 @@ void forCoder(double seed)
   int perSpec;
   int numberOfSpectrums;
   int loop_ub_tmp;
-  int band;
-  int b_band;
   int dec;
-  int subCarrIndEnd;
-  int subCarrIndStep;
   int subCarrInd_size_idx_1;
   int varargin_2;
   int numberOfSubcarrierSubsets;
+  int b_loop_ub;
   int smoothing;
-  signed char subCarrInd_data[117];
+  signed char subCarrInd_data[56];
   int subarrayNum;
   int numberOfAntennaInSubset;
   double a;
@@ -174,22 +167,17 @@ void forCoder(double seed)
   int backw;
   static const signed char iv0[2] = { 1, 0 };
 
-  int numberOfSourses;
-  int b_loop_ub;
-  int b_loop_ub_tmp;
-  int i3;
+  int boffset;
+  int columnsNum;
+  int aoffset;
   int c_loop_ub;
   int d_loop_ub;
-  int c_loop_ub_tmp;
-  int e_loop_ub;
-  int d_loop_ub_tmp;
-  int i4;
   int t;
-  signed char y_data[58];
-  int b_s;
-  int i5;
-  creal_T csiFromEachPacket_data[944];
+  signed char y_data[28];
+  int e_loop_ub;
+  int i3;
   double b_y_data[8];
+  creal_T csiFromEachPacket_data[456];
   int tmp_size[2];
   creal_T dcv0[181];
   static const double dv0[181] = { -0.5, -0.49992384757819563,
@@ -254,11 +242,9 @@ void forCoder(double seed)
     0.49931476737728692, 0.49969541350954788, 0.49992384757819563, 0.5 };
 
   int m;
-  int csiFromEachPacket_size[1];
   creal_T tmp_data[1448];
-  int b_csiFromEachPacket_size[1];
-  creal_T b_csiFromEachPacket_data[58];
-  int boffset;
+  int csiFromEachPacket_size[1];
+  creal_T b_csiFromEachPacket_data[28];
   creal_T dcv1[601];
   static const double dv1[601] = { -3.0000000000000004E-7, -2.99E-7,
     -2.9800000000000005E-7, -2.97E-7, -2.9600000000000006E-7,
@@ -437,26 +423,27 @@ void forCoder(double seed)
     2.9599999999999995E-7, 2.97E-7, 2.98E-7, 2.9899999999999996E-7,
     3.0000000000000004E-7 };
 
-  creal_T c_csiFromEachPacket_data[117];
-  short start_idx;
+  int b_csiFromEachPacket_size[1];
+  creal_T c_csiFromEachPacket_data[56];
+  creal_T b_tmp_data[1568];
+  int b_tmp_size[2];
   char obj_Value[12];
-  short b_tmp_data[58];
-  int aoffset;
-  char filename_Value_data[2920];
-  int filename_Value_size[2];
-  char name_Value_data[2920];
+  unsigned char c_tmp_data[28];
+  char filename_Value_data[1464];
+  char name_Value_data[1464];
   int name_Value_size[2];
   static const char cv1[5] = { '_', 'a', 'n', 't', '_' };
 
-  char t0_Value_data[2920];
+  char t0_Value_data[1464];
   int t0_Value_size[2];
-  double d_data[464];
+  creal_T d_tmp_data[1596];
+  double d_data[224];
   FILE * b_NULL;
-  double x_data[464];
   FILE * filestar;
   boolean_T autoflush;
-  int iidx_data[464];
-  double b_d_data[464];
+  double x_data[224];
+  int iidx_data[224];
+  double b_d_data[224];
   double temp_re;
   double temp_im;
   static creal_T dcv2[108781];
@@ -495,18 +482,18 @@ void forCoder(double seed)
   }
 
   emxFree_char_T(&s);
-  for (i0 = 0; i0 < 26; i0++) {
+  for (i0 = 0; i0 < 6; i0++) {
     filename_Value[i0] = cv0[i0];
   }
 
   for (i0 = 0; i0 < 5; i0++) {
-    filename_Value[i0 + 26] = seed_str[i0];
+    filename_Value[i0 + 6] = seed_str[i0];
   }
 
-  filename_Value[31] = '.';
-  filename_Value[32] = 't';
-  filename_Value[33] = 'x';
-  filename_Value[34] = 't';
+  filename_Value[11] = '.';
+  filename_Value[12] = 't';
+  filename_Value[13] = 'x';
+  filename_Value[14] = 't';
   fileid = cfopen(filename_Value, "rb");
   b_fseek(fileid);
   cdiff = rt_roundd_snf(b_ftell(fileid));
@@ -585,17 +572,17 @@ void forCoder(double seed)
         cdiff = rt_roundd_snf(dataRead->data[i1]);
         if (cdiff < 256.0) {
           if (cdiff >= 0.0) {
-            u0 = (unsigned char)cdiff;
+            start_idx = (unsigned char)cdiff;
           } else {
-            u0 = 0U;
+            start_idx = 0U;
           }
         } else if (cdiff >= 256.0) {
-          u0 = MAX_uint8_T;
+          start_idx = MAX_uint8_T;
         } else {
-          u0 = 0U;
+          start_idx = 0U;
         }
 
-        buffer[r0->data[i1]] = u0;
+        buffer[r0->data[i1]] = start_idx;
       }
 
       cdiff = rt_roundd_snf(apnd);
@@ -711,19 +698,17 @@ void forCoder(double seed)
   emxInit_boolean_T(&isStrongEnough, 1);
   emxInit_real_T(&newEstimation, 2);
   emxInit_creal_T(&Utmp, 2);
-  emxInit_creal_T(&r1, 2);
+  emxInit_boolean_T(&r1, 2);
   emxInit_boolean_T(&r2, 2);
-  emxInit_boolean_T(&r3, 2);
-  emxInit_int32_T(&r4, 1);
-  emxInit_int32_T(&r5, 2);
+  emxInit_int32_T(&r3, 1);
+  emxInit_int32_T(&r4, 2);
   emxInit_creal_T(&b, 2);
   emxInit_creal_T(&b_y, 2);
   emxInit_int32_T(&ii, 1);
   emxInit_uint8_T(&vk, 1);
   emxInit_real_T(&varargin_1, 1);
-  emxInit_creal_T(&r6, 2);
-  emxInit_creal_T(&r7, 2);
-  emxInit_real_T(&r8, 2);
+  emxInit_creal_T(&r5, 2);
+  emxInit_real_T(&r6, 2);
   emxInit_creal_T(&b_steeringVector, 2);
   emxInit_real_T(&b_newEstimation, 2);
   emxInit_real_T(&b_nsDelayAngleSpotfiEstimated, 2);
@@ -734,1079 +719,1144 @@ void forCoder(double seed)
       for (perSpec = 0; perSpec < 2; perSpec++) {
         numberOfSpectrums = (int)floor((double)b_p / (2.0 - (double)perSpec));
         loop_ub_tmp = numberOfSpectrums * (2 - perSpec);
-        for (band = 0; band < 2; band++) {
-          b_band = 40 + -20 * band;
-          for (dec = 0; dec < 2; dec++) {
-            switch (b_band) {
-             case 20:
-              subCarrIndEnd = 56;
-              if (dec != 0) {
-                subCarrIndStep = 2;
-              } else {
-                subCarrIndStep = 1;
-              }
-              break;
+        for (dec = 0; dec < 2; dec++) {
+          if (dec != 0) {
+            nm1d2 = 2;
+          } else {
+            nm1d2 = 1;
+          }
 
-             case 40:
-              subCarrIndEnd = 117;
-              if (dec != 0) {
-                subCarrIndStep = 4;
-              } else {
-                subCarrIndStep = 1;
+          subCarrInd_size_idx_1 = (int)floor(55.0 / (double)nm1d2) + 1;
+          loop_ub = (int)floor(55.0 / (double)nm1d2);
+          varargin_2 = subCarrInd_size_idx_1 + 1;
+          numberOfSubcarrierSubsets = (int)floor((double)subCarrInd_size_idx_1 /
+            2.0);
+          b_loop_ub = subCarrInd_size_idx_1 * b_ant * loop_ub_tmp;
+          for (i0 = 0; i0 <= loop_ub; i0++) {
+            subCarrInd_data[i0] = (signed char)(1 + nm1d2 * i0);
+          }
+
+          for (smoothing = 0; smoothing < 2; smoothing++) {
+            if (1 - smoothing != 0) {
+              switch (b_ant) {
+               case 8:
+                subarrayNum = 2;
+                break;
+
+               case 4:
+                subarrayNum = 1;
+                break;
               }
-              break;
+            } else {
+              subarrayNum = 0;
             }
 
-            nm1d2 = div_s32_floor(subCarrIndEnd - 1, subCarrIndStep);
-            subCarrInd_size_idx_1 = nm1d2 + 1;
-            varargin_2 = subCarrInd_size_idx_1 + 1;
-            numberOfSubcarrierSubsets = (int)floor((double)subCarrInd_size_idx_1
-              / 2.0);
-            loop_ub = subCarrInd_size_idx_1 * b_ant * loop_ub_tmp;
-            for (i0 = 0; i0 <= nm1d2; i0++) {
-              subCarrInd_data[i0] = (signed char)(1 + (signed char)
-                (subCarrIndStep * (signed char)i0));
-            }
-
-            for (smoothing = 0; smoothing < 2; smoothing++) {
-              if (1 - smoothing != 0) {
-                switch (b_ant) {
-                 case 8:
-                  subarrayNum = 2;
-                  break;
-
-                 case 4:
-                  subarrayNum = 1;
-                  break;
+            numberOfAntennaInSubset = b_ant - subarrayNum;
+            a = ((double)numberOfAntennaInSubset - 1.0) / 2.0;
+            b_b = -((double)numberOfAntennaInSubset - 1.0) / 2.0;
+            for (backw = 0; backw < 2; backw++) {
+              /*  number fo subset of subcarriers chosen for smoothing music */
+              i0 = matrixCSI->size[0] * matrixCSI->size[1] * matrixCSI->size[2];
+              matrixCSI->size[0] = subCarrInd_size_idx_1;
+              matrixCSI->size[1] = b_ant;
+              matrixCSI->size[2] = loop_ub_tmp;
+              emxEnsureCapacity_creal_T(matrixCSI, i0);
+              for (i0 = 0; i0 < loop_ub_tmp; i0++) {
+                for (i1 = 0; i1 < b_ant; i1++) {
+                  for (i2 = 0; i2 < subCarrInd_size_idx_1; i2++) {
+                    matrixCSI->data[(i2 + matrixCSI->size[0] * i1) +
+                      matrixCSI->size[0] * matrixCSI->size[1] * i0] = y
+                      [((subCarrInd_data[i2] + 120 * i1) + 960 * i0) - 1];
+                  }
                 }
-              } else {
-                subarrayNum = 0;
               }
 
-              numberOfAntennaInSubset = b_ant - subarrayNum;
-              a = ((double)numberOfAntennaInSubset - 1.0) / 2.0;
-              b_b = -((double)numberOfAntennaInSubset - 1.0) / 2.0;
-              for (backw = 0; backw < 2; backw++) {
-                /*  number fo subset of subcarriers chosen for smoothing music */
+              i0 = smoothedMatrixCSI->size[0] * smoothedMatrixCSI->size[1] *
+                smoothedMatrixCSI->size[2];
+              smoothedMatrixCSI->size[0] = subCarrInd_size_idx_1;
+              smoothedMatrixCSI->size[1] = b_ant;
+              smoothedMatrixCSI->size[2] = loop_ub_tmp;
+              emxEnsureCapacity_creal_T(smoothedMatrixCSI, i0);
+              for (i0 = 0; i0 < b_loop_ub; i0++) {
+                smoothedMatrixCSI->data[i0] = matrixCSI->data[i0];
+              }
+
+              if (iv0[backw] != 0) {
+                columnsNum = ((b_ant - numberOfAntennaInSubset) + 1) *
+                  ((subCarrInd_size_idx_1 - numberOfSubcarrierSubsets) + 1);
                 i0 = matrixCSI->size[0] * matrixCSI->size[1] * matrixCSI->size[2];
-                matrixCSI->size[0] = subCarrInd_size_idx_1;
-                matrixCSI->size[1] = b_ant;
-                matrixCSI->size[2] = loop_ub_tmp;
+                matrixCSI->size[0] = numberOfAntennaInSubset *
+                  numberOfSubcarrierSubsets;
+                matrixCSI->size[1] = (columnsNum << 1) * (2 - perSpec);
+                matrixCSI->size[2] = numberOfSpectrums;
                 emxEnsureCapacity_creal_T(matrixCSI, i0);
-                for (i0 = 0; i0 < loop_ub_tmp; i0++) {
-                  for (i1 = 0; i1 < b_ant; i1++) {
-                    for (i2 = 0; i2 < subCarrInd_size_idx_1; i2++) {
-                      matrixCSI->data[(i2 + matrixCSI->size[0] * i1) +
-                        matrixCSI->size[0] * matrixCSI->size[1] * i0] = y
-                        [((subCarrInd_data[i2] + 120 * i1) + 960 * i0) - 1];
-                    }
-                  }
-                }
-
-                i0 = smoothedMatrixCSI->size[0] * smoothedMatrixCSI->size[1] *
-                  smoothedMatrixCSI->size[2];
-                smoothedMatrixCSI->size[0] = subCarrInd_size_idx_1;
-                smoothedMatrixCSI->size[1] = b_ant;
-                smoothedMatrixCSI->size[2] = loop_ub_tmp;
-                emxEnsureCapacity_creal_T(smoothedMatrixCSI, i0);
+                loop_ub = numberOfAntennaInSubset * numberOfSubcarrierSubsets *
+                  ((columnsNum << 1) * (2 - perSpec)) * numberOfSpectrums;
                 for (i0 = 0; i0 < loop_ub; i0++) {
-                  smoothedMatrixCSI->data[i0] = matrixCSI->data[i0];
+                  matrixCSI->data[i0].re = 0.0;
+                  matrixCSI->data[i0].im = 0.0;
                 }
 
-                if (iv0[backw] != 0) {
-                  i0 = ((b_ant - numberOfAntennaInSubset) + 1) *
-                    ((subCarrInd_size_idx_1 - numberOfSubcarrierSubsets) + 1);
-                  i1 = matrixCSI->size[0] * matrixCSI->size[1] * matrixCSI->
-                    size[2];
-                  matrixCSI->size[0] = numberOfAntennaInSubset *
-                    numberOfSubcarrierSubsets;
-                  i2 = (i0 << 1) * (2 - perSpec);
-                  matrixCSI->size[1] = i2;
-                  matrixCSI->size[2] = numberOfSpectrums;
-                  emxEnsureCapacity_creal_T(matrixCSI, i1);
-                  b_loop_ub = numberOfAntennaInSubset *
-                    numberOfSubcarrierSubsets * i2 * numberOfSpectrums;
-                  for (i1 = 0; i1 < b_loop_ub; i1++) {
-                    matrixCSI->data[i1].re = 0.0;
-                    matrixCSI->data[i1].im = 0.0;
-                  }
-
-                  i1 = 2 - perSpec;
-                  b_loop_ub = numberOfSubcarrierSubsets * (varargin_2 -
-                    numberOfSubcarrierSubsets) * b_ant;
-                  if (numberOfSubcarrierSubsets > subCarrInd_size_idx_1) {
-                    i2 = 0;
-                    i3 = -1;
-                  } else {
-                    i2 = numberOfSubcarrierSubsets - 1;
-                    i3 = varargin_2 - 2;
-                  }
-
-                  b_loop_ub_tmp = i3 - i2;
-                  c_loop_ub = numberOfAntennaInSubset *
-                    numberOfSubcarrierSubsets * i0;
-                  d_loop_ub = numberOfSubcarrierSubsets * (((b_ant -
-                    numberOfAntennaInSubset) + 1) * (varargin_2 -
-                    numberOfSubcarrierSubsets));
-                  i3 = b_ant - numberOfAntennaInSubset;
-                  e_loop_ub = (signed char)numberOfSubcarrierSubsets - 1;
-                  b_index = (signed char)numberOfSubcarrierSubsets;
-                  for (i4 = 0; i4 <= e_loop_ub; i4++) {
-                    y_data[i4] = (signed char)(1 + i4);
-                  }
-
-                  for (t = 0; t < numberOfSpectrums; t++) {
-                    for (b_s = 0; b_s < i1; b_s++) {
-                      e_loop_ub = smoothedMatrixCSI->size[0];
-                      nm1d2 = smoothedMatrixCSI->size[1];
-                      remaining = t * (2 - perSpec) + b_s;
-                      for (i4 = 0; i4 < nm1d2; i4++) {
-                        for (i5 = 0; i5 < e_loop_ub; i5++) {
-                          csiFromEachPacket_data[i5 + e_loop_ub * i4] =
-                            smoothedMatrixCSI->data[(i5 +
-                            smoothedMatrixCSI->size[0] * i4) +
-                            smoothedMatrixCSI->size[0] * smoothedMatrixCSI->
-                            size[1] * remaining];
-                        }
-                      }
-
-                      i4 = D->size[0] * D->size[1] * D->size[2];
-                      D->size[0] = numberOfSubcarrierSubsets;
-                      D->size[1] = varargin_2 - numberOfSubcarrierSubsets;
-                      D->size[2] = b_ant;
-                      emxEnsureCapacity_creal_T(D, i4);
-                      for (i4 = 0; i4 < b_loop_ub; i4++) {
-                        D->data[i4].re = 0.0;
-                        D->data[i4].im = 0.0;
-                      }
-
-                      for (m = 0; m < b_ant; m++) {
-                        /*  mth antenna */
-                        csiFromEachPacket_size[0] = numberOfSubcarrierSubsets;
-                        for (i4 = 0; i4 < numberOfSubcarrierSubsets; i4++) {
-                          b_csiFromEachPacket_data[i4] =
-                            csiFromEachPacket_data[i4 + e_loop_ub * m];
-                        }
-
-                        b_csiFromEachPacket_size[0] = b_loop_ub_tmp + 1;
-                        for (i4 = 0; i4 <= b_loop_ub_tmp; i4++) {
-                          c_csiFromEachPacket_data[i4] = csiFromEachPacket_data
-                            [(i2 + i4) + e_loop_ub * m];
-                        }
-
-                        hankel(b_csiFromEachPacket_data, csiFromEachPacket_size,
-                               c_csiFromEachPacket_data,
-                               b_csiFromEachPacket_size, r7);
-                        nm1d2 = r7->size[1];
-                        for (i4 = 0; i4 < nm1d2; i4++) {
-                          remaining = r7->size[0];
-                          for (i5 = 0; i5 < remaining; i5++) {
-                            D->data[(i5 + D->size[0] * i4) + D->size[0] *
-                              D->size[1] * m] = r7->data[i5 + r7->size[0] * i4];
-                          }
-                        }
-                      }
-
-                      i4 = De->size[0] * De->size[1];
-                      De->size[0] = numberOfAntennaInSubset *
-                        numberOfSubcarrierSubsets;
-                      De->size[1] = i0;
-                      emxEnsureCapacity_creal_T(De, i4);
-                      for (i4 = 0; i4 < c_loop_ub; i4++) {
-                        De->data[i4].re = 0.0;
-                        De->data[i4].im = 0.0;
-                      }
-
-                      for (boffset = 0; boffset < numberOfAntennaInSubset;
-                           boffset++) {
-                        i4 = tmp->size[0] * tmp->size[1];
-                        tmp->size[0] = numberOfSubcarrierSubsets;
-                        tmp->size[1] = ((b_ant - numberOfAntennaInSubset) + 1) *
-                          (varargin_2 - numberOfSubcarrierSubsets);
-                        emxEnsureCapacity_creal_T(tmp, i4);
-                        for (i4 = 0; i4 < d_loop_ub; i4++) {
-                          tmp->data[i4].re = 0.0;
-                          tmp->data[i4].im = 0.0;
-                        }
-
-                        for (j = 0; j <= i3; j++) {
-                          i4 = j * (varargin_2 - numberOfSubcarrierSubsets) + 1;
-                          if (i4 > (1 + j) * (varargin_2 -
-                                              numberOfSubcarrierSubsets)) {
-                            i4 = 0;
-                          } else {
-                            i4--;
-                          }
-
-                          e_loop_ub = D->size[0];
-                          nm1d2 = D->size[1];
-                          aoffset = boffset + j;
-                          i5 = r1->size[0] * r1->size[1];
-                          r1->size[0] = e_loop_ub;
-                          r1->size[1] = nm1d2;
-                          emxEnsureCapacity_creal_T(r1, i5);
-                          for (i5 = 0; i5 < nm1d2; i5++) {
-                            for (remaining = 0; remaining < e_loop_ub; remaining
-                                 ++) {
-                              r1->data[remaining + r1->size[0] * i5] = D->data
-                                [(remaining + D->size[0] * i5) + D->size[0] *
-                                D->size[1] * aoffset];
-                            }
-                          }
-
-                          e_loop_ub = r1->size[1];
-                          for (i5 = 0; i5 < e_loop_ub; i5++) {
-                            nm1d2 = r1->size[0];
-                            for (remaining = 0; remaining < nm1d2; remaining++)
-                            {
-                              tmp->data[remaining + tmp->size[0] * (i4 + i5)] =
-                                r1->data[remaining + r1->size[0] * i5];
-                            }
-                          }
-                        }
-
-                        start_idx = (short)(boffset * (short)
-                                            numberOfSubcarrierSubsets);
-                        for (i4 = 0; i4 < b_index; i4++) {
-                          b_tmp_data[i4] = (short)((short)(y_data[i4] +
-                            start_idx) - 1);
-                        }
-
-                        e_loop_ub = tmp->size[1];
-                        for (i4 = 0; i4 < e_loop_ub; i4++) {
-                          nm1d2 = tmp->size[0];
-                          for (i5 = 0; i5 < nm1d2; i5++) {
-                            De->data[b_tmp_data[i5] + De->size[0] * i4] =
-                              tmp->data[i5 + tmp->size[0] * i4];
-                          }
-                        }
-                      }
-
-                      i4 = ((b_s * i0) << 1) + 1;
-                      if (i4 > (((1 + b_s) * i0) << 1) - i0) {
-                        i4 = 0;
-                      } else {
-                        i4--;
-                      }
-
-                      e_loop_ub = De->size[1];
-                      for (i5 = 0; i5 < e_loop_ub; i5++) {
-                        nm1d2 = De->size[0];
-                        for (remaining = 0; remaining < nm1d2; remaining++) {
-                          matrixCSI->data[(remaining + matrixCSI->size[0] * (i4
-                            + i5)) + matrixCSI->size[0] * matrixCSI->size[1] * t]
-                            = De->data[remaining + De->size[0] * i5];
-                        }
-                      }
-                    }
-                  }
-
-                  i1 = smoothedMatrixCSI->size[0];
-                  i2 = smoothedMatrixCSI->size[1];
-                  b_loop_ub = smoothedMatrixCSI->size[2];
-                  i3 = conjCsiTracePerPacket->size[0] *
-                    conjCsiTracePerPacket->size[1] * conjCsiTracePerPacket->
-                    size[2];
-                  c_loop_ub = div_s32_floor(1 - i1, -1);
-                  conjCsiTracePerPacket->size[0] = c_loop_ub + 1;
-                  d_loop_ub = div_s32_floor(1 - i2, -1);
-                  conjCsiTracePerPacket->size[1] = d_loop_ub + 1;
-                  conjCsiTracePerPacket->size[2] = b_loop_ub;
-                  emxEnsureCapacity_creal_T(conjCsiTracePerPacket, i3);
-                  for (i3 = 0; i3 < b_loop_ub; i3++) {
-                    for (i4 = 0; i4 <= d_loop_ub; i4++) {
-                      for (i5 = 0; i5 <= c_loop_ub; i5++) {
-                        conjCsiTracePerPacket->data[(i5 +
-                          conjCsiTracePerPacket->size[0] * i4) +
-                          conjCsiTracePerPacket->size[0] *
-                          conjCsiTracePerPacket->size[1] * i3].re =
-                          smoothedMatrixCSI->data[(((i1 - i5) +
-                          smoothedMatrixCSI->size[0] * ((i2 - i4) - 1)) +
-                          smoothedMatrixCSI->size[0] * smoothedMatrixCSI->size[1]
-                          * i3) - 1].re;
-                        conjCsiTracePerPacket->data[(i5 +
-                          conjCsiTracePerPacket->size[0] * i4) +
-                          conjCsiTracePerPacket->size[0] *
-                          conjCsiTracePerPacket->size[1] * i3].im =
-                          -smoothedMatrixCSI->data[(((i1 - i5) +
-                          smoothedMatrixCSI->size[0] * ((i2 - i4) - 1)) +
-                          smoothedMatrixCSI->size[0] * smoothedMatrixCSI->size[1]
-                          * i3) - 1].im;
-                      }
-                    }
-                  }
-
-                  i1 = 2 - perSpec;
-                  b_loop_ub = numberOfSubcarrierSubsets * (varargin_2 -
-                    numberOfSubcarrierSubsets) * b_ant;
-                  if (numberOfSubcarrierSubsets > subCarrInd_size_idx_1) {
-                    i2 = 0;
-                    i3 = -1;
-                  } else {
-                    i2 = numberOfSubcarrierSubsets - 1;
-                    i3 = varargin_2 - 2;
-                  }
-
-                  b_loop_ub_tmp = i3 - i2;
-                  c_loop_ub = numberOfAntennaInSubset *
-                    numberOfSubcarrierSubsets * (((b_ant -
-                    numberOfAntennaInSubset) + 1) * (varargin_2 -
-                    numberOfSubcarrierSubsets));
-                  d_loop_ub = numberOfSubcarrierSubsets * (((b_ant -
-                    numberOfAntennaInSubset) + 1) * (varargin_2 -
-                    numberOfSubcarrierSubsets));
-                  i3 = b_ant - numberOfAntennaInSubset;
-                  e_loop_ub = (signed char)numberOfSubcarrierSubsets - 1;
-                  b_index = (signed char)numberOfSubcarrierSubsets;
-                  for (i4 = 0; i4 <= e_loop_ub; i4++) {
-                    y_data[i4] = (signed char)(1 + i4);
-                  }
-
-                  for (t = 0; t < numberOfSpectrums; t++) {
-                    for (b_s = 0; b_s < i1; b_s++) {
-                      e_loop_ub = conjCsiTracePerPacket->size[0];
-                      nm1d2 = conjCsiTracePerPacket->size[1];
-                      remaining = t * (2 - perSpec) + b_s;
-                      for (i4 = 0; i4 < nm1d2; i4++) {
-                        for (i5 = 0; i5 < e_loop_ub; i5++) {
-                          csiFromEachPacket_data[i5 + e_loop_ub * i4] =
-                            conjCsiTracePerPacket->data[(i5 +
-                            conjCsiTracePerPacket->size[0] * i4) +
-                            conjCsiTracePerPacket->size[0] *
-                            conjCsiTracePerPacket->size[1] * remaining];
-                        }
-                      }
-
-                      i4 = D->size[0] * D->size[1] * D->size[2];
-                      D->size[0] = numberOfSubcarrierSubsets;
-                      D->size[1] = varargin_2 - numberOfSubcarrierSubsets;
-                      D->size[2] = b_ant;
-                      emxEnsureCapacity_creal_T(D, i4);
-                      for (i4 = 0; i4 < b_loop_ub; i4++) {
-                        D->data[i4].re = 0.0;
-                        D->data[i4].im = 0.0;
-                      }
-
-                      for (m = 0; m < b_ant; m++) {
-                        /*  mth antenna */
-                        csiFromEachPacket_size[0] = numberOfSubcarrierSubsets;
-                        for (i4 = 0; i4 < numberOfSubcarrierSubsets; i4++) {
-                          b_csiFromEachPacket_data[i4] =
-                            csiFromEachPacket_data[i4 + e_loop_ub * m];
-                        }
-
-                        b_csiFromEachPacket_size[0] = b_loop_ub_tmp + 1;
-                        for (i4 = 0; i4 <= b_loop_ub_tmp; i4++) {
-                          c_csiFromEachPacket_data[i4] = csiFromEachPacket_data
-                            [(i2 + i4) + e_loop_ub * m];
-                        }
-
-                        hankel(b_csiFromEachPacket_data, csiFromEachPacket_size,
-                               c_csiFromEachPacket_data,
-                               b_csiFromEachPacket_size, r7);
-                        nm1d2 = r7->size[1];
-                        for (i4 = 0; i4 < nm1d2; i4++) {
-                          remaining = r7->size[0];
-                          for (i5 = 0; i5 < remaining; i5++) {
-                            D->data[(i5 + D->size[0] * i4) + D->size[0] *
-                              D->size[1] * m] = r7->data[i5 + r7->size[0] * i4];
-                          }
-                        }
-                      }
-
-                      i4 = De->size[0] * De->size[1];
-                      De->size[0] = numberOfAntennaInSubset *
-                        numberOfSubcarrierSubsets;
-                      De->size[1] = ((b_ant - numberOfAntennaInSubset) + 1) *
-                        (varargin_2 - numberOfSubcarrierSubsets);
-                      emxEnsureCapacity_creal_T(De, i4);
-                      for (i4 = 0; i4 < c_loop_ub; i4++) {
-                        De->data[i4].re = 0.0;
-                        De->data[i4].im = 0.0;
-                      }
-
-                      for (boffset = 0; boffset < numberOfAntennaInSubset;
-                           boffset++) {
-                        i4 = tmp->size[0] * tmp->size[1];
-                        tmp->size[0] = numberOfSubcarrierSubsets;
-                        tmp->size[1] = ((b_ant - numberOfAntennaInSubset) + 1) *
-                          (varargin_2 - numberOfSubcarrierSubsets);
-                        emxEnsureCapacity_creal_T(tmp, i4);
-                        for (i4 = 0; i4 < d_loop_ub; i4++) {
-                          tmp->data[i4].re = 0.0;
-                          tmp->data[i4].im = 0.0;
-                        }
-
-                        for (j = 0; j <= i3; j++) {
-                          i4 = j * (varargin_2 - numberOfSubcarrierSubsets) + 1;
-                          if (i4 > (1 + j) * (varargin_2 -
-                                              numberOfSubcarrierSubsets)) {
-                            i4 = 0;
-                          } else {
-                            i4--;
-                          }
-
-                          e_loop_ub = D->size[0];
-                          nm1d2 = D->size[1];
-                          aoffset = boffset + j;
-                          i5 = r1->size[0] * r1->size[1];
-                          r1->size[0] = e_loop_ub;
-                          r1->size[1] = nm1d2;
-                          emxEnsureCapacity_creal_T(r1, i5);
-                          for (i5 = 0; i5 < nm1d2; i5++) {
-                            for (remaining = 0; remaining < e_loop_ub; remaining
-                                 ++) {
-                              r1->data[remaining + r1->size[0] * i5] = D->data
-                                [(remaining + D->size[0] * i5) + D->size[0] *
-                                D->size[1] * aoffset];
-                            }
-                          }
-
-                          e_loop_ub = r1->size[1];
-                          for (i5 = 0; i5 < e_loop_ub; i5++) {
-                            nm1d2 = r1->size[0];
-                            for (remaining = 0; remaining < nm1d2; remaining++)
-                            {
-                              tmp->data[remaining + tmp->size[0] * (i4 + i5)] =
-                                r1->data[remaining + r1->size[0] * i5];
-                            }
-                          }
-                        }
-
-                        start_idx = (short)(boffset * (short)
-                                            numberOfSubcarrierSubsets);
-                        for (i4 = 0; i4 < b_index; i4++) {
-                          b_tmp_data[i4] = (short)((short)(y_data[i4] +
-                            start_idx) - 1);
-                        }
-
-                        e_loop_ub = tmp->size[1];
-                        for (i4 = 0; i4 < e_loop_ub; i4++) {
-                          nm1d2 = tmp->size[0];
-                          for (i5 = 0; i5 < nm1d2; i5++) {
-                            De->data[b_tmp_data[i5] + De->size[0] * i4] =
-                              tmp->data[i5 + tmp->size[0] * i4];
-                          }
-                        }
-                      }
-
-                      i4 = (((b_s * i0) << 1) + i0) + 1;
-                      if (i4 > (((1 + b_s) * i0) << 1)) {
-                        i4 = 0;
-                      } else {
-                        i4--;
-                      }
-
-                      e_loop_ub = De->size[1];
-                      for (i5 = 0; i5 < e_loop_ub; i5++) {
-                        nm1d2 = De->size[0];
-                        for (remaining = 0; remaining < nm1d2; remaining++) {
-                          matrixCSI->data[(remaining + matrixCSI->size[0] * (i4
-                            + i5)) + matrixCSI->size[0] * matrixCSI->size[1] * t]
-                            = De->data[remaining + De->size[0] * i5];
-                        }
-                      }
-                    }
-                  }
-                } else {
-                  numberOfSourses = b_ant - numberOfAntennaInSubset;
-                  remaining = numberOfSourses + 1;
-                  k = remaining * ((subCarrInd_size_idx_1 -
-                                    numberOfSubcarrierSubsets) + 1);
-                  i0 = matrixCSI->size[0] * matrixCSI->size[1] * matrixCSI->
-                    size[2];
-                  i1 = numberOfAntennaInSubset * numberOfSubcarrierSubsets;
-                  matrixCSI->size[0] = i1;
-                  i2 = k * (2 - perSpec);
-                  matrixCSI->size[1] = i2;
-                  matrixCSI->size[2] = numberOfSpectrums;
-                  emxEnsureCapacity_creal_T(matrixCSI, i0);
-                  b_loop_ub = i1 * i2 * numberOfSpectrums;
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    matrixCSI->data[i0].re = 0.0;
-                    matrixCSI->data[i0].im = 0.0;
-                  }
-
-                  i0 = 2 - perSpec;
-                  b_loop_ub_tmp = varargin_2 - numberOfSubcarrierSubsets;
-                  i = numberOfSubcarrierSubsets * b_loop_ub_tmp * b_ant;
-                  if (numberOfSubcarrierSubsets > subCarrInd_size_idx_1) {
-                    i2 = 0;
-                    i3 = -1;
-                  } else {
-                    i2 = numberOfSubcarrierSubsets - 1;
-                    i3 = varargin_2 - 2;
-                  }
-
-                  c_loop_ub_tmp = i3 - i2;
-                  d_loop_ub_tmp = i1 * k;
-                  b_index = remaining * b_loop_ub_tmp;
-                  nm1d2 = numberOfSubcarrierSubsets * b_index;
-                  remaining = (signed char)numberOfSubcarrierSubsets - 1;
-                  b_loop_ub = (signed char)numberOfSubcarrierSubsets;
-                  for (i3 = 0; i3 <= remaining; i3++) {
-                    y_data[i3] = (signed char)(1 + i3);
-                  }
-
-                  for (t = 0; t < numberOfSpectrums; t++) {
-                    for (b_s = 0; b_s < i0; b_s++) {
-                      c_loop_ub = smoothedMatrixCSI->size[0];
-                      d_loop_ub = smoothedMatrixCSI->size[1];
-                      remaining = t * (2 - perSpec) + b_s;
-                      for (i3 = 0; i3 < d_loop_ub; i3++) {
-                        for (i4 = 0; i4 < c_loop_ub; i4++) {
-                          csiFromEachPacket_data[i4 + c_loop_ub * i3] =
-                            smoothedMatrixCSI->data[(i4 +
-                            smoothedMatrixCSI->size[0] * i3) +
-                            smoothedMatrixCSI->size[0] * smoothedMatrixCSI->
-                            size[1] * remaining];
-                        }
-                      }
-
-                      i3 = D->size[0] * D->size[1] * D->size[2];
-                      D->size[0] = numberOfSubcarrierSubsets;
-                      D->size[1] = b_loop_ub_tmp;
-                      D->size[2] = b_ant;
-                      emxEnsureCapacity_creal_T(D, i3);
-                      for (i3 = 0; i3 < i; i3++) {
-                        D->data[i3].re = 0.0;
-                        D->data[i3].im = 0.0;
-                      }
-
-                      for (m = 0; m < b_ant; m++) {
-                        /*  mth antenna */
-                        csiFromEachPacket_size[0] = numberOfSubcarrierSubsets;
-                        for (i3 = 0; i3 < numberOfSubcarrierSubsets; i3++) {
-                          b_csiFromEachPacket_data[i3] =
-                            csiFromEachPacket_data[i3 + c_loop_ub * m];
-                        }
-
-                        b_csiFromEachPacket_size[0] = c_loop_ub_tmp + 1;
-                        for (i3 = 0; i3 <= c_loop_ub_tmp; i3++) {
-                          c_csiFromEachPacket_data[i3] = csiFromEachPacket_data
-                            [(i2 + i3) + c_loop_ub * m];
-                        }
-
-                        hankel(b_csiFromEachPacket_data, csiFromEachPacket_size,
-                               c_csiFromEachPacket_data,
-                               b_csiFromEachPacket_size, r7);
-                        d_loop_ub = r7->size[1];
-                        for (i3 = 0; i3 < d_loop_ub; i3++) {
-                          e_loop_ub = r7->size[0];
-                          for (i4 = 0; i4 < e_loop_ub; i4++) {
-                            D->data[(i4 + D->size[0] * i3) + D->size[0] *
-                              D->size[1] * m] = r7->data[i4 + r7->size[0] * i3];
-                          }
-                        }
-                      }
-
-                      i3 = De->size[0] * De->size[1];
-                      De->size[0] = i1;
-                      De->size[1] = k;
-                      emxEnsureCapacity_creal_T(De, i3);
-                      for (i3 = 0; i3 < d_loop_ub_tmp; i3++) {
-                        De->data[i3].re = 0.0;
-                        De->data[i3].im = 0.0;
-                      }
-
-                      for (boffset = 0; boffset < numberOfAntennaInSubset;
-                           boffset++) {
-                        i3 = tmp->size[0] * tmp->size[1];
-                        tmp->size[0] = numberOfSubcarrierSubsets;
-                        tmp->size[1] = b_index;
-                        emxEnsureCapacity_creal_T(tmp, i3);
-                        for (i3 = 0; i3 < nm1d2; i3++) {
-                          tmp->data[i3].re = 0.0;
-                          tmp->data[i3].im = 0.0;
-                        }
-
-                        for (j = 0; j <= numberOfSourses; j++) {
-                          i3 = j * b_loop_ub_tmp + 1;
-                          if (i3 > (1 + j) * (varargin_2 -
-                                              numberOfSubcarrierSubsets)) {
-                            i3 = 0;
-                          } else {
-                            i3--;
-                          }
-
-                          c_loop_ub = D->size[0];
-                          d_loop_ub = D->size[1];
-                          aoffset = boffset + j;
-                          i4 = r1->size[0] * r1->size[1];
-                          r1->size[0] = c_loop_ub;
-                          r1->size[1] = d_loop_ub;
-                          emxEnsureCapacity_creal_T(r1, i4);
-                          for (i4 = 0; i4 < d_loop_ub; i4++) {
-                            for (i5 = 0; i5 < c_loop_ub; i5++) {
-                              r1->data[i5 + r1->size[0] * i4] = D->data[(i5 +
-                                D->size[0] * i4) + D->size[0] * D->size[1] *
-                                aoffset];
-                            }
-                          }
-
-                          c_loop_ub = r1->size[1];
-                          for (i4 = 0; i4 < c_loop_ub; i4++) {
-                            d_loop_ub = r1->size[0];
-                            for (i5 = 0; i5 < d_loop_ub; i5++) {
-                              tmp->data[i5 + tmp->size[0] * (i3 + i4)] =
-                                r1->data[i5 + r1->size[0] * i4];
-                            }
-                          }
-                        }
-
-                        start_idx = (short)(boffset * (short)
-                                            numberOfSubcarrierSubsets);
-                        for (i3 = 0; i3 < b_loop_ub; i3++) {
-                          b_tmp_data[i3] = (short)((short)(y_data[i3] +
-                            start_idx) - 1);
-                        }
-
-                        c_loop_ub = tmp->size[1];
-                        for (i3 = 0; i3 < c_loop_ub; i3++) {
-                          d_loop_ub = tmp->size[0];
-                          for (i4 = 0; i4 < d_loop_ub; i4++) {
-                            De->data[b_tmp_data[i4] + De->size[0] * i3] =
-                              tmp->data[i4 + tmp->size[0] * i3];
-                          }
-                        }
-                      }
-
-                      i3 = b_s * k + 1;
-                      if (i3 > (1 + b_s) * k) {
-                        i3 = 0;
-                      } else {
-                        i3--;
-                      }
-
-                      c_loop_ub = De->size[1];
-                      for (i4 = 0; i4 < c_loop_ub; i4++) {
-                        d_loop_ub = De->size[0];
-                        for (i5 = 0; i5 < d_loop_ub; i5++) {
-                          matrixCSI->data[(i5 + matrixCSI->size[0] * (i3 + i4))
-                            + matrixCSI->size[0] * matrixCSI->size[1] * t] =
-                            De->data[i5 + De->size[0] * i4];
-                        }
-                      }
-                    }
-                  }
+                i0 = 2 - perSpec;
+                loop_ub = numberOfSubcarrierSubsets * (varargin_2 -
+                  numberOfSubcarrierSubsets) * b_ant;
+                c_loop_ub = numberOfAntennaInSubset * numberOfSubcarrierSubsets *
+                  columnsNum;
+                d_loop_ub = numberOfSubcarrierSubsets * (((b_ant -
+                  numberOfAntennaInSubset) + 1) * (varargin_2 -
+                  numberOfSubcarrierSubsets));
+                i1 = b_ant - numberOfAntennaInSubset;
+                k = numberOfSubcarrierSubsets - 1;
+                for (i2 = 0; i2 <= k; i2++) {
+                  y_data[i2] = (signed char)(1 + i2);
                 }
 
-                /*  smoothing completed */
-                if (floor(a) == a) {
-                  remaining = (int)floor(-(b_b - a));
-                  b_index = remaining + 1;
-                  for (i0 = 0; i0 <= remaining; i0++) {
-                    b_y_data[i0] = a - (double)i0;
-                  }
-                } else {
-                  b_index = (int)floor((b_b - a) / -1.0 + 0.5);
-                  apnd = a + -(double)b_index;
-                  cdiff = b_b - apnd;
-                  if (fabs(cdiff) < 4.4408920985006262E-16 * fmax(a, fabs(b_b)))
-                  {
-                    b_index++;
-                    apnd = b_b;
-                  } else if (cdiff > 0.0) {
-                    apnd = a + -((double)b_index - 1.0);
-                  } else {
-                    b_index++;
-                  }
-
-                  b_y_data[0] = a;
-                  if (b_index > 1) {
-                    b_y_data[b_index - 1] = apnd;
-                    nm1d2 = (b_index - 1) / 2;
-                    for (k = 0; k <= nm1d2 - 2; k++) {
-                      b_y_data[1 + k] = a + -(1.0 + (double)k);
-                      b_y_data[(b_index - k) - 2] = apnd - (-(1.0 + (double)k));
-                    }
-
-                    if (nm1d2 << 1 == b_index - 1) {
-                      b_y_data[nm1d2] = (a + apnd) / 2.0;
-                    } else {
-                      b_y_data[nm1d2] = a + -(double)nm1d2;
-                      b_y_data[nm1d2 + 1] = apnd - (-(double)nm1d2);
-                    }
-                  }
-                }
-
-                for (i0 = 0; i0 < 181; i0++) {
-                  dcv0[i0].re = dv0[i0];
-                  dcv0[i0].im = 0.0;
-                }
-
-                tmp_size[0] = b_index;
-                tmp_size[1] = 181;
-                for (i0 = 0; i0 < b_index; i0++) {
-                  for (i1 = 0; i1 < 181; i1++) {
-                    apnd = b_y_data[i0] * -0.0;
-                    cdiff = b_y_data[i0] * -6.2831853071795862;
-                    i2 = i0 + b_index * i1;
-                    tmp_data[i2].re = apnd * dcv0[i1].re - cdiff * dcv0[i1].im;
-                    tmp_data[i2].im = apnd * dcv0[i1].im + cdiff * dcv0[i1].re;
-                  }
-                }
-
-                c_exp(tmp_data, tmp_size);
-                for (i0 = 0; i0 < numberOfSubcarrierSubsets; i0++) {
-                  b_csiFromEachPacket_data[i0].re = 0.0;
-                  b_csiFromEachPacket_data[i0].im = 312500.0 * ((double)
-                    subCarrInd_data[i0] * -6.2831853071795862);
-                }
-
-                for (i0 = 0; i0 < 601; i0++) {
-                  dcv1[i0].re = dv1[i0];
-                  dcv1[i0].im = 0.0;
-                }
-
-                i0 = r6->size[0] * r6->size[1];
-                r6->size[0] = numberOfSubcarrierSubsets;
-                r6->size[1] = 601;
-                emxEnsureCapacity_creal_T(r6, i0);
-                for (i0 = 0; i0 < numberOfSubcarrierSubsets; i0++) {
-                  for (i1 = 0; i1 < 601; i1++) {
-                    r6->data[i0 + r6->size[0] * i1].re = (double)(int)
-                      b_csiFromEachPacket_data[i0].re * dcv1[i1].re -
-                      b_csiFromEachPacket_data[i0].im * dcv1[i1].im;
-                    r6->data[i0 + r6->size[0] * i1].im = (double)(int)
-                      b_csiFromEachPacket_data[i0].re * dcv1[i1].im +
-                      b_csiFromEachPacket_data[i0].im * dcv1[i1].re;
-                  }
-                }
-
-                b_exp(r6);
-                kron(tmp_data, tmp_size, r6, steeringVector);
-                nsDelayAngleSpotfiEstimated->size[0] = 2;
-                nsDelayAngleSpotfiEstimated->size[1] = 0;
                 for (t = 0; t < numberOfSpectrums; t++) {
-                  b_loop_ub = matrixCSI->size[0];
-                  c_loop_ub = matrixCSI->size[1];
-                  i0 = mat->size[0] * mat->size[1];
-                  mat->size[0] = b_loop_ub;
-                  mat->size[1] = c_loop_ub;
-                  emxEnsureCapacity_creal_T(mat, i0);
-                  for (i0 = 0; i0 < c_loop_ub; i0++) {
-                    for (i1 = 0; i1 < b_loop_ub; i1++) {
-                      mat->data[i1 + mat->size[0] * i0] = matrixCSI->data[(i1 +
-                        matrixCSI->size[0] * i0) + matrixCSI->size[0] *
-                        matrixCSI->size[1] * t];
-                    }
-                  }
-
-                  i0 = b->size[0] * b->size[1];
-                  b->size[0] = mat->size[1];
-                  b->size[1] = mat->size[0];
-                  emxEnsureCapacity_creal_T(b, i0);
-                  b_loop_ub = mat->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    c_loop_ub = mat->size[1];
-                    for (i1 = 0; i1 < c_loop_ub; i1++) {
-                      b->data[i1 + b->size[0] * i0].re = mat->data[i0 +
-                        mat->size[0] * i1].re;
-                      b->data[i1 + b->size[0] * i0].im = -mat->data[i0 +
-                        mat->size[0] * i1].im;
-                    }
-                  }
-
-                  i0 = matrixCSI->size[1];
-                  if ((i0 == 1) || (b->size[0] == 1)) {
-                    i0 = Rxx->size[0] * Rxx->size[1];
-                    Rxx->size[0] = mat->size[0];
-                    Rxx->size[1] = b->size[1];
-                    emxEnsureCapacity_creal_T(Rxx, i0);
-                    b_loop_ub = mat->size[0];
-                    for (i0 = 0; i0 < b_loop_ub; i0++) {
-                      c_loop_ub = b->size[1];
-                      for (i1 = 0; i1 < c_loop_ub; i1++) {
-                        Rxx->data[i0 + Rxx->size[0] * i1].re = 0.0;
-                        Rxx->data[i0 + Rxx->size[0] * i1].im = 0.0;
-                        d_loop_ub = mat->size[1];
-                        for (i2 = 0; i2 < d_loop_ub; i2++) {
-                          apnd = mat->data[i0 + mat->size[0] * i2].re * b->
-                            data[i2 + b->size[0] * i1].re - mat->data[i0 +
-                            mat->size[0] * i2].im * b->data[i2 + b->size[0] * i1]
-                            .im;
-                          cdiff = mat->data[i0 + mat->size[0] * i2].re * b->
-                            data[i2 + b->size[0] * i1].im + mat->data[i0 +
-                            mat->size[0] * i2].im * b->data[i2 + b->size[0] * i1]
-                            .re;
-                          Rxx->data[i0 + Rxx->size[0] * i1].re += apnd;
-                          Rxx->data[i0 + Rxx->size[0] * i1].im += cdiff;
-                        }
-                      }
-                    }
-                  } else {
-                    i0 = matrixCSI->size[0];
-                    i1 = matrixCSI->size[1];
-                    remaining = b->size[1];
-                    i2 = matrixCSI->size[0];
-                    i3 = Rxx->size[0] * Rxx->size[1];
-                    Rxx->size[0] = i2;
-                    Rxx->size[1] = b->size[1];
-                    emxEnsureCapacity_creal_T(Rxx, i3);
-                    for (j = 0; j < remaining; j++) {
-                      nm1d2 = j * i0;
-                      boffset = j * i1;
-                      for (i = 0; i < i0; i++) {
-                        i2 = nm1d2 + i;
-                        Rxx->data[i2].re = 0.0;
-                        Rxx->data[i2].im = 0.0;
-                      }
-
-                      for (k = 0; k < i1; k++) {
-                        aoffset = k * i0;
-                        b_index = boffset + k;
-                        apnd = b->data[b_index].re;
-                        cdiff = b->data[b_index].im;
-                        for (i = 0; i < i0; i++) {
-                          b_index = aoffset + i;
-                          temp_re = apnd * mat->data[b_index].re - cdiff *
-                            mat->data[b_index].im;
-                          temp_im = apnd * mat->data[b_index].im + cdiff *
-                            mat->data[b_index].re;
-                          i2 = nm1d2 + i;
-                          Rxx->data[i2].re += temp_re;
-                          Rxx->data[i2].im += temp_im;
-                        }
-                      }
-                    }
-                  }
-
-                  eig(Rxx, Utmp);
-                  b_abs(Rxx, r8);
-                  diag(r8, d_data, csiFromEachPacket_size);
-                  b_csiFromEachPacket_size[0] = csiFromEachPacket_size[0];
-                  if (0 <= csiFromEachPacket_size[0] - 1) {
-                    memcpy(&x_data[0], &d_data[0], (unsigned int)
-                           (csiFromEachPacket_size[0] * (int)sizeof(double)));
-                  }
-
-                  sort(x_data, b_csiFromEachPacket_size, iidx_data,
-                       csiFromEachPacket_size);
-                  b_loop_ub = csiFromEachPacket_size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    x_data[i0] = iidx_data[i0];
-                  }
-
-                  b_loop_ub = csiFromEachPacket_size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    b_d_data[i0] = d_data[(int)x_data[i0] - 1];
-                  }
-
-                  if (0 <= csiFromEachPacket_size[0] - 1) {
-                    memcpy(&d_data[0], &b_d_data[0], (unsigned int)
-                           (csiFromEachPacket_size[0] * (int)sizeof(double)));
-                  }
-
-                  numberOfSourses = 0;
-                  i0 = csiFromEachPacket_size[0];
                   for (i = 0; i < i0; i++) {
-                    if (d_data[i] < 1.0) {
-                      numberOfSourses = 1 + i;
+                    k = smoothedMatrixCSI->size[0];
+                    e_loop_ub = smoothedMatrixCSI->size[1];
+                    remaining = t * (2 - perSpec) + i;
+                    for (i2 = 0; i2 < e_loop_ub; i2++) {
+                      for (i3 = 0; i3 < k; i3++) {
+                        csiFromEachPacket_data[i3 + k * i2] =
+                          smoothedMatrixCSI->data[(i3 + smoothedMatrixCSI->size
+                          [0] * i2) + smoothedMatrixCSI->size[0] *
+                          smoothedMatrixCSI->size[1] * remaining];
+                      }
+                    }
+
+                    i2 = D->size[0] * D->size[1] * D->size[2];
+                    D->size[0] = numberOfSubcarrierSubsets;
+                    D->size[1] = varargin_2 - numberOfSubcarrierSubsets;
+                    D->size[2] = b_ant;
+                    emxEnsureCapacity_creal_T(D, i2);
+                    for (i2 = 0; i2 < loop_ub; i2++) {
+                      D->data[i2].re = 0.0;
+                      D->data[i2].im = 0.0;
+                    }
+
+                    for (m = 0; m < b_ant; m++) {
+                      /*  mth antenna */
+                      csiFromEachPacket_size[0] = numberOfSubcarrierSubsets;
+                      for (i2 = 0; i2 < numberOfSubcarrierSubsets; i2++) {
+                        b_csiFromEachPacket_data[i2] = csiFromEachPacket_data[i2
+                          + k * m];
+                      }
+
+                      b_csiFromEachPacket_size[0] = varargin_2 -
+                        numberOfSubcarrierSubsets;
+                      e_loop_ub = (varargin_2 - numberOfSubcarrierSubsets) - 1;
+                      for (i2 = 0; i2 <= e_loop_ub; i2++) {
+                        c_csiFromEachPacket_data[i2] = csiFromEachPacket_data
+                          [((numberOfSubcarrierSubsets + i2) + k * m) - 1];
+                      }
+
+                      hankel(b_csiFromEachPacket_data, csiFromEachPacket_size,
+                             c_csiFromEachPacket_data, b_csiFromEachPacket_size,
+                             b_tmp_data, b_tmp_size);
+                      e_loop_ub = b_tmp_size[1];
+                      for (i2 = 0; i2 < e_loop_ub; i2++) {
+                        remaining = b_tmp_size[0];
+                        for (i3 = 0; i3 < remaining; i3++) {
+                          D->data[(i3 + D->size[0] * i2) + D->size[0] * D->size
+                            [1] * m] = b_tmp_data[i3 + b_tmp_size[0] * i2];
+                        }
+                      }
+                    }
+
+                    i2 = De->size[0] * De->size[1];
+                    De->size[0] = numberOfAntennaInSubset *
+                      numberOfSubcarrierSubsets;
+                    De->size[1] = columnsNum;
+                    emxEnsureCapacity_creal_T(De, i2);
+                    for (i2 = 0; i2 < c_loop_ub; i2++) {
+                      De->data[i2].re = 0.0;
+                      De->data[i2].im = 0.0;
+                    }
+
+                    for (b_index = 0; b_index < numberOfAntennaInSubset; b_index
+                         ++) {
+                      i2 = tmp->size[0] * tmp->size[1];
+                      tmp->size[0] = numberOfSubcarrierSubsets;
+                      tmp->size[1] = ((b_ant - numberOfAntennaInSubset) + 1) *
+                        (varargin_2 - numberOfSubcarrierSubsets);
+                      emxEnsureCapacity_creal_T(tmp, i2);
+                      for (i2 = 0; i2 < d_loop_ub; i2++) {
+                        tmp->data[i2].re = 0.0;
+                        tmp->data[i2].im = 0.0;
+                      }
+
+                      for (j = 0; j <= i1; j++) {
+                        i2 = j * (varargin_2 - numberOfSubcarrierSubsets) + 1;
+                        if (i2 > (1 + j) * (varargin_2 -
+                                            numberOfSubcarrierSubsets)) {
+                          i2 = 0;
+                        } else {
+                          i2--;
+                        }
+
+                        k = D->size[0];
+                        e_loop_ub = D->size[1];
+                        nm1d2 = b_index + j;
+                        for (i3 = 0; i3 < e_loop_ub; i3++) {
+                          for (remaining = 0; remaining < k; remaining++) {
+                            d_tmp_data[remaining + k * i3] = D->data[(remaining
+                              + D->size[0] * i3) + D->size[0] * D->size[1] *
+                              nm1d2];
+                          }
+                        }
+
+                        for (i3 = 0; i3 < e_loop_ub; i3++) {
+                          for (remaining = 0; remaining < k; remaining++) {
+                            tmp->data[remaining + tmp->size[0] * (i2 + i3)] =
+                              d_tmp_data[remaining + k * i3];
+                          }
+                        }
+                      }
+
+                      start_idx = (unsigned char)((unsigned int)b_index *
+                        numberOfSubcarrierSubsets);
+                      for (i2 = 0; i2 < numberOfSubcarrierSubsets; i2++) {
+                        c_tmp_data[i2] = (unsigned char)(((unsigned int)
+                          y_data[i2] + start_idx) - 1U);
+                      }
+
+                      k = tmp->size[1];
+                      for (i2 = 0; i2 < k; i2++) {
+                        e_loop_ub = tmp->size[0];
+                        for (i3 = 0; i3 < e_loop_ub; i3++) {
+                          De->data[c_tmp_data[i3] + De->size[0] * i2] =
+                            tmp->data[i3 + tmp->size[0] * i2];
+                        }
+                      }
+                    }
+
+                    i2 = ((i * columnsNum) << 1) + 1;
+                    if (i2 > (((1 + i) * columnsNum) << 1) - columnsNum) {
+                      i2 = 0;
+                    } else {
+                      i2--;
+                    }
+
+                    k = De->size[1];
+                    for (i3 = 0; i3 < k; i3++) {
+                      e_loop_ub = De->size[0];
+                      for (remaining = 0; remaining < e_loop_ub; remaining++) {
+                        matrixCSI->data[(remaining + matrixCSI->size[0] * (i2 +
+                          i3)) + matrixCSI->size[0] * matrixCSI->size[1] * t] =
+                          De->data[remaining + De->size[0] * i3];
+                      }
                     }
                   }
+                }
 
-                  /*  eig completed */
-                  b_loop_ub = Utmp->size[0];
-                  c_loop_ub = Utmp->size[0];
-                  i0 = Pn->size[0] * Pn->size[1];
-                  Pn->size[0] = c_loop_ub;
-                  Pn->size[1] = csiFromEachPacket_size[0];
-                  emxEnsureCapacity_creal_T(Pn, i0);
-                  d_loop_ub = csiFromEachPacket_size[0];
-                  for (i0 = 0; i0 < d_loop_ub; i0++) {
+                i0 = smoothedMatrixCSI->size[0];
+                i1 = smoothedMatrixCSI->size[1];
+                loop_ub = smoothedMatrixCSI->size[2];
+                i2 = conjCsiTracePerPacket->size[0] *
+                  conjCsiTracePerPacket->size[1] * conjCsiTracePerPacket->size[2];
+                c_loop_ub = div_s32_floor(1 - i0, -1);
+                conjCsiTracePerPacket->size[0] = c_loop_ub + 1;
+                d_loop_ub = div_s32_floor(1 - i1, -1);
+                conjCsiTracePerPacket->size[1] = d_loop_ub + 1;
+                conjCsiTracePerPacket->size[2] = loop_ub;
+                emxEnsureCapacity_creal_T(conjCsiTracePerPacket, i2);
+                for (i2 = 0; i2 < loop_ub; i2++) {
+                  for (i3 = 0; i3 <= d_loop_ub; i3++) {
+                    for (remaining = 0; remaining <= c_loop_ub; remaining++) {
+                      conjCsiTracePerPacket->data[(remaining +
+                        conjCsiTracePerPacket->size[0] * i3) +
+                        conjCsiTracePerPacket->size[0] *
+                        conjCsiTracePerPacket->size[1] * i2].re =
+                        smoothedMatrixCSI->data[(((i0 - remaining) +
+                        smoothedMatrixCSI->size[0] * ((i1 - i3) - 1)) +
+                        smoothedMatrixCSI->size[0] * smoothedMatrixCSI->size[1] *
+                        i2) - 1].re;
+                      conjCsiTracePerPacket->data[(remaining +
+                        conjCsiTracePerPacket->size[0] * i3) +
+                        conjCsiTracePerPacket->size[0] *
+                        conjCsiTracePerPacket->size[1] * i2].im =
+                        -smoothedMatrixCSI->data[(((i0 - remaining) +
+                        smoothedMatrixCSI->size[0] * ((i1 - i3) - 1)) +
+                        smoothedMatrixCSI->size[0] * smoothedMatrixCSI->size[1] *
+                        i2) - 1].im;
+                    }
+                  }
+                }
+
+                i0 = 2 - perSpec;
+                loop_ub = numberOfSubcarrierSubsets * (varargin_2 -
+                  numberOfSubcarrierSubsets) * b_ant;
+                c_loop_ub = numberOfAntennaInSubset * numberOfSubcarrierSubsets *
+                  (((b_ant - numberOfAntennaInSubset) + 1) * (varargin_2 -
+                    numberOfSubcarrierSubsets));
+                d_loop_ub = numberOfSubcarrierSubsets * (((b_ant -
+                  numberOfAntennaInSubset) + 1) * (varargin_2 -
+                  numberOfSubcarrierSubsets));
+                i1 = b_ant - numberOfAntennaInSubset;
+                k = numberOfSubcarrierSubsets - 1;
+                for (i2 = 0; i2 <= k; i2++) {
+                  y_data[i2] = (signed char)(1 + i2);
+                }
+
+                for (t = 0; t < numberOfSpectrums; t++) {
+                  for (i = 0; i < i0; i++) {
+                    k = conjCsiTracePerPacket->size[0];
+                    e_loop_ub = conjCsiTracePerPacket->size[1];
+                    remaining = t * (2 - perSpec) + i;
+                    for (i2 = 0; i2 < e_loop_ub; i2++) {
+                      for (i3 = 0; i3 < k; i3++) {
+                        csiFromEachPacket_data[i3 + k * i2] =
+                          conjCsiTracePerPacket->data[(i3 +
+                          conjCsiTracePerPacket->size[0] * i2) +
+                          conjCsiTracePerPacket->size[0] *
+                          conjCsiTracePerPacket->size[1] * remaining];
+                      }
+                    }
+
+                    i2 = D->size[0] * D->size[1] * D->size[2];
+                    D->size[0] = numberOfSubcarrierSubsets;
+                    D->size[1] = varargin_2 - numberOfSubcarrierSubsets;
+                    D->size[2] = b_ant;
+                    emxEnsureCapacity_creal_T(D, i2);
+                    for (i2 = 0; i2 < loop_ub; i2++) {
+                      D->data[i2].re = 0.0;
+                      D->data[i2].im = 0.0;
+                    }
+
+                    for (m = 0; m < b_ant; m++) {
+                      /*  mth antenna */
+                      csiFromEachPacket_size[0] = numberOfSubcarrierSubsets;
+                      for (i2 = 0; i2 < numberOfSubcarrierSubsets; i2++) {
+                        b_csiFromEachPacket_data[i2] = csiFromEachPacket_data[i2
+                          + k * m];
+                      }
+
+                      b_csiFromEachPacket_size[0] = varargin_2 -
+                        numberOfSubcarrierSubsets;
+                      e_loop_ub = (varargin_2 - numberOfSubcarrierSubsets) - 1;
+                      for (i2 = 0; i2 <= e_loop_ub; i2++) {
+                        c_csiFromEachPacket_data[i2] = csiFromEachPacket_data
+                          [((numberOfSubcarrierSubsets + i2) + k * m) - 1];
+                      }
+
+                      hankel(b_csiFromEachPacket_data, csiFromEachPacket_size,
+                             c_csiFromEachPacket_data, b_csiFromEachPacket_size,
+                             b_tmp_data, b_tmp_size);
+                      e_loop_ub = b_tmp_size[1];
+                      for (i2 = 0; i2 < e_loop_ub; i2++) {
+                        remaining = b_tmp_size[0];
+                        for (i3 = 0; i3 < remaining; i3++) {
+                          D->data[(i3 + D->size[0] * i2) + D->size[0] * D->size
+                            [1] * m] = b_tmp_data[i3 + b_tmp_size[0] * i2];
+                        }
+                      }
+                    }
+
+                    i2 = De->size[0] * De->size[1];
+                    De->size[0] = numberOfAntennaInSubset *
+                      numberOfSubcarrierSubsets;
+                    De->size[1] = ((b_ant - numberOfAntennaInSubset) + 1) *
+                      (varargin_2 - numberOfSubcarrierSubsets);
+                    emxEnsureCapacity_creal_T(De, i2);
+                    for (i2 = 0; i2 < c_loop_ub; i2++) {
+                      De->data[i2].re = 0.0;
+                      De->data[i2].im = 0.0;
+                    }
+
+                    for (b_index = 0; b_index < numberOfAntennaInSubset; b_index
+                         ++) {
+                      i2 = tmp->size[0] * tmp->size[1];
+                      tmp->size[0] = numberOfSubcarrierSubsets;
+                      tmp->size[1] = ((b_ant - numberOfAntennaInSubset) + 1) *
+                        (varargin_2 - numberOfSubcarrierSubsets);
+                      emxEnsureCapacity_creal_T(tmp, i2);
+                      for (i2 = 0; i2 < d_loop_ub; i2++) {
+                        tmp->data[i2].re = 0.0;
+                        tmp->data[i2].im = 0.0;
+                      }
+
+                      for (j = 0; j <= i1; j++) {
+                        i2 = j * (varargin_2 - numberOfSubcarrierSubsets) + 1;
+                        if (i2 > (1 + j) * (varargin_2 -
+                                            numberOfSubcarrierSubsets)) {
+                          i2 = 0;
+                        } else {
+                          i2--;
+                        }
+
+                        k = D->size[0];
+                        e_loop_ub = D->size[1];
+                        nm1d2 = b_index + j;
+                        for (i3 = 0; i3 < e_loop_ub; i3++) {
+                          for (remaining = 0; remaining < k; remaining++) {
+                            d_tmp_data[remaining + k * i3] = D->data[(remaining
+                              + D->size[0] * i3) + D->size[0] * D->size[1] *
+                              nm1d2];
+                          }
+                        }
+
+                        for (i3 = 0; i3 < e_loop_ub; i3++) {
+                          for (remaining = 0; remaining < k; remaining++) {
+                            tmp->data[remaining + tmp->size[0] * (i2 + i3)] =
+                              d_tmp_data[remaining + k * i3];
+                          }
+                        }
+                      }
+
+                      start_idx = (unsigned char)((unsigned int)b_index *
+                        numberOfSubcarrierSubsets);
+                      for (i2 = 0; i2 < numberOfSubcarrierSubsets; i2++) {
+                        c_tmp_data[i2] = (unsigned char)(((unsigned int)
+                          y_data[i2] + start_idx) - 1U);
+                      }
+
+                      k = tmp->size[1];
+                      for (i2 = 0; i2 < k; i2++) {
+                        e_loop_ub = tmp->size[0];
+                        for (i3 = 0; i3 < e_loop_ub; i3++) {
+                          De->data[c_tmp_data[i3] + De->size[0] * i2] =
+                            tmp->data[i3 + tmp->size[0] * i2];
+                        }
+                      }
+                    }
+
+                    i2 = (((i * columnsNum) << 1) + columnsNum) + 1;
+                    if (i2 > (((1 + i) * columnsNum) << 1)) {
+                      i2 = 0;
+                    } else {
+                      i2--;
+                    }
+
+                    k = De->size[1];
+                    for (i3 = 0; i3 < k; i3++) {
+                      e_loop_ub = De->size[0];
+                      for (remaining = 0; remaining < e_loop_ub; remaining++) {
+                        matrixCSI->data[(remaining + matrixCSI->size[0] * (i2 +
+                          i3)) + matrixCSI->size[0] * matrixCSI->size[1] * t] =
+                          De->data[remaining + De->size[0] * i3];
+                      }
+                    }
+                  }
+                }
+              } else {
+                boffset = b_ant - numberOfAntennaInSubset;
+                aoffset = boffset + 1;
+                columnsNum = aoffset * ((subCarrInd_size_idx_1 -
+                  numberOfSubcarrierSubsets) + 1);
+                i0 = matrixCSI->size[0] * matrixCSI->size[1] * matrixCSI->size[2];
+                matrixCSI->size[0] = numberOfAntennaInSubset *
+                  numberOfSubcarrierSubsets;
+                matrixCSI->size[1] = columnsNum * (2 - perSpec);
+                matrixCSI->size[2] = numberOfSpectrums;
+                emxEnsureCapacity_creal_T(matrixCSI, i0);
+                loop_ub = numberOfAntennaInSubset * numberOfSubcarrierSubsets *
+                  (columnsNum * (2 - perSpec)) * numberOfSpectrums;
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  matrixCSI->data[i0].re = 0.0;
+                  matrixCSI->data[i0].im = 0.0;
+                }
+
+                i0 = 2 - perSpec;
+                loop_ub = numberOfSubcarrierSubsets * (varargin_2 -
+                  numberOfSubcarrierSubsets) * b_ant;
+                c_loop_ub = numberOfAntennaInSubset * numberOfSubcarrierSubsets *
+                  columnsNum;
+                d_loop_ub = numberOfSubcarrierSubsets * (aoffset * (varargin_2 -
+                  numberOfSubcarrierSubsets));
+                k = numberOfSubcarrierSubsets - 1;
+                for (i1 = 0; i1 <= k; i1++) {
+                  y_data[i1] = (signed char)(1 + i1);
+                }
+
+                for (t = 0; t < numberOfSpectrums; t++) {
+                  for (i = 0; i < i0; i++) {
+                    k = smoothedMatrixCSI->size[0];
+                    e_loop_ub = smoothedMatrixCSI->size[1];
+                    remaining = t * (2 - perSpec) + i;
+                    for (i1 = 0; i1 < e_loop_ub; i1++) {
+                      for (i2 = 0; i2 < k; i2++) {
+                        csiFromEachPacket_data[i2 + k * i1] =
+                          smoothedMatrixCSI->data[(i2 + smoothedMatrixCSI->size
+                          [0] * i1) + smoothedMatrixCSI->size[0] *
+                          smoothedMatrixCSI->size[1] * remaining];
+                      }
+                    }
+
+                    i1 = D->size[0] * D->size[1] * D->size[2];
+                    D->size[0] = numberOfSubcarrierSubsets;
+                    D->size[1] = varargin_2 - numberOfSubcarrierSubsets;
+                    D->size[2] = b_ant;
+                    emxEnsureCapacity_creal_T(D, i1);
+                    for (i1 = 0; i1 < loop_ub; i1++) {
+                      D->data[i1].re = 0.0;
+                      D->data[i1].im = 0.0;
+                    }
+
+                    for (m = 0; m < b_ant; m++) {
+                      /*  mth antenna */
+                      csiFromEachPacket_size[0] = numberOfSubcarrierSubsets;
+                      for (i1 = 0; i1 < numberOfSubcarrierSubsets; i1++) {
+                        b_csiFromEachPacket_data[i1] = csiFromEachPacket_data[i1
+                          + k * m];
+                      }
+
+                      b_csiFromEachPacket_size[0] = varargin_2 -
+                        numberOfSubcarrierSubsets;
+                      e_loop_ub = (varargin_2 - numberOfSubcarrierSubsets) - 1;
+                      for (i1 = 0; i1 <= e_loop_ub; i1++) {
+                        c_csiFromEachPacket_data[i1] = csiFromEachPacket_data
+                          [((numberOfSubcarrierSubsets + i1) + k * m) - 1];
+                      }
+
+                      hankel(b_csiFromEachPacket_data, csiFromEachPacket_size,
+                             c_csiFromEachPacket_data, b_csiFromEachPacket_size,
+                             b_tmp_data, b_tmp_size);
+                      e_loop_ub = b_tmp_size[1];
+                      for (i1 = 0; i1 < e_loop_ub; i1++) {
+                        remaining = b_tmp_size[0];
+                        for (i2 = 0; i2 < remaining; i2++) {
+                          D->data[(i2 + D->size[0] * i1) + D->size[0] * D->size
+                            [1] * m] = b_tmp_data[i2 + b_tmp_size[0] * i1];
+                        }
+                      }
+                    }
+
+                    i1 = De->size[0] * De->size[1];
+                    De->size[0] = numberOfAntennaInSubset *
+                      numberOfSubcarrierSubsets;
+                    De->size[1] = columnsNum;
+                    emxEnsureCapacity_creal_T(De, i1);
                     for (i1 = 0; i1 < c_loop_ub; i1++) {
-                      Pn->data[i1 + Pn->size[0] * i0] = Utmp->data[i1 +
-                        Utmp->size[0] * ((int)x_data[i0] - 1)];
+                      De->data[i1].re = 0.0;
+                      De->data[i1].im = 0.0;
+                    }
+
+                    for (b_index = 0; b_index < numberOfAntennaInSubset; b_index
+                         ++) {
+                      i1 = tmp->size[0] * tmp->size[1];
+                      tmp->size[0] = numberOfSubcarrierSubsets;
+                      tmp->size[1] = aoffset * (varargin_2 -
+                        numberOfSubcarrierSubsets);
+                      emxEnsureCapacity_creal_T(tmp, i1);
+                      for (i1 = 0; i1 < d_loop_ub; i1++) {
+                        tmp->data[i1].re = 0.0;
+                        tmp->data[i1].im = 0.0;
+                      }
+
+                      for (j = 0; j <= boffset; j++) {
+                        i1 = j * (varargin_2 - numberOfSubcarrierSubsets) + 1;
+                        if (i1 > (1 + j) * (varargin_2 -
+                                            numberOfSubcarrierSubsets)) {
+                          i1 = 0;
+                        } else {
+                          i1--;
+                        }
+
+                        k = D->size[0];
+                        e_loop_ub = D->size[1];
+                        nm1d2 = b_index + j;
+                        for (i2 = 0; i2 < e_loop_ub; i2++) {
+                          for (i3 = 0; i3 < k; i3++) {
+                            d_tmp_data[i3 + k * i2] = D->data[(i3 + D->size[0] *
+                              i2) + D->size[0] * D->size[1] * nm1d2];
+                          }
+                        }
+
+                        for (i2 = 0; i2 < e_loop_ub; i2++) {
+                          for (i3 = 0; i3 < k; i3++) {
+                            tmp->data[i3 + tmp->size[0] * (i1 + i2)] =
+                              d_tmp_data[i3 + k * i2];
+                          }
+                        }
+                      }
+
+                      start_idx = (unsigned char)((unsigned int)b_index *
+                        numberOfSubcarrierSubsets);
+                      for (i1 = 0; i1 < numberOfSubcarrierSubsets; i1++) {
+                        c_tmp_data[i1] = (unsigned char)(((unsigned int)
+                          y_data[i1] + start_idx) - 1U);
+                      }
+
+                      k = tmp->size[1];
+                      for (i1 = 0; i1 < k; i1++) {
+                        e_loop_ub = tmp->size[0];
+                        for (i2 = 0; i2 < e_loop_ub; i2++) {
+                          De->data[c_tmp_data[i2] + De->size[0] * i1] =
+                            tmp->data[i2 + tmp->size[0] * i1];
+                        }
+                      }
+                    }
+
+                    i1 = i * columnsNum + 1;
+                    if (i1 > (1 + i) * columnsNum) {
+                      i1 = 0;
+                    } else {
+                      i1--;
+                    }
+
+                    k = De->size[1];
+                    for (i2 = 0; i2 < k; i2++) {
+                      e_loop_ub = De->size[0];
+                      for (i3 = 0; i3 < e_loop_ub; i3++) {
+                        matrixCSI->data[(i3 + matrixCSI->size[0] * (i1 + i2)) +
+                          matrixCSI->size[0] * matrixCSI->size[1] * t] =
+                          De->data[i3 + De->size[0] * i2];
+                      }
                     }
                   }
+                }
+              }
 
+              /*  smoothing completed */
+              if (floor(a) == a) {
+                remaining = (int)floor(-(b_b - a));
+                b_index = remaining + 1;
+                for (i0 = 0; i0 <= remaining; i0++) {
+                  b_y_data[i0] = a - (double)i0;
+                }
+              } else {
+                b_index = (int)floor((b_b - a) / -1.0 + 0.5);
+                apnd = a + -(double)b_index;
+                cdiff = b_b - apnd;
+                if (fabs(cdiff) < 4.4408920985006262E-16 * fmax(a, fabs(b_b))) {
+                  b_index++;
+                  apnd = b_b;
+                } else if (cdiff > 0.0) {
+                  apnd = a + -((double)b_index - 1.0);
+                } else {
+                  b_index++;
+                }
+
+                b_y_data[0] = a;
+                if (b_index > 1) {
+                  b_y_data[b_index - 1] = apnd;
+                  nm1d2 = (b_index - 1) / 2;
+                  for (k = 0; k <= nm1d2 - 2; k++) {
+                    b_y_data[1 + k] = a + -(1.0 + (double)k);
+                    b_y_data[(b_index - k) - 2] = apnd - (-(1.0 + (double)k));
+                  }
+
+                  if (nm1d2 << 1 == b_index - 1) {
+                    b_y_data[nm1d2] = (a + apnd) / 2.0;
+                  } else {
+                    b_y_data[nm1d2] = a + -(double)nm1d2;
+                    b_y_data[nm1d2 + 1] = apnd - (-(double)nm1d2);
+                  }
+                }
+              }
+
+              for (i0 = 0; i0 < 181; i0++) {
+                dcv0[i0].re = dv0[i0];
+                dcv0[i0].im = 0.0;
+              }
+
+              tmp_size[0] = b_index;
+              tmp_size[1] = 181;
+              for (i0 = 0; i0 < b_index; i0++) {
+                for (i1 = 0; i1 < 181; i1++) {
+                  apnd = b_y_data[i0] * -0.0;
+                  cdiff = b_y_data[i0] * -6.2831853071795862;
+                  i2 = i0 + b_index * i1;
+                  tmp_data[i2].re = apnd * dcv0[i1].re - cdiff * dcv0[i1].im;
+                  tmp_data[i2].im = apnd * dcv0[i1].im + cdiff * dcv0[i1].re;
+                }
+              }
+
+              c_exp(tmp_data, tmp_size);
+              for (i0 = 0; i0 < numberOfSubcarrierSubsets; i0++) {
+                b_csiFromEachPacket_data[i0].re = -0.0;
+                b_csiFromEachPacket_data[i0].im = 312500.0 * ((double)
+                  subCarrInd_data[i0] * -6.2831853071795862);
+              }
+
+              for (i0 = 0; i0 < 601; i0++) {
+                dcv1[i0].re = dv1[i0];
+                dcv1[i0].im = 0.0;
+              }
+
+              i0 = r5->size[0] * r5->size[1];
+              r5->size[0] = numberOfSubcarrierSubsets;
+              r5->size[1] = 601;
+              emxEnsureCapacity_creal_T(r5, i0);
+              for (i0 = 0; i0 < numberOfSubcarrierSubsets; i0++) {
+                for (i1 = 0; i1 < 601; i1++) {
+                  r5->data[i0 + r5->size[0] * i1].re = -0.0 * dcv1[i1].re -
+                    b_csiFromEachPacket_data[i0].im * dcv1[i1].im;
+                  r5->data[i0 + r5->size[0] * i1].im = -0.0 * dcv1[i1].im +
+                    b_csiFromEachPacket_data[i0].im * dcv1[i1].re;
+                }
+              }
+
+              b_exp(r5);
+              kron(tmp_data, tmp_size, r5, steeringVector);
+              nsDelayAngleSpotfiEstimated->size[0] = 2;
+              nsDelayAngleSpotfiEstimated->size[1] = 0;
+              for (t = 0; t < numberOfSpectrums; t++) {
+                loop_ub = matrixCSI->size[0];
+                c_loop_ub = matrixCSI->size[1];
+                i0 = mat->size[0] * mat->size[1];
+                mat->size[0] = loop_ub;
+                mat->size[1] = c_loop_ub;
+                emxEnsureCapacity_creal_T(mat, i0);
+                for (i0 = 0; i0 < c_loop_ub; i0++) {
+                  for (i1 = 0; i1 < loop_ub; i1++) {
+                    mat->data[i1 + mat->size[0] * i0] = matrixCSI->data[(i1 +
+                      matrixCSI->size[0] * i0) + matrixCSI->size[0] *
+                      matrixCSI->size[1] * t];
+                  }
+                }
+
+                i0 = b->size[0] * b->size[1];
+                b->size[0] = mat->size[1];
+                b->size[1] = mat->size[0];
+                emxEnsureCapacity_creal_T(b, i0);
+                loop_ub = mat->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  c_loop_ub = mat->size[1];
+                  for (i1 = 0; i1 < c_loop_ub; i1++) {
+                    b->data[i1 + b->size[0] * i0].re = mat->data[i0 + mat->size
+                      [0] * i1].re;
+                    b->data[i1 + b->size[0] * i0].im = -mat->data[i0 + mat->
+                      size[0] * i1].im;
+                  }
+                }
+
+                i0 = matrixCSI->size[1];
+                if ((i0 == 1) || (b->size[0] == 1)) {
                   i0 = Rxx->size[0] * Rxx->size[1];
-                  Rxx->size[0] = b_loop_ub;
-                  Rxx->size[1] = numberOfSourses;
+                  Rxx->size[0] = mat->size[0];
+                  Rxx->size[1] = b->size[1];
                   emxEnsureCapacity_creal_T(Rxx, i0);
-                  for (i0 = 0; i0 < numberOfSourses; i0++) {
-                    for (i1 = 0; i1 < b_loop_ub; i1++) {
-                      Rxx->data[i1 + Rxx->size[0] * i0] = Pn->data[i1 + Pn->
-                        size[0] * i0];
-                    }
-                  }
-
-                  i0 = b->size[0] * b->size[1];
-                  b->size[0] = Rxx->size[1];
-                  b->size[1] = Rxx->size[0];
-                  emxEnsureCapacity_creal_T(b, i0);
-                  b_loop_ub = Rxx->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    c_loop_ub = Rxx->size[1];
+                  loop_ub = mat->size[0];
+                  for (i0 = 0; i0 < loop_ub; i0++) {
+                    c_loop_ub = b->size[1];
                     for (i1 = 0; i1 < c_loop_ub; i1++) {
-                      b->data[i1 + b->size[0] * i0].re = Rxx->data[i0 +
-                        Rxx->size[0] * i1].re;
-                      b->data[i1 + b->size[0] * i0].im = -Rxx->data[i0 +
-                        Rxx->size[0] * i1].im;
-                    }
-                  }
-
-                  if ((numberOfSourses == 1) || (b->size[0] == 1)) {
-                    i0 = Pn->size[0] * Pn->size[1];
-                    Pn->size[0] = Rxx->size[0];
-                    Pn->size[1] = b->size[1];
-                    emxEnsureCapacity_creal_T(Pn, i0);
-                    b_loop_ub = Rxx->size[0];
-                    for (i0 = 0; i0 < b_loop_ub; i0++) {
-                      c_loop_ub = b->size[1];
-                      for (i1 = 0; i1 < c_loop_ub; i1++) {
-                        Pn->data[i0 + Pn->size[0] * i1].re = 0.0;
-                        Pn->data[i0 + Pn->size[0] * i1].im = 0.0;
-                        d_loop_ub = Rxx->size[1];
-                        for (i2 = 0; i2 < d_loop_ub; i2++) {
-                          apnd = Rxx->data[i0 + Rxx->size[0] * i2].re * b->
-                            data[i2 + b->size[0] * i1].re - Rxx->data[i0 +
-                            Rxx->size[0] * i2].im * b->data[i2 + b->size[0] * i1]
-                            .im;
-                          cdiff = Rxx->data[i0 + Rxx->size[0] * i2].re * b->
-                            data[i2 + b->size[0] * i1].im + Rxx->data[i0 +
-                            Rxx->size[0] * i2].im * b->data[i2 + b->size[0] * i1]
-                            .re;
-                          Pn->data[i0 + Pn->size[0] * i1].re += apnd;
-                          Pn->data[i0 + Pn->size[0] * i1].im += cdiff;
-                        }
+                      Rxx->data[i0 + Rxx->size[0] * i1].re = 0.0;
+                      Rxx->data[i0 + Rxx->size[0] * i1].im = 0.0;
+                      d_loop_ub = mat->size[1];
+                      for (i2 = 0; i2 < d_loop_ub; i2++) {
+                        apnd = mat->data[i0 + mat->size[0] * i2].re * b->data[i2
+                          + b->size[0] * i1].re - mat->data[i0 + mat->size[0] *
+                          i2].im * b->data[i2 + b->size[0] * i1].im;
+                        cdiff = mat->data[i0 + mat->size[0] * i2].re * b->
+                          data[i2 + b->size[0] * i1].im + mat->data[i0 +
+                          mat->size[0] * i2].im * b->data[i2 + b->size[0] * i1].
+                          re;
+                        Rxx->data[i0 + Rxx->size[0] * i1].re += apnd;
+                        Rxx->data[i0 + Rxx->size[0] * i1].im += cdiff;
                       }
                     }
-                  } else {
-                    i0 = Utmp->size[0];
-                    remaining = b->size[1];
-                    i1 = Utmp->size[0];
-                    i2 = Pn->size[0] * Pn->size[1];
-                    Pn->size[0] = i1;
-                    Pn->size[1] = b->size[1];
-                    emxEnsureCapacity_creal_T(Pn, i2);
-                    for (j = 0; j < remaining; j++) {
-                      nm1d2 = j * i0;
-                      boffset = j * numberOfSourses;
+                  }
+                } else {
+                  i0 = matrixCSI->size[0];
+                  i1 = matrixCSI->size[1];
+                  remaining = b->size[1];
+                  i2 = matrixCSI->size[0];
+                  i3 = Rxx->size[0] * Rxx->size[1];
+                  Rxx->size[0] = i2;
+                  Rxx->size[1] = b->size[1];
+                  emxEnsureCapacity_creal_T(Rxx, i3);
+                  for (j = 0; j < remaining; j++) {
+                    nm1d2 = j * i0;
+                    boffset = j * i1;
+                    for (i = 0; i < i0; i++) {
+                      i2 = nm1d2 + i;
+                      Rxx->data[i2].re = 0.0;
+                      Rxx->data[i2].im = 0.0;
+                    }
+
+                    for (k = 0; k < i1; k++) {
+                      aoffset = k * i0;
+                      b_index = boffset + k;
+                      apnd = b->data[b_index].re;
+                      cdiff = b->data[b_index].im;
                       for (i = 0; i < i0; i++) {
-                        i1 = nm1d2 + i;
-                        Pn->data[i1].re = 0.0;
-                        Pn->data[i1].im = 0.0;
-                      }
-
-                      for (k = 0; k < numberOfSourses; k++) {
-                        aoffset = k * i0;
-                        b_index = boffset + k;
-                        apnd = b->data[b_index].re;
-                        cdiff = b->data[b_index].im;
-                        for (i = 0; i < i0; i++) {
-                          b_index = aoffset + i;
-                          temp_re = apnd * Rxx->data[b_index].re - cdiff *
-                            Rxx->data[b_index].im;
-                          temp_im = apnd * Rxx->data[b_index].im + cdiff *
-                            Rxx->data[b_index].re;
-                          i1 = nm1d2 + i;
-                          Pn->data[i1].re += temp_re;
-                          Pn->data[i1].im += temp_im;
-                        }
+                        b_index = aoffset + i;
+                        temp_re = apnd * mat->data[b_index].re - cdiff *
+                          mat->data[b_index].im;
+                        temp_im = apnd * mat->data[b_index].im + cdiff *
+                          mat->data[b_index].re;
+                        i2 = nm1d2 + i;
+                        Rxx->data[i2].re += temp_re;
+                        Rxx->data[i2].im += temp_im;
                       }
                     }
                   }
+                }
 
-                  /*  Pn completed */
-                  if ((Pn->size[1] == 1) || (steeringVector->size[0] == 1)) {
-                    i0 = b_y->size[0] * b_y->size[1];
-                    b_y->size[0] = Pn->size[0];
-                    b_y->size[1] = 108781;
-                    emxEnsureCapacity_creal_T(b_y, i0);
-                    b_loop_ub = Pn->size[0];
-                    for (i0 = 0; i0 < b_loop_ub; i0++) {
-                      for (i1 = 0; i1 < 108781; i1++) {
-                        b_y->data[i0 + b_y->size[0] * i1].re = 0.0;
-                        b_y->data[i0 + b_y->size[0] * i1].im = 0.0;
-                        c_loop_ub = Pn->size[1];
-                        for (i2 = 0; i2 < c_loop_ub; i2++) {
-                          apnd = Pn->data[i0 + Pn->size[0] * i2].re *
-                            steeringVector->data[i2 + steeringVector->size[0] *
-                            i1].re - Pn->data[i0 + Pn->size[0] * i2].im *
-                            steeringVector->data[i2 + steeringVector->size[0] *
-                            i1].im;
-                          cdiff = Pn->data[i0 + Pn->size[0] * i2].re *
-                            steeringVector->data[i2 + steeringVector->size[0] *
-                            i1].im + Pn->data[i0 + Pn->size[0] * i2].im *
-                            steeringVector->data[i2 + steeringVector->size[0] *
-                            i1].re;
-                          b_y->data[i0 + b_y->size[0] * i1].re += apnd;
-                          b_y->data[i0 + b_y->size[0] * i1].im += cdiff;
-                        }
+                eig(Rxx, Utmp);
+                b_abs(Rxx, r6);
+                diag(r6, d_data, csiFromEachPacket_size);
+                b_csiFromEachPacket_size[0] = csiFromEachPacket_size[0];
+                if (0 <= csiFromEachPacket_size[0] - 1) {
+                  memcpy(&x_data[0], &d_data[0], (unsigned int)
+                         (csiFromEachPacket_size[0] * (int)sizeof(double)));
+                }
+
+                sort(x_data, b_csiFromEachPacket_size, iidx_data,
+                     csiFromEachPacket_size);
+                loop_ub = csiFromEachPacket_size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  x_data[i0] = iidx_data[i0];
+                }
+
+                loop_ub = csiFromEachPacket_size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  b_d_data[i0] = d_data[(int)x_data[i0] - 1];
+                }
+
+                if (0 <= csiFromEachPacket_size[0] - 1) {
+                  memcpy(&d_data[0], &b_d_data[0], (unsigned int)
+                         (csiFromEachPacket_size[0] * (int)sizeof(double)));
+                }
+
+                columnsNum = 0;
+                i0 = csiFromEachPacket_size[0];
+                for (i = 0; i < i0; i++) {
+                  if (d_data[i] < 1.0) {
+                    columnsNum = 1 + i;
+                  }
+                }
+
+                /*  eig completed */
+                loop_ub = Utmp->size[0];
+                c_loop_ub = Utmp->size[0];
+                i0 = Pn->size[0] * Pn->size[1];
+                Pn->size[0] = c_loop_ub;
+                Pn->size[1] = csiFromEachPacket_size[0];
+                emxEnsureCapacity_creal_T(Pn, i0);
+                d_loop_ub = csiFromEachPacket_size[0];
+                for (i0 = 0; i0 < d_loop_ub; i0++) {
+                  for (i1 = 0; i1 < c_loop_ub; i1++) {
+                    Pn->data[i1 + Pn->size[0] * i0] = Utmp->data[i1 + Utmp->
+                      size[0] * ((int)x_data[i0] - 1)];
+                  }
+                }
+
+                i0 = Rxx->size[0] * Rxx->size[1];
+                Rxx->size[0] = loop_ub;
+                Rxx->size[1] = columnsNum;
+                emxEnsureCapacity_creal_T(Rxx, i0);
+                for (i0 = 0; i0 < columnsNum; i0++) {
+                  for (i1 = 0; i1 < loop_ub; i1++) {
+                    Rxx->data[i1 + Rxx->size[0] * i0] = Pn->data[i1 + Pn->size[0]
+                      * i0];
+                  }
+                }
+
+                i0 = b->size[0] * b->size[1];
+                b->size[0] = Rxx->size[1];
+                b->size[1] = Rxx->size[0];
+                emxEnsureCapacity_creal_T(b, i0);
+                loop_ub = Rxx->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  c_loop_ub = Rxx->size[1];
+                  for (i1 = 0; i1 < c_loop_ub; i1++) {
+                    b->data[i1 + b->size[0] * i0].re = Rxx->data[i0 + Rxx->size
+                      [0] * i1].re;
+                    b->data[i1 + b->size[0] * i0].im = -Rxx->data[i0 + Rxx->
+                      size[0] * i1].im;
+                  }
+                }
+
+                if ((columnsNum == 1) || (b->size[0] == 1)) {
+                  i0 = Pn->size[0] * Pn->size[1];
+                  Pn->size[0] = Rxx->size[0];
+                  Pn->size[1] = b->size[1];
+                  emxEnsureCapacity_creal_T(Pn, i0);
+                  loop_ub = Rxx->size[0];
+                  for (i0 = 0; i0 < loop_ub; i0++) {
+                    c_loop_ub = b->size[1];
+                    for (i1 = 0; i1 < c_loop_ub; i1++) {
+                      Pn->data[i0 + Pn->size[0] * i1].re = 0.0;
+                      Pn->data[i0 + Pn->size[0] * i1].im = 0.0;
+                      d_loop_ub = Rxx->size[1];
+                      for (i2 = 0; i2 < d_loop_ub; i2++) {
+                        apnd = Rxx->data[i0 + Rxx->size[0] * i2].re * b->data[i2
+                          + b->size[0] * i1].re - Rxx->data[i0 + Rxx->size[0] *
+                          i2].im * b->data[i2 + b->size[0] * i1].im;
+                        cdiff = Rxx->data[i0 + Rxx->size[0] * i2].re * b->
+                          data[i2 + b->size[0] * i1].im + Rxx->data[i0 +
+                          Rxx->size[0] * i2].im * b->data[i2 + b->size[0] * i1].
+                          re;
+                        Pn->data[i0 + Pn->size[0] * i1].re += apnd;
+                        Pn->data[i0 + Pn->size[0] * i1].im += cdiff;
                       }
+                    }
+                  }
+                } else {
+                  i0 = Utmp->size[0];
+                  remaining = b->size[1];
+                  i1 = Utmp->size[0];
+                  i2 = Pn->size[0] * Pn->size[1];
+                  Pn->size[0] = i1;
+                  Pn->size[1] = b->size[1];
+                  emxEnsureCapacity_creal_T(Pn, i2);
+                  for (j = 0; j < remaining; j++) {
+                    nm1d2 = j * i0;
+                    boffset = j * columnsNum;
+                    for (i = 0; i < i0; i++) {
+                      i1 = nm1d2 + i;
+                      Pn->data[i1].re = 0.0;
+                      Pn->data[i1].im = 0.0;
+                    }
+
+                    for (k = 0; k < columnsNum; k++) {
+                      aoffset = k * i0;
+                      b_index = boffset + k;
+                      apnd = b->data[b_index].re;
+                      cdiff = b->data[b_index].im;
+                      for (i = 0; i < i0; i++) {
+                        b_index = aoffset + i;
+                        temp_re = apnd * Rxx->data[b_index].re - cdiff *
+                          Rxx->data[b_index].im;
+                        temp_im = apnd * Rxx->data[b_index].im + cdiff *
+                          Rxx->data[b_index].re;
+                        i1 = nm1d2 + i;
+                        Pn->data[i1].re += temp_re;
+                        Pn->data[i1].im += temp_im;
+                      }
+                    }
+                  }
+                }
+
+                /*  Pn completed */
+                if ((Pn->size[1] == 1) || (steeringVector->size[0] == 1)) {
+                  i0 = b_y->size[0] * b_y->size[1];
+                  b_y->size[0] = Pn->size[0];
+                  b_y->size[1] = 108781;
+                  emxEnsureCapacity_creal_T(b_y, i0);
+                  loop_ub = Pn->size[0];
+                  for (i0 = 0; i0 < loop_ub; i0++) {
+                    for (i1 = 0; i1 < 108781; i1++) {
+                      b_y->data[i0 + b_y->size[0] * i1].re = 0.0;
+                      b_y->data[i0 + b_y->size[0] * i1].im = 0.0;
+                      c_loop_ub = Pn->size[1];
+                      for (i2 = 0; i2 < c_loop_ub; i2++) {
+                        apnd = Pn->data[i0 + Pn->size[0] * i2].re *
+                          steeringVector->data[i2 + steeringVector->size[0] * i1]
+                          .re - Pn->data[i0 + Pn->size[0] * i2].im *
+                          steeringVector->data[i2 + steeringVector->size[0] * i1]
+                          .im;
+                        cdiff = Pn->data[i0 + Pn->size[0] * i2].re *
+                          steeringVector->data[i2 + steeringVector->size[0] * i1]
+                          .im + Pn->data[i0 + Pn->size[0] * i2].im *
+                          steeringVector->data[i2 + steeringVector->size[0] * i1]
+                          .re;
+                        b_y->data[i0 + b_y->size[0] * i1].re += apnd;
+                        b_y->data[i0 + b_y->size[0] * i1].im += cdiff;
+                      }
+                    }
+                  }
+                } else {
+                  m = Pn->size[0];
+                  remaining = Pn->size[1];
+                  i0 = b_y->size[0] * b_y->size[1];
+                  b_y->size[0] = Pn->size[0];
+                  b_y->size[1] = 108781;
+                  emxEnsureCapacity_creal_T(b_y, i0);
+                  for (j = 0; j < 108781; j++) {
+                    nm1d2 = j * m;
+                    boffset = j * remaining;
+                    for (i = 0; i < m; i++) {
+                      i0 = nm1d2 + i;
+                      b_y->data[i0].re = 0.0;
+                      b_y->data[i0].im = 0.0;
+                    }
+
+                    for (k = 0; k < remaining; k++) {
+                      aoffset = k * m;
+                      b_index = boffset + k;
+                      apnd = steeringVector->data[b_index].re;
+                      cdiff = steeringVector->data[b_index].im;
+                      for (i = 0; i < m; i++) {
+                        b_index = aoffset + i;
+                        temp_re = apnd * Pn->data[b_index].re - cdiff * Pn->
+                          data[b_index].im;
+                        temp_im = apnd * Pn->data[b_index].im + cdiff * Pn->
+                          data[b_index].re;
+                        i0 = nm1d2 + i;
+                        b_y->data[i0].re += temp_re;
+                        b_y->data[i0].im += temp_im;
+                      }
+                    }
+                  }
+                }
+
+                i0 = b_steeringVector->size[0] * b_steeringVector->size[1];
+                b_steeringVector->size[0] = 108781;
+                b_steeringVector->size[1] = steeringVector->size[0];
+                emxEnsureCapacity_creal_T(b_steeringVector, i0);
+                loop_ub = steeringVector->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  for (i1 = 0; i1 < 108781; i1++) {
+                    apnd = steeringVector->data[i0 + steeringVector->size[0] *
+                      i1].re;
+                    cdiff = -steeringVector->data[i0 + steeringVector->size[0] *
+                      i1].im;
+                    temp_re = b_y->data[i0 + b_y->size[0] * i1].re;
+                    temp_im = b_y->data[i0 + b_y->size[0] * i1].im;
+                    i2 = i1 + 108781 * i0;
+                    b_steeringVector->data[i2].re = apnd * temp_re - cdiff *
+                      temp_im;
+                    b_steeringVector->data[i2].im = apnd * temp_im + cdiff *
+                      temp_re;
+                  }
+                }
+
+                sum(b_steeringVector, dcv2);
+                c_abs(dcv2, SpotfiSpectrum);
+                for (i0 = 0; i0 < 108781; i0++) {
+                  SpotfiSpectrum[i0] = 1.0 / SpotfiSpectrum[i0];
+                }
+
+                if (!rtIsNaN(SpotfiSpectrum[0])) {
+                  b_index = 1;
+                } else {
+                  b_index = 0;
+                  k = 2;
+                  exitg1 = false;
+                  while ((!exitg1) && (k < 108782)) {
+                    if (!rtIsNaN(SpotfiSpectrum[k - 1])) {
+                      b_index = k;
+                      exitg1 = true;
+                    } else {
+                      k++;
+                    }
+                  }
+                }
+
+                if (b_index == 0) {
+                  apnd = SpotfiSpectrum[0];
+                } else {
+                  apnd = SpotfiSpectrum[b_index - 1];
+                  i0 = b_index + 1;
+                  for (k = i0; k < 108782; k++) {
+                    cdiff = SpotfiSpectrum[k - 1];
+                    if (apnd > cdiff) {
+                      apnd = cdiff;
+                    }
+                  }
+                }
+
+                for (i0 = 0; i0 < 108781; i0++) {
+                  SpotfiSpectrum[i0] -= apnd;
+                }
+
+                /*  spotfi completed */
+                imregionalmax(SpotfiSpectrum, isPeak);
+                b_index = 0;
+                i0 = ii->size[0];
+                ii->size[0] = 108781;
+                emxEnsureCapacity_int32_T(ii, i0);
+                remaining = 0;
+                exitg1 = false;
+                while ((!exitg1) && (remaining < 108781)) {
+                  if (isPeak[remaining]) {
+                    b_index++;
+                    ii->data[b_index - 1] = remaining + 1;
+                    if (b_index >= 108781) {
+                      exitg1 = true;
+                    } else {
+                      remaining++;
                     }
                   } else {
-                    m = Pn->size[0];
-                    remaining = Pn->size[1];
-                    i0 = b_y->size[0] * b_y->size[1];
-                    b_y->size[0] = Pn->size[0];
-                    b_y->size[1] = 108781;
-                    emxEnsureCapacity_creal_T(b_y, i0);
-                    for (j = 0; j < 108781; j++) {
-                      nm1d2 = j * m;
-                      boffset = j * remaining;
-                      for (i = 0; i < m; i++) {
-                        i0 = nm1d2 + i;
-                        b_y->data[i0].re = 0.0;
-                        b_y->data[i0].im = 0.0;
-                      }
-
-                      for (k = 0; k < remaining; k++) {
-                        aoffset = k * m;
-                        b_index = boffset + k;
-                        apnd = steeringVector->data[b_index].re;
-                        cdiff = steeringVector->data[b_index].im;
-                        for (i = 0; i < m; i++) {
-                          b_index = aoffset + i;
-                          temp_re = apnd * Pn->data[b_index].re - cdiff *
-                            Pn->data[b_index].im;
-                          temp_im = apnd * Pn->data[b_index].im + cdiff *
-                            Pn->data[b_index].re;
-                          i0 = nm1d2 + i;
-                          b_y->data[i0].re += temp_re;
-                          b_y->data[i0].im += temp_im;
-                        }
-                      }
-                    }
+                    remaining++;
                   }
+                }
 
-                  i0 = b_steeringVector->size[0] * b_steeringVector->size[1];
-                  b_steeringVector->size[0] = 108781;
-                  b_steeringVector->size[1] = steeringVector->size[0];
-                  emxEnsureCapacity_creal_T(b_steeringVector, i0);
-                  b_loop_ub = steeringVector->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    for (i1 = 0; i1 < 108781; i1++) {
-                      apnd = steeringVector->data[i0 + steeringVector->size[0] *
-                        i1].re;
-                      cdiff = -steeringVector->data[i0 + steeringVector->size[0]
-                        * i1].im;
-                      temp_re = b_y->data[i0 + b_y->size[0] * i1].re;
-                      temp_im = b_y->data[i0 + b_y->size[0] * i1].im;
-                      i2 = i1 + 108781 * i0;
-                      b_steeringVector->data[i2].re = apnd * temp_re - cdiff *
-                        temp_im;
-                      b_steeringVector->data[i2].im = apnd * temp_im + cdiff *
-                        temp_re;
-                    }
+                if (1 > b_index) {
+                  ii->size[0] = 0;
+                } else {
+                  i0 = ii->size[0];
+                  ii->size[0] = b_index;
+                  emxEnsureCapacity_int32_T(ii, i0);
+                }
+
+                i0 = ii->size[0];
+                emxEnsureCapacity_int32_T(ii, i0);
+                loop_ub = ii->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  ii->data[i0]--;
+                }
+
+                i0 = vk->size[0];
+                vk->size[0] = ii->size[0];
+                emxEnsureCapacity_uint8_T(vk, i0);
+                loop_ub = ii->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  vk->data[i0] = (unsigned char)(ii->data[i0] / 601);
+                }
+
+                i0 = ii->size[0];
+                emxEnsureCapacity_int32_T(ii, i0);
+                loop_ub = ii->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  ii->data[i0] -= vk->data[i0] * 601;
+                }
+
+                i0 = ii->size[0];
+                emxEnsureCapacity_int32_T(ii, i0);
+                loop_ub = ii->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  ii->data[i0]++;
+                }
+
+                i0 = vk->size[0];
+                emxEnsureCapacity_uint8_T(vk, i0);
+                loop_ub = vk->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  vk->data[i0]++;
+                }
+
+                b_index = 0;
+                for (i = 0; i < 108781; i++) {
+                  if (isPeak[i]) {
+                    b_index++;
                   }
+                }
 
-                  sum(b_steeringVector, dcv2);
-                  c_abs(dcv2, SpotfiSpectrum);
-                  for (i0 = 0; i0 < 108781; i0++) {
-                    SpotfiSpectrum[i0] = 1.0 / SpotfiSpectrum[i0];
+                i0 = r3->size[0];
+                r3->size[0] = b_index;
+                emxEnsureCapacity_int32_T(r3, i0);
+                remaining = 0;
+                for (i = 0; i < 108781; i++) {
+                  if (isPeak[i]) {
+                    r3->data[remaining] = i + 1;
+                    remaining++;
                   }
+                }
 
-                  if (!rtIsNaN(SpotfiSpectrum[0])) {
+                i0 = varargin_1->size[0];
+                varargin_1->size[0] = r3->size[0];
+                emxEnsureCapacity_real_T(varargin_1, i0);
+                loop_ub = r3->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  varargin_1->data[i0] = SpotfiSpectrum[r3->data[i0] - 1];
+                }
+
+                remaining = r3->size[0];
+                if (varargin_1->size[0] <= 2) {
+                  if (varargin_1->size[0] == 1) {
+                    apnd = SpotfiSpectrum[r3->data[0] - 1];
+                  } else if ((SpotfiSpectrum[r3->data[0] - 1] <
+                              SpotfiSpectrum[r3->data[1] - 1]) || (rtIsNaN
+                              (SpotfiSpectrum[r3->data[0] - 1]) && (!rtIsNaN
+                               (SpotfiSpectrum[r3->data[1] - 1])))) {
+                    apnd = SpotfiSpectrum[r3->data[1] - 1];
+                  } else {
+                    apnd = SpotfiSpectrum[r3->data[0] - 1];
+                  }
+                } else {
+                  if (!rtIsNaN(varargin_1->data[0])) {
                     b_index = 1;
                   } else {
                     b_index = 0;
                     k = 2;
                     exitg1 = false;
-                    while ((!exitg1) && (k < 108782)) {
-                      if (!rtIsNaN(SpotfiSpectrum[k - 1])) {
+                    while ((!exitg1) && (k <= varargin_1->size[0])) {
+                      if (!rtIsNaN(varargin_1->data[k - 1])) {
                         b_index = k;
                         exitg1 = true;
                       } else {
@@ -1816,411 +1866,265 @@ void forCoder(double seed)
                   }
 
                   if (b_index == 0) {
-                    apnd = SpotfiSpectrum[0];
+                    apnd = SpotfiSpectrum[r3->data[0] - 1];
                   } else {
-                    apnd = SpotfiSpectrum[b_index - 1];
+                    apnd = SpotfiSpectrum[r3->data[b_index - 1] - 1];
                     i0 = b_index + 1;
-                    for (k = i0; k < 108782; k++) {
-                      cdiff = SpotfiSpectrum[k - 1];
-                      if (apnd > cdiff) {
-                        apnd = cdiff;
+                    for (k = i0; k <= remaining; k++) {
+                      if (apnd < SpotfiSpectrum[r3->data[k - 1] - 1]) {
+                        apnd = SpotfiSpectrum[r3->data[k - 1] - 1];
                       }
-                    }
-                  }
-
-                  for (i0 = 0; i0 < 108781; i0++) {
-                    SpotfiSpectrum[i0] -= apnd;
-                  }
-
-                  /*  spotfi completed */
-                  imregionalmax(SpotfiSpectrum, isPeak);
-                  b_index = 0;
-                  i0 = ii->size[0];
-                  ii->size[0] = 108781;
-                  emxEnsureCapacity_int32_T(ii, i0);
-                  remaining = 0;
-                  exitg1 = false;
-                  while ((!exitg1) && (remaining < 108781)) {
-                    if (isPeak[remaining]) {
-                      b_index++;
-                      ii->data[b_index - 1] = remaining + 1;
-                      if (b_index >= 108781) {
-                        exitg1 = true;
-                      } else {
-                        remaining++;
-                      }
-                    } else {
-                      remaining++;
-                    }
-                  }
-
-                  if (1 > b_index) {
-                    ii->size[0] = 0;
-                  } else {
-                    i0 = ii->size[0];
-                    ii->size[0] = b_index;
-                    emxEnsureCapacity_int32_T(ii, i0);
-                  }
-
-                  i0 = ii->size[0];
-                  emxEnsureCapacity_int32_T(ii, i0);
-                  b_loop_ub = ii->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    ii->data[i0]--;
-                  }
-
-                  i0 = vk->size[0];
-                  vk->size[0] = ii->size[0];
-                  emxEnsureCapacity_uint8_T(vk, i0);
-                  b_loop_ub = ii->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    vk->data[i0] = (unsigned char)(ii->data[i0] / 601);
-                  }
-
-                  i0 = ii->size[0];
-                  emxEnsureCapacity_int32_T(ii, i0);
-                  b_loop_ub = ii->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    ii->data[i0] -= vk->data[i0] * 601;
-                  }
-
-                  i0 = ii->size[0];
-                  emxEnsureCapacity_int32_T(ii, i0);
-                  b_loop_ub = ii->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    ii->data[i0]++;
-                  }
-
-                  i0 = vk->size[0];
-                  emxEnsureCapacity_uint8_T(vk, i0);
-                  b_loop_ub = vk->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    vk->data[i0]++;
-                  }
-
-                  b_index = 0;
-                  for (i = 0; i < 108781; i++) {
-                    if (isPeak[i]) {
-                      b_index++;
-                    }
-                  }
-
-                  i0 = r4->size[0];
-                  r4->size[0] = b_index;
-                  emxEnsureCapacity_int32_T(r4, i0);
-                  remaining = 0;
-                  for (i = 0; i < 108781; i++) {
-                    if (isPeak[i]) {
-                      r4->data[remaining] = i + 1;
-                      remaining++;
-                    }
-                  }
-
-                  i0 = varargin_1->size[0];
-                  varargin_1->size[0] = r4->size[0];
-                  emxEnsureCapacity_real_T(varargin_1, i0);
-                  b_loop_ub = r4->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    varargin_1->data[i0] = SpotfiSpectrum[r4->data[i0] - 1];
-                  }
-
-                  remaining = r4->size[0];
-                  if (varargin_1->size[0] <= 2) {
-                    if (varargin_1->size[0] == 1) {
-                      apnd = SpotfiSpectrum[r4->data[0] - 1];
-                    } else if ((SpotfiSpectrum[r4->data[0] - 1] <
-                                SpotfiSpectrum[r4->data[1] - 1]) || (rtIsNaN
-                                (SpotfiSpectrum[r4->data[0] - 1]) && (!rtIsNaN
-                                 (SpotfiSpectrum[r4->data[1] - 1])))) {
-                      apnd = SpotfiSpectrum[r4->data[1] - 1];
-                    } else {
-                      apnd = SpotfiSpectrum[r4->data[0] - 1];
-                    }
-                  } else {
-                    if (!rtIsNaN(varargin_1->data[0])) {
-                      b_index = 1;
-                    } else {
-                      b_index = 0;
-                      k = 2;
-                      exitg1 = false;
-                      while ((!exitg1) && (k <= varargin_1->size[0])) {
-                        if (!rtIsNaN(varargin_1->data[k - 1])) {
-                          b_index = k;
-                          exitg1 = true;
-                        } else {
-                          k++;
-                        }
-                      }
-                    }
-
-                    if (b_index == 0) {
-                      apnd = SpotfiSpectrum[r4->data[0] - 1];
-                    } else {
-                      apnd = SpotfiSpectrum[r4->data[b_index - 1] - 1];
-                      i0 = b_index + 1;
-                      for (k = i0; k <= remaining; k++) {
-                        if (apnd < SpotfiSpectrum[r4->data[k - 1] - 1]) {
-                          apnd = SpotfiSpectrum[r4->data[k - 1] - 1];
-                        }
-                      }
-                    }
-                  }
-
-                  cdiff = 0.1 * apnd;
-                  i0 = isStrongEnough->size[0];
-                  isStrongEnough->size[0] = r4->size[0];
-                  emxEnsureCapacity_boolean_T(isStrongEnough, i0);
-                  b_loop_ub = r4->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    isStrongEnough->data[i0] = (SpotfiSpectrum[r4->data[i0] - 1]
-                      > cdiff);
-                  }
-
-                  nm1d2 = isStrongEnough->size[0] - 1;
-                  b_index = 0;
-                  for (i = 0; i <= nm1d2; i++) {
-                    if (isStrongEnough->data[i]) {
-                      b_index++;
-                    }
-                  }
-
-                  remaining = 0;
-                  for (i = 0; i <= nm1d2; i++) {
-                    if (isStrongEnough->data[i]) {
-                      ii->data[remaining] = ii->data[i];
-                      remaining++;
-                    }
-                  }
-
-                  i0 = ii->size[0];
-                  ii->size[0] = b_index;
-                  emxEnsureCapacity_int32_T(ii, i0);
-                  nm1d2 = isStrongEnough->size[0] - 1;
-                  b_index = 0;
-                  for (i = 0; i <= nm1d2; i++) {
-                    if (isStrongEnough->data[i]) {
-                      b_index++;
-                    }
-                  }
-
-                  remaining = 0;
-                  for (i = 0; i <= nm1d2; i++) {
-                    if (isStrongEnough->data[i]) {
-                      vk->data[remaining] = vk->data[i];
-                      remaining++;
-                    }
-                  }
-
-                  i0 = vk->size[0];
-                  vk->size[0] = b_index;
-                  emxEnsureCapacity_uint8_T(vk, i0);
-                  i0 = newEstimation->size[0] * newEstimation->size[1];
-                  newEstimation->size[0] = 2;
-                  newEstimation->size[1] = ii->size[0];
-                  emxEnsureCapacity_real_T(newEstimation, i0);
-                  b_loop_ub = ii->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    newEstimation->data[i0 << 1] = (-3.0000000000000004E-7 +
-                      ((double)ii->data[i0] - 1.0) * 1.0E-9) * 1.0E+9;
-                  }
-
-                  b_loop_ub = vk->size[0];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    newEstimation->data[1 + (i0 << 1)] = -90.0 + ((double)
-                      vk->data[i0] - 1.0);
-                  }
-
-                  b_loop_ub = newEstimation->size[1];
-                  i0 = r2->size[0] * r2->size[1];
-                  r2->size[0] = 1;
-                  r2->size[1] = b_loop_ub;
-                  emxEnsureCapacity_boolean_T(r2, i0);
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    r2->data[i0] = (newEstimation->data[1 + (i0 << 1)] > -89.0);
-                  }
-
-                  b_loop_ub = newEstimation->size[1];
-                  i0 = r3->size[0] * r3->size[1];
-                  r3->size[0] = 1;
-                  r3->size[1] = b_loop_ub;
-                  emxEnsureCapacity_boolean_T(r3, i0);
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    r3->data[i0] = (newEstimation->data[1 + (i0 << 1)] < 89.0);
-                  }
-
-                  nm1d2 = r2->size[1] - 1;
-                  b_index = 0;
-                  for (i = 0; i <= nm1d2; i++) {
-                    if (r2->data[i] && r3->data[i]) {
-                      b_index++;
-                    }
-                  }
-
-                  i0 = r5->size[0] * r5->size[1];
-                  r5->size[0] = 1;
-                  r5->size[1] = b_index;
-                  emxEnsureCapacity_int32_T(r5, i0);
-                  remaining = 0;
-                  for (i = 0; i <= nm1d2; i++) {
-                    if (r2->data[i] && r3->data[i]) {
-                      r5->data[remaining] = i + 1;
-                      remaining++;
-                    }
-                  }
-
-                  i0 = b_newEstimation->size[0] * b_newEstimation->size[1];
-                  b_newEstimation->size[0] = 2;
-                  b_newEstimation->size[1] = r5->size[1];
-                  emxEnsureCapacity_real_T(b_newEstimation, i0);
-                  b_loop_ub = r5->size[1];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    i1 = i0 << 1;
-                    b_newEstimation->data[i1] = newEstimation->data[(r5->data[i0]
-                      - 1) << 1];
-                    b_newEstimation->data[1 + i1] = newEstimation->data[1 +
-                      ((r5->data[i0] - 1) << 1)];
-                  }
-
-                  i0 = newEstimation->size[0] * newEstimation->size[1];
-                  newEstimation->size[0] = 2;
-                  newEstimation->size[1] = b_newEstimation->size[1];
-                  emxEnsureCapacity_real_T(newEstimation, i0);
-                  b_loop_ub = b_newEstimation->size[0] * b_newEstimation->size[1];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    newEstimation->data[i0] = b_newEstimation->data[i0];
-                  }
-
-                  i0 = b_nsDelayAngleSpotfiEstimated->size[0] *
-                    b_nsDelayAngleSpotfiEstimated->size[1];
-                  b_nsDelayAngleSpotfiEstimated->size[0] = 2;
-                  b_nsDelayAngleSpotfiEstimated->size[1] =
-                    nsDelayAngleSpotfiEstimated->size[1] + newEstimation->size[1];
-                  emxEnsureCapacity_real_T(b_nsDelayAngleSpotfiEstimated, i0);
-                  b_loop_ub = nsDelayAngleSpotfiEstimated->size[1];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    i1 = i0 << 1;
-                    b_nsDelayAngleSpotfiEstimated->data[i1] =
-                      nsDelayAngleSpotfiEstimated->data[i1];
-                    i1++;
-                    b_nsDelayAngleSpotfiEstimated->data[i1] =
-                      nsDelayAngleSpotfiEstimated->data[i1];
-                  }
-
-                  b_loop_ub = newEstimation->size[1];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    i1 = i0 << 1;
-                    b_nsDelayAngleSpotfiEstimated->data[(i0 +
-                      nsDelayAngleSpotfiEstimated->size[1]) << 1] =
-                      newEstimation->data[i1];
-                    b_nsDelayAngleSpotfiEstimated->data[1 + ((i0 +
-                      nsDelayAngleSpotfiEstimated->size[1]) << 1)] =
-                      newEstimation->data[1 + i1];
-                  }
-
-                  i0 = nsDelayAngleSpotfiEstimated->size[0] *
-                    nsDelayAngleSpotfiEstimated->size[1];
-                  nsDelayAngleSpotfiEstimated->size[0] = 2;
-                  nsDelayAngleSpotfiEstimated->size[1] =
-                    b_nsDelayAngleSpotfiEstimated->size[1];
-                  emxEnsureCapacity_real_T(nsDelayAngleSpotfiEstimated, i0);
-                  b_loop_ub = b_nsDelayAngleSpotfiEstimated->size[0] *
-                    b_nsDelayAngleSpotfiEstimated->size[1];
-                  for (i0 = 0; i0 < b_loop_ub; i0++) {
-                    nsDelayAngleSpotfiEstimated->data[i0] =
-                      b_nsDelayAngleSpotfiEstimated->data[i0];
-                  }
-
-                  /*  peaks completed */
-                  /*                                  fileID = fopen(directory+"SpotfiEigen" + seed_str + ".txt", 'a'); */
-                  /*                                  fprintf(fileID, "noise: "); */
-                  /*                                  for i = 1:numberOfSourses */
-                  /*                                      fprintf(fileID, "%.3f ", d(i)); */
-                  /*                                  end */
-                  /*                                  fprintf(fileID, "signal: "); */
-                  /*                                  for i = numberOfSourses+1:length(d) */
-                  /*                                      fprintf(fileID, "%.3f ", d(i)); */
-                  /*                                  end */
-                  /*                                  fprintf(fileID, "\n"); */
-                  /*                                  fclose(fileID); */
-                }
-
-                obj_Value[0] = 'r';
-                obj_Value[1] = '_';
-                for (i0 = 0; i0 < 5; i0++) {
-                  obj_Value[i0 + 2] = seed_str[i0];
-                  obj_Value[i0 + 7] = cv1[i0];
-                }
-
-                string_string(b_ant, filename_Value_data, filename_Value_size);
-                string_plus(obj_Value, filename_Value_data, filename_Value_size,
-                            name_Value_data, name_Value_size);
-                b_string_plus(name_Value_data, name_Value_size,
-                              filename_Value_data, filename_Value_size);
-                string_string(1.0 - (double)smoothing, name_Value_data,
-                              name_Value_size);
-                c_string_plus(filename_Value_data, filename_Value_size,
-                              name_Value_data, name_Value_size, t0_Value_data,
-                              t0_Value_size);
-                d_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
-                              filename_Value_size);
-                string_string(1.0 - (double)backw, name_Value_data,
-                              name_Value_size);
-                c_string_plus(filename_Value_data, filename_Value_size,
-                              name_Value_data, name_Value_size, t0_Value_data,
-                              t0_Value_size);
-                e_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
-                              filename_Value_size);
-                string_string(b_p, name_Value_data, name_Value_size);
-                c_string_plus(filename_Value_data, filename_Value_size,
-                              name_Value_data, name_Value_size, t0_Value_data,
-                              t0_Value_size);
-                f_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
-                              filename_Value_size);
-                string_string(2.0 - (double)perSpec, name_Value_data,
-                              name_Value_size);
-                c_string_plus(filename_Value_data, filename_Value_size,
-                              name_Value_data, name_Value_size, t0_Value_data,
-                              t0_Value_size);
-                g_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
-                              filename_Value_size);
-                string_string(b_band, name_Value_data, name_Value_size);
-                c_string_plus(filename_Value_data, filename_Value_size,
-                              name_Value_data, name_Value_size, t0_Value_data,
-                              t0_Value_size);
-                h_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
-                              filename_Value_size);
-                string_string(dec, name_Value_data, name_Value_size);
-                c_string_plus(filename_Value_data, filename_Value_size,
-                              name_Value_data, name_Value_size, t0_Value_data,
-                              t0_Value_size);
-                i_string_plus(t0_Value_data, t0_Value_size, name_Value_data,
-                              name_Value_size);
-                j_string_plus(name_Value_data, name_Value_size,
-                              filename_Value_data, filename_Value_size);
-                fileid = b_cfopen(filename_Value_data, filename_Value_size, "wb");
-                i0 = nsDelayAngleSpotfiEstimated->size[1];
-                for (j = 0; j < i0; j++) {
-                  b_NULL = NULL;
-                  getfilestar(fileid, &filestar, &autoflush);
-                  if (!(filestar == b_NULL)) {
-                    fprintf(filestar, "%.1f ", nsDelayAngleSpotfiEstimated->
-                            data[j << 1]);
-                    if (autoflush) {
-                      fflush(filestar);
-                    }
-                  }
-
-                  if (!(filestar == b_NULL)) {
-                    fprintf(filestar, "%.1f ", nsDelayAngleSpotfiEstimated->
-                            data[1 + (j << 1)]);
-                    if (autoflush) {
-                      fflush(filestar);
                     }
                   }
                 }
 
-                b_fclose(fileid);
+                cdiff = 0.1 * apnd;
+                i0 = isStrongEnough->size[0];
+                isStrongEnough->size[0] = r3->size[0];
+                emxEnsureCapacity_boolean_T(isStrongEnough, i0);
+                loop_ub = r3->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  isStrongEnough->data[i0] = (SpotfiSpectrum[r3->data[i0] - 1] >
+                    cdiff);
+                }
+
+                nm1d2 = isStrongEnough->size[0] - 1;
+                b_index = 0;
+                for (i = 0; i <= nm1d2; i++) {
+                  if (isStrongEnough->data[i]) {
+                    b_index++;
+                  }
+                }
+
+                remaining = 0;
+                for (i = 0; i <= nm1d2; i++) {
+                  if (isStrongEnough->data[i]) {
+                    ii->data[remaining] = ii->data[i];
+                    remaining++;
+                  }
+                }
+
+                i0 = ii->size[0];
+                ii->size[0] = b_index;
+                emxEnsureCapacity_int32_T(ii, i0);
+                nm1d2 = isStrongEnough->size[0] - 1;
+                b_index = 0;
+                for (i = 0; i <= nm1d2; i++) {
+                  if (isStrongEnough->data[i]) {
+                    b_index++;
+                  }
+                }
+
+                remaining = 0;
+                for (i = 0; i <= nm1d2; i++) {
+                  if (isStrongEnough->data[i]) {
+                    vk->data[remaining] = vk->data[i];
+                    remaining++;
+                  }
+                }
+
+                i0 = vk->size[0];
+                vk->size[0] = b_index;
+                emxEnsureCapacity_uint8_T(vk, i0);
+                i0 = newEstimation->size[0] * newEstimation->size[1];
+                newEstimation->size[0] = 2;
+                newEstimation->size[1] = ii->size[0];
+                emxEnsureCapacity_real_T(newEstimation, i0);
+                loop_ub = ii->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  newEstimation->data[i0 << 1] = (-3.0000000000000004E-7 +
+                    ((double)ii->data[i0] - 1.0) * 1.0E-9) * 1.0E+9;
+                }
+
+                loop_ub = vk->size[0];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  newEstimation->data[1 + (i0 << 1)] = -90.0 + ((double)vk->
+                    data[i0] - 1.0);
+                }
+
+                loop_ub = newEstimation->size[1];
+                i0 = r1->size[0] * r1->size[1];
+                r1->size[0] = 1;
+                r1->size[1] = loop_ub;
+                emxEnsureCapacity_boolean_T(r1, i0);
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  r1->data[i0] = (newEstimation->data[1 + (i0 << 1)] > -89.0);
+                }
+
+                loop_ub = newEstimation->size[1];
+                i0 = r2->size[0] * r2->size[1];
+                r2->size[0] = 1;
+                r2->size[1] = loop_ub;
+                emxEnsureCapacity_boolean_T(r2, i0);
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  r2->data[i0] = (newEstimation->data[1 + (i0 << 1)] < 89.0);
+                }
+
+                nm1d2 = r1->size[1] - 1;
+                b_index = 0;
+                for (i = 0; i <= nm1d2; i++) {
+                  if (r1->data[i] && r2->data[i]) {
+                    b_index++;
+                  }
+                }
+
+                i0 = r4->size[0] * r4->size[1];
+                r4->size[0] = 1;
+                r4->size[1] = b_index;
+                emxEnsureCapacity_int32_T(r4, i0);
+                remaining = 0;
+                for (i = 0; i <= nm1d2; i++) {
+                  if (r1->data[i] && r2->data[i]) {
+                    r4->data[remaining] = i + 1;
+                    remaining++;
+                  }
+                }
+
+                i0 = b_newEstimation->size[0] * b_newEstimation->size[1];
+                b_newEstimation->size[0] = 2;
+                b_newEstimation->size[1] = r4->size[1];
+                emxEnsureCapacity_real_T(b_newEstimation, i0);
+                loop_ub = r4->size[1];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  i1 = i0 << 1;
+                  b_newEstimation->data[i1] = newEstimation->data[(r4->data[i0]
+                    - 1) << 1];
+                  b_newEstimation->data[1 + i1] = newEstimation->data[1 +
+                    ((r4->data[i0] - 1) << 1)];
+                }
+
+                i0 = newEstimation->size[0] * newEstimation->size[1];
+                newEstimation->size[0] = 2;
+                newEstimation->size[1] = b_newEstimation->size[1];
+                emxEnsureCapacity_real_T(newEstimation, i0);
+                loop_ub = b_newEstimation->size[0] * b_newEstimation->size[1];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  newEstimation->data[i0] = b_newEstimation->data[i0];
+                }
+
+                i0 = b_nsDelayAngleSpotfiEstimated->size[0] *
+                  b_nsDelayAngleSpotfiEstimated->size[1];
+                b_nsDelayAngleSpotfiEstimated->size[0] = 2;
+                b_nsDelayAngleSpotfiEstimated->size[1] =
+                  nsDelayAngleSpotfiEstimated->size[1] + newEstimation->size[1];
+                emxEnsureCapacity_real_T(b_nsDelayAngleSpotfiEstimated, i0);
+                loop_ub = nsDelayAngleSpotfiEstimated->size[1];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  i1 = i0 << 1;
+                  b_nsDelayAngleSpotfiEstimated->data[i1] =
+                    nsDelayAngleSpotfiEstimated->data[i1];
+                  i1++;
+                  b_nsDelayAngleSpotfiEstimated->data[i1] =
+                    nsDelayAngleSpotfiEstimated->data[i1];
+                }
+
+                loop_ub = newEstimation->size[1];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  i1 = i0 << 1;
+                  b_nsDelayAngleSpotfiEstimated->data[(i0 +
+                    nsDelayAngleSpotfiEstimated->size[1]) << 1] =
+                    newEstimation->data[i1];
+                  b_nsDelayAngleSpotfiEstimated->data[1 + ((i0 +
+                    nsDelayAngleSpotfiEstimated->size[1]) << 1)] =
+                    newEstimation->data[1 + i1];
+                }
+
+                i0 = nsDelayAngleSpotfiEstimated->size[0] *
+                  nsDelayAngleSpotfiEstimated->size[1];
+                nsDelayAngleSpotfiEstimated->size[0] = 2;
+                nsDelayAngleSpotfiEstimated->size[1] =
+                  b_nsDelayAngleSpotfiEstimated->size[1];
+                emxEnsureCapacity_real_T(nsDelayAngleSpotfiEstimated, i0);
+                loop_ub = b_nsDelayAngleSpotfiEstimated->size[0] *
+                  b_nsDelayAngleSpotfiEstimated->size[1];
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  nsDelayAngleSpotfiEstimated->data[i0] =
+                    b_nsDelayAngleSpotfiEstimated->data[i0];
+                }
+
+                /*  peaks completed */
+                /*                                  fileID = fopen(directory+"SpotfiEigen" + seed_str + ".txt", 'a'); */
+                /*                                  fprintf(fileID, "noise: "); */
+                /*                                  for i = 1:numberOfSourses */
+                /*                                      fprintf(fileID, "%.3f ", d(i)); */
+                /*                                  end */
+                /*                                  fprintf(fileID, "signal: "); */
+                /*                                  for i = numberOfSourses+1:length(d) */
+                /*                                      fprintf(fileID, "%.3f ", d(i)); */
+                /*                                  end */
+                /*                                  fprintf(fileID, "\n"); */
+                /*                                  fclose(fileID); */
               }
+
+              obj_Value[0] = 'r';
+              obj_Value[1] = '_';
+              for (i0 = 0; i0 < 5; i0++) {
+                obj_Value[i0 + 2] = seed_str[i0];
+                obj_Value[i0 + 7] = cv1[i0];
+              }
+
+              string_string(b_ant, filename_Value_data, b_tmp_size);
+              string_plus(obj_Value, filename_Value_data, b_tmp_size,
+                          name_Value_data, name_Value_size);
+              b_string_plus(name_Value_data, name_Value_size,
+                            filename_Value_data, b_tmp_size);
+              string_string(1.0 - (double)smoothing, name_Value_data,
+                            name_Value_size);
+              c_string_plus(filename_Value_data, b_tmp_size, name_Value_data,
+                            name_Value_size, t0_Value_data, t0_Value_size);
+              d_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
+                            b_tmp_size);
+              string_string(1.0 - (double)backw, name_Value_data,
+                            name_Value_size);
+              c_string_plus(filename_Value_data, b_tmp_size, name_Value_data,
+                            name_Value_size, t0_Value_data, t0_Value_size);
+              e_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
+                            b_tmp_size);
+              string_string(b_p, name_Value_data, name_Value_size);
+              c_string_plus(filename_Value_data, b_tmp_size, name_Value_data,
+                            name_Value_size, t0_Value_data, t0_Value_size);
+              f_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
+                            b_tmp_size);
+              string_string(2.0 - (double)perSpec, name_Value_data,
+                            name_Value_size);
+              c_string_plus(filename_Value_data, b_tmp_size, name_Value_data,
+                            name_Value_size, t0_Value_data, t0_Value_size);
+              g_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
+                            b_tmp_size);
+              h_string_plus(filename_Value_data, b_tmp_size, name_Value_data,
+                            name_Value_size);
+              i_string_plus(name_Value_data, name_Value_size,
+                            filename_Value_data, b_tmp_size);
+              string_string(dec, name_Value_data, name_Value_size);
+              c_string_plus(filename_Value_data, b_tmp_size, name_Value_data,
+                            name_Value_size, t0_Value_data, t0_Value_size);
+              j_string_plus(t0_Value_data, t0_Value_size, name_Value_data,
+                            name_Value_size);
+              k_string_plus(name_Value_data, name_Value_size,
+                            filename_Value_data, b_tmp_size);
+              fileid = b_cfopen(filename_Value_data, b_tmp_size, "wb");
+              i0 = nsDelayAngleSpotfiEstimated->size[1];
+              for (j = 0; j < i0; j++) {
+                b_NULL = NULL;
+                getfilestar(fileid, &filestar, &autoflush);
+                if (!(filestar == b_NULL)) {
+                  fprintf(filestar, "%.1f ", nsDelayAngleSpotfiEstimated->data[j
+                          << 1]);
+                  if (autoflush) {
+                    fflush(filestar);
+                  }
+                }
+
+                if (!(filestar == b_NULL)) {
+                  fprintf(filestar, "%.1f ", nsDelayAngleSpotfiEstimated->data[1
+                          + (j << 1)]);
+                  if (autoflush) {
+                    fflush(filestar);
+                  }
+                }
+              }
+
+              b_fclose(fileid);
             }
           }
         }
@@ -2231,19 +2135,17 @@ void forCoder(double seed)
   emxFree_real_T(&b_nsDelayAngleSpotfiEstimated);
   emxFree_real_T(&b_newEstimation);
   emxFree_creal_T(&b_steeringVector);
-  emxFree_real_T(&r8);
-  emxFree_creal_T(&r7);
-  emxFree_creal_T(&r6);
+  emxFree_real_T(&r6);
+  emxFree_creal_T(&r5);
   emxFree_real_T(&varargin_1);
   emxFree_uint8_T(&vk);
   emxFree_int32_T(&ii);
   emxFree_creal_T(&b_y);
   emxFree_creal_T(&b);
-  emxFree_int32_T(&r5);
   emxFree_int32_T(&r4);
-  emxFree_boolean_T(&r3);
+  emxFree_int32_T(&r3);
   emxFree_boolean_T(&r2);
-  emxFree_creal_T(&r1);
+  emxFree_boolean_T(&r1);
   emxFree_creal_T(&Utmp);
   emxFree_real_T(&newEstimation);
   emxFree_boolean_T(&isStrongEnough);

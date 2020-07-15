@@ -2,7 +2,7 @@
  * File: xzlascl.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 14-Jul-2020 11:32:44
+ * C/C++ source code generated on  : 15-Jul-2020 12:14:31
  */
 
 /* Include Files */
@@ -30,49 +30,6 @@ void b_xzlascl(double cfrom, double cto, creal_T A_data[], int A_size[1])
   double cto1;
   double a;
   int loop_ub;
-  int i43;
-  cfromc = cfrom;
-  ctoc = cto;
-  notdone = true;
-  while (notdone) {
-    cfrom1 = cfromc * 2.0041683600089728E-292;
-    cto1 = ctoc / 4.9896007738368E+291;
-    if ((fabs(cfrom1) > fabs(ctoc)) && (ctoc != 0.0)) {
-      a = 2.0041683600089728E-292;
-      cfromc = cfrom1;
-    } else if (fabs(cto1) > fabs(cfromc)) {
-      a = 4.9896007738368E+291;
-      ctoc = cto1;
-    } else {
-      a = ctoc / cfromc;
-      notdone = false;
-    }
-
-    loop_ub = A_size[0];
-    for (i43 = 0; i43 < loop_ub; i43++) {
-      A_data[i43].re *= a;
-      A_data[i43].im *= a;
-    }
-  }
-}
-
-/*
- * Arguments    : double cfrom
- *                double cto
- *                emxArray_creal_T *A
- * Return Type  : void
- */
-void xzlascl(double cfrom, double cto, emxArray_creal_T *A)
-{
-  double cfromc;
-  double ctoc;
-  boolean_T notdone;
-  double cfrom1;
-  double cto1;
-  double a;
-  int i39;
-  int loop_ub;
-  int b_loop_ub;
   int i40;
   cfromc = cfrom;
   ctoc = cto;
@@ -91,14 +48,57 @@ void xzlascl(double cfrom, double cto, emxArray_creal_T *A)
       notdone = false;
     }
 
-    i39 = A->size[0] * A->size[1];
-    emxEnsureCapacity_creal_T(A, i39);
+    loop_ub = A_size[0];
+    for (i40 = 0; i40 < loop_ub; i40++) {
+      A_data[i40].re *= a;
+      A_data[i40].im *= a;
+    }
+  }
+}
+
+/*
+ * Arguments    : double cfrom
+ *                double cto
+ *                emxArray_creal_T *A
+ * Return Type  : void
+ */
+void xzlascl(double cfrom, double cto, emxArray_creal_T *A)
+{
+  double cfromc;
+  double ctoc;
+  boolean_T notdone;
+  double cfrom1;
+  double cto1;
+  double a;
+  int i36;
+  int loop_ub;
+  int b_loop_ub;
+  int i37;
+  cfromc = cfrom;
+  ctoc = cto;
+  notdone = true;
+  while (notdone) {
+    cfrom1 = cfromc * 2.0041683600089728E-292;
+    cto1 = ctoc / 4.9896007738368E+291;
+    if ((fabs(cfrom1) > fabs(ctoc)) && (ctoc != 0.0)) {
+      a = 2.0041683600089728E-292;
+      cfromc = cfrom1;
+    } else if (fabs(cto1) > fabs(cfromc)) {
+      a = 4.9896007738368E+291;
+      ctoc = cto1;
+    } else {
+      a = ctoc / cfromc;
+      notdone = false;
+    }
+
+    i36 = A->size[0] * A->size[1];
+    emxEnsureCapacity_creal_T(A, i36);
     loop_ub = A->size[1];
-    for (i39 = 0; i39 < loop_ub; i39++) {
+    for (i36 = 0; i36 < loop_ub; i36++) {
       b_loop_ub = A->size[0];
-      for (i40 = 0; i40 < b_loop_ub; i40++) {
-        A->data[i40 + A->size[0] * i39].re *= a;
-        A->data[i40 + A->size[0] * i39].im *= a;
+      for (i37 = 0; i37 < b_loop_ub; i37++) {
+        A->data[i37 + A->size[0] * i36].re *= a;
+        A->data[i37 + A->size[0] * i36].im *= a;
       }
     }
   }

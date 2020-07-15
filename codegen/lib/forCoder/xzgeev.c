@@ -2,7 +2,7 @@
  * File: xzgeev.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 14-Jul-2020 11:32:44
+ * C/C++ source code generated on  : 15-Jul-2020 12:14:31
  */
 
 /* Include Files */
@@ -30,7 +30,7 @@ void xzgeev(const emxArray_creal_T *A, int *info, creal_T alpha1_data[], int
             emxArray_creal_T *V)
 {
   emxArray_creal_T *At;
-  int i11;
+  int i9;
   int n;
   int lastcol;
   int coltop;
@@ -39,13 +39,13 @@ void xzgeev(const emxArray_creal_T *A, int *info, creal_T alpha1_data[], int
   double V_re;
   double V_im;
   emxInit_creal_T(&At, 2);
-  i11 = At->size[0] * At->size[1];
+  i9 = At->size[0] * At->size[1];
   At->size[0] = A->size[0];
   At->size[1] = A->size[1];
-  emxEnsureCapacity_creal_T(At, i11);
+  emxEnsureCapacity_creal_T(At, i9);
   n = A->size[0] * A->size[1];
-  for (i11 = 0; i11 < n; i11++) {
-    At->data[i11] = A->data[i11];
+  for (i9 = 0; i9 < n; i9++) {
+    At->data[i9] = A->data[i9];
   }
 
   xzggev(At, info, alpha1_data, alpha1_size, beta1_data, beta1_size, V);
@@ -56,8 +56,8 @@ void xzgeev(const emxArray_creal_T *A, int *info, creal_T alpha1_data[], int
     for (coltop = 1; n < 0 ? coltop >= lastcol : coltop <= lastcol; coltop += n)
     {
       colnorm = xnrm2(n, V, coltop);
-      i11 = (coltop + n) - 1;
-      for (j = coltop; j <= i11; j++) {
+      i9 = (coltop + n) - 1;
+      for (j = coltop; j <= i9; j++) {
         V_re = V->data[j - 1].re;
         V_im = V->data[j - 1].im;
         if (V_im == 0.0) {

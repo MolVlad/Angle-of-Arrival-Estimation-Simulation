@@ -2,7 +2,7 @@
  * File: xzggbak.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 14-Jul-2020 11:32:44
+ * C/C++ source code generated on  : 15-Jul-2020 12:14:31
  */
 
 /* Include Files */
@@ -25,7 +25,7 @@ void xzggbak(emxArray_creal_T *V, int ilo, int ihi, const int rscale_data[])
   int m;
   int i;
   int k;
-  int i42;
+  int i39;
   int j;
   double tmp_re;
   double tmp_im;
@@ -49,14 +49,14 @@ void xzggbak(emxArray_creal_T *V, int ilo, int ihi, const int rscale_data[])
   if (ihi < n) {
     k = ihi + 1;
     for (i = k; i <= n; i++) {
-      i42 = rscale_data[i - 1];
-      if (i42 != i) {
+      i39 = rscale_data[i - 1];
+      if (i39 != i) {
         for (j = 0; j <= m; j++) {
           tmp_re = V->data[(i + V->size[0] * j) - 1].re;
           tmp_im = V->data[(i + V->size[0] * j) - 1].im;
-          V->data[(i + V->size[0] * j) - 1] = V->data[(i42 + V->size[0] * j) - 1];
-          V->data[(i42 + V->size[0] * j) - 1].re = tmp_re;
-          V->data[(i42 + V->size[0] * j) - 1].im = tmp_im;
+          V->data[(i + V->size[0] * j) - 1] = V->data[(i39 + V->size[0] * j) - 1];
+          V->data[(i39 + V->size[0] * j) - 1].re = tmp_re;
+          V->data[(i39 + V->size[0] * j) - 1].im = tmp_im;
         }
       }
     }

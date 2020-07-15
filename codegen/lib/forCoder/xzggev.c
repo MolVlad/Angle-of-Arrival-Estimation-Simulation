@@ -2,7 +2,7 @@
  * File: xzggev.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 14-Jul-2020 11:32:44
+ * C/C++ source code generated on  : 15-Jul-2020 12:14:31
  */
 
 /* Include Files */
@@ -43,7 +43,7 @@ void xzggev(emxArray_creal_T *A, int *info, creal_T alpha1_data[], int
   double anrm;
   boolean_T ilascl;
   double anrmto;
-  int rscale_data[464];
+  int rscale_data[224];
   int rscale_size[1];
   double vtemp;
   double y;

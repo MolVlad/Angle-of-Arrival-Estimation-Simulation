@@ -2,7 +2,7 @@
  * File: xzungqr.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 14-Jul-2020 11:32:44
+ * C/C++ source code generated on  : 15-Jul-2020 12:14:31
  */
 
 /* Include Files */
@@ -26,22 +26,22 @@
 void xzungqr(int m, int n, int k, emxArray_creal_T *A, int ia0, int lda, const
              creal_T tau_data[])
 {
-  int i37;
+  int i34;
   int j;
   int itau;
   int ia;
-  short unnamed_idx_0;
+  unsigned char unnamed_idx_0;
   int b_k;
   int i;
   int iaii;
-  creal_T work_data[464];
+  creal_T work_data[224];
   double a_re;
   double a_im;
   double A_re;
   double A_im;
   if (n >= 1) {
-    i37 = n - 1;
-    for (j = k; j <= i37; j++) {
+    i34 = n - 1;
+    for (j = k; j <= i34; j++) {
       ia = (ia0 + j * lda) - 1;
       b_k = m - 1;
       for (i = 0; i <= b_k; i++) {
@@ -56,11 +56,11 @@ void xzungqr(int m, int n, int k, emxArray_creal_T *A, int ia0, int lda, const
     }
 
     itau = k - 1;
-    unnamed_idx_0 = (short)A->size[1];
+    unnamed_idx_0 = (unsigned char)A->size[1];
     ia = unnamed_idx_0;
-    for (i37 = 0; i37 < ia; i37++) {
-      work_data[i37].re = 0.0;
-      work_data[i37].im = 0.0;
+    for (i34 = 0; i34 < ia; i34++) {
+      work_data[i34].re = 0.0;
+      work_data[i34].im = 0.0;
     }
 
     for (i = k; i >= 1; i--) {
@@ -76,8 +76,8 @@ void xzungqr(int m, int n, int k, emxArray_creal_T *A, int ia0, int lda, const
         ia = iaii + 1;
         a_re = -tau_data[itau].re;
         a_im = -tau_data[itau].im;
-        i37 = (iaii + m) - i;
-        for (b_k = ia; b_k <= i37; b_k++) {
+        i34 = (iaii + m) - i;
+        for (b_k = ia; b_k <= i34; b_k++) {
           A_re = A->data[b_k - 1].re;
           A_im = A->data[b_k - 1].im;
           A->data[b_k - 1].re = a_re * A_re - a_im * A_im;
@@ -88,9 +88,9 @@ void xzungqr(int m, int n, int k, emxArray_creal_T *A, int ia0, int lda, const
       A->data[iaii - 1].re = 1.0 - tau_data[itau].re;
       A->data[iaii - 1].im = 0.0 - tau_data[itau].im;
       for (j = 0; j <= i - 2; j++) {
-        i37 = (iaii - j) - 2;
-        A->data[i37].re = 0.0;
-        A->data[i37].im = 0.0;
+        i34 = (iaii - j) - 2;
+        A->data[i34].re = 0.0;
+        A->data[i34].im = 0.0;
       }
 
       itau--;

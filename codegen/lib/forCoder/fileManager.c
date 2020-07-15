@@ -2,7 +2,7 @@
  * File: fileManager.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 14-Jul-2020 11:32:44
+ * C/C++ source code generated on  : 15-Jul-2020 12:14:31
  */
 
 /* Include Files */
@@ -54,9 +54,9 @@ signed char b_cfopen(const char cfilename_data[], const int cfilename_size[2],
 {
   signed char fileid;
   signed char j;
-  char ccfilename_data[2921];
+  char ccfilename_data[1465];
   FILE * filestar;
-  int i22;
+  int i19;
   fileid = -1;
   j = filedata();
   if (j >= 1) {
@@ -70,12 +70,12 @@ signed char b_cfopen(const char cfilename_data[], const int cfilename_size[2],
     if (filestar != NULL) {
       eml_openfiles[j - 1] = filestar;
       eml_autoflush[j - 1] = true;
-      i22 = j + 2;
-      if (i22 > 127) {
-        i22 = 127;
+      i19 = j + 2;
+      if (i19 > 127) {
+        i19 = 127;
       }
 
-      fileid = (signed char)i22;
+      fileid = (signed char)i19;
     }
   }
 
@@ -83,35 +83,35 @@ signed char b_cfopen(const char cfilename_data[], const int cfilename_size[2],
 }
 
 /*
- * Arguments    : const char cfilename[35]
+ * Arguments    : const char cfilename[15]
  *                const char * cpermission
  * Return Type  : signed char
  */
-signed char cfopen(const char cfilename[35], const char * cpermission)
+signed char cfopen(const char cfilename[15], const char * cpermission)
 {
   signed char fileid;
   signed char j;
-  int i7;
-  char ccfilename[36];
+  int i5;
+  char ccfilename[16];
   FILE * filestar;
   fileid = -1;
   j = filedata();
   if (j >= 1) {
-    for (i7 = 0; i7 < 35; i7++) {
-      ccfilename[i7] = cfilename[i7];
+    for (i5 = 0; i5 < 15; i5++) {
+      ccfilename[i5] = cfilename[i5];
     }
 
-    ccfilename[35] = '\x00';
+    ccfilename[15] = '\x00';
     filestar = fopen(&ccfilename[0], cpermission);
     if (filestar != NULL) {
       eml_openfiles[j - 1] = filestar;
       eml_autoflush[j - 1] = true;
-      i7 = j + 2;
-      if (i7 > 127) {
-        i7 = 127;
+      i5 = j + 2;
+      if (i5 > 127) {
+        i5 = 127;
       }
 
-      fileid = (signed char)i7;
+      fileid = (signed char)i5;
     }
   }
 

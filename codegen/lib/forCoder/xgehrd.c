@@ -2,7 +2,7 @@
  * File: xgehrd.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 14-Jul-2020 11:32:44
+ * C/C++ source code generated on  : 15-Jul-2020 12:14:31
  */
 
 /* Include Files */
@@ -24,9 +24,9 @@ void xgehrd(emxArray_creal_T *a, creal_T tau_data[], int tau_size[1])
 {
   int n;
   int ntau;
-  short ntau_idx_0;
-  int i26;
-  creal_T work_data[464];
+  unsigned char unnamed_idx_0;
+  int i23;
+  creal_T work_data[224];
   int im1n;
   int in;
   creal_T alpha1;
@@ -41,15 +41,15 @@ void xgehrd(emxArray_creal_T *a, creal_T tau_data[], int tau_size[1])
   }
 
   tau_size[0] = (short)ntau;
-  ntau_idx_0 = (short)a->size[0];
-  ntau = ntau_idx_0;
-  for (i26 = 0; i26 < ntau; i26++) {
-    work_data[i26].re = 0.0;
-    work_data[i26].im = 0.0;
+  unnamed_idx_0 = (unsigned char)a->size[0];
+  ntau = unnamed_idx_0;
+  for (i23 = 0; i23 < ntau; i23++) {
+    work_data[i23].re = 0.0;
+    work_data[i23].im = 0.0;
   }
 
-  i26 = a->size[0];
-  for (ntau = 0; ntau <= i26 - 2; ntau++) {
+  i23 = a->size[0];
+  for (ntau = 0; ntau <= i23 - 2; ntau++) {
     im1n = ntau * n + 2;
     in = (ntau + 1) * n;
     alpha1 = a->data[(ntau + a->size[0] * ntau) + 1];
