@@ -49,7 +49,7 @@ for ClusterizationConfig = 1
     globalParam.strongPeakThreshold = 0.2;
 end
 for PlotConfig = 1
-    globalParam.directory = "experiment/";
+    globalParam.directory = "graphs/";
     globalParam.plotClassicalMusicSpectrum = 1;
     globalParam.saveClassicalMusicSpectrum = 0;  % to save it's necessary to plot
     globalParam.plotOrionSpectrum = 0;
