@@ -1,1 +1,7 @@
 *.o
+*.log
+*.err
+*.out
+*.m~
+.ipynb_checkpoints/
+*.swp
