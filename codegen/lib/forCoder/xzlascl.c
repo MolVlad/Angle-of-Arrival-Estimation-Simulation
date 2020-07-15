@@ -2,7 +2,7 @@
  * File: xzlascl.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 15-Jul-2020 12:14:31
+ * C/C++ source code generated on  : 15-Jul-2020 16:54:31
  */
 
 /* Include Files */
@@ -30,7 +30,7 @@ void b_xzlascl(double cfrom, double cto, creal_T A_data[], int A_size[1])
   double cto1;
   double a;
   int loop_ub;
-  int i40;
+  int i42;
   cfromc = cfrom;
   ctoc = cto;
   notdone = true;
@@ -49,9 +49,9 @@ void b_xzlascl(double cfrom, double cto, creal_T A_data[], int A_size[1])
     }
 
     loop_ub = A_size[0];
-    for (i40 = 0; i40 < loop_ub; i40++) {
-      A_data[i40].re *= a;
-      A_data[i40].im *= a;
+    for (i42 = 0; i42 < loop_ub; i42++) {
+      A_data[i42].re *= a;
+      A_data[i42].im *= a;
     }
   }
 }
@@ -70,10 +70,10 @@ void xzlascl(double cfrom, double cto, emxArray_creal_T *A)
   double cfrom1;
   double cto1;
   double a;
-  int i36;
+  int i38;
   int loop_ub;
   int b_loop_ub;
-  int i37;
+  int i39;
   cfromc = cfrom;
   ctoc = cto;
   notdone = true;
@@ -91,14 +91,14 @@ void xzlascl(double cfrom, double cto, emxArray_creal_T *A)
       notdone = false;
     }
 
-    i36 = A->size[0] * A->size[1];
-    emxEnsureCapacity_creal_T(A, i36);
+    i38 = A->size[0] * A->size[1];
+    emxEnsureCapacity_creal_T(A, i38);
     loop_ub = A->size[1];
-    for (i36 = 0; i36 < loop_ub; i36++) {
+    for (i38 = 0; i38 < loop_ub; i38++) {
       b_loop_ub = A->size[0];
-      for (i37 = 0; i37 < b_loop_ub; i37++) {
-        A->data[i37 + A->size[0] * i36].re *= a;
-        A->data[i37 + A->size[0] * i36].im *= a;
+      for (i39 = 0; i39 < b_loop_ub; i39++) {
+        A->data[i39 + A->size[0] * i38].re *= a;
+        A->data[i39 + A->size[0] * i38].im *= a;
       }
     }
   }

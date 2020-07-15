@@ -2,7 +2,7 @@
  * File: fileManager.h
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 15-Jul-2020 12:14:31
+ * C/C++ source code generated on  : 15-Jul-2020 16:54:31
  */
 
 #ifndef FILEMANAGER_H
@@ -15,9 +15,10 @@
 #include "forCoder_types.h"
 
 /* Function Declarations */
-extern signed char b_cfopen(const char cfilename_data[], const int
+extern signed char b_cfopen(const char cfilename[15], const char * cpermission);
+extern signed char c_cfopen(const char cfilename_data[], const int
   cfilename_size[2], const char * cpermission);
-extern signed char cfopen(const char cfilename[15], const char * cpermission);
+extern signed char cfopen(const char cfilename[11], const char * cpermission);
 extern void filedata_init(void);
 extern void getfilestar(double fid, FILE * *filestar, boolean_T *autoflush);
 

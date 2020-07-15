@@ -2,7 +2,7 @@
  * File: xztgevc.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 15-Jul-2020 12:14:31
+ * C/C++ source code generated on  : 15-Jul-2020 16:54:31
  */
 
 /* Include Files */
@@ -30,7 +30,7 @@ void xztgevc(const emxArray_creal_T *A, emxArray_creal_T *V)
   double BIGNUM;
   double rworka_data[224];
   double anorm;
-  int i38;
+  int i40;
   int j;
   double xmx;
   double y;
@@ -71,8 +71,8 @@ void xztgevc(const emxArray_creal_T *A, emxArray_creal_T *V)
   }
 
   anorm = fabs(A->data[0].re) + fabs(A->data[0].im);
-  i38 = A->size[0];
-  for (j = 0; j <= i38 - 2; j++) {
+  i40 = A->size[0];
+  for (j = 0; j <= i40 - 2; j++) {
     for (loop_ub = 0; loop_ub <= j; loop_ub++) {
       rworka_data[j + 1] += fabs(A->data[loop_ub + A->size[0] * (j + 1)].re) +
         fabs(A->data[loop_ub + A->size[0] * (j + 1)].im);
@@ -91,8 +91,8 @@ void xztgevc(const emxArray_creal_T *A, emxArray_creal_T *V)
   }
 
   ascale = 1.0 / xmx;
-  i38 = (int)((1.0 + (-1.0 - (double)A->size[0])) / -1.0);
-  for (je = 0; je < i38; je++) {
+  i40 = (int)((1.0 + (-1.0 - (double)A->size[0])) / -1.0);
+  for (je = 0; je < i40; je++) {
     b_je = n - je;
     xmx = (fabs(A->data[b_je + A->size[0] * b_je].re) + fabs(A->data[b_je +
             A->size[0] * b_je].im)) * ascale;

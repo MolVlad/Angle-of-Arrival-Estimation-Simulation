@@ -2,7 +2,7 @@
  * File: forCoder.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 15-Jul-2020 12:14:31
+ * C/C++ source code generated on  : 15-Jul-2020 16:54:31
  */
 
 /* Include Files */
@@ -31,6 +31,9 @@
 #include "sprintf.h"
 #include "forCoder_rtwutil.h"
 #include <stdio.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 /* Function Declarations */
 static int div_s32_floor(int numerator, int denominator);
@@ -97,10 +100,16 @@ void forCoder(double seed)
   char seed_str[5];
   int loop_ub;
   int i1;
-  char filename_Value[15];
-  static const char cv0[6] = { '.', '/', 'c', 's', 'i', '_' };
+  char subdir_Value[11];
+  static const char cv0[6] = { 'm', 'u', 's', 'i', 'c', '_' };
 
   signed char fileid;
+  FILE * b_NULL;
+  FILE * filestar;
+  boolean_T autoflush;
+  char filename_Value[15];
+  static const char cv1[6] = { '.', '/', 'c', 's', 'i', '_' };
+
   static unsigned char buffer[2097152];
   int remaining;
   int b_index;
@@ -429,18 +438,16 @@ void forCoder(double seed)
   int b_tmp_size[2];
   char obj_Value[12];
   unsigned char c_tmp_data[28];
-  char filename_Value_data[1464];
-  char name_Value_data[1464];
+  char filename_Value_data[1476];
+  char name_Value_data[1476];
   int name_Value_size[2];
-  static const char cv1[5] = { '_', 'a', 'n', 't', '_' };
+  static const char cv2[5] = { '_', 'a', 'n', 't', '_' };
 
-  char t0_Value_data[1464];
+  char t0_Value_data[1476];
   int t0_Value_size[2];
   creal_T d_tmp_data[1596];
+  char b_obj_Value[14];
   double d_data[224];
-  FILE * b_NULL;
-  FILE * filestar;
-  boolean_T autoflush;
   double x_data[224];
   int iidx_data[224];
   double b_d_data[224];
@@ -483,7 +490,17 @@ void forCoder(double seed)
 
   emxFree_char_T(&s);
   for (i0 = 0; i0 < 6; i0++) {
-    filename_Value[i0] = cv0[i0];
+    subdir_Value[i0] = cv0[i0];
+  }
+
+  for (i0 = 0; i0 < 5; i0++) {
+    subdir_Value[i0 + 6] = seed_str[i0];
+  }
+
+  mkdir(subdir_Value, 0777);
+
+  for (i0 = 0; i0 < 6; i0++) {
+    filename_Value[i0] = cv1[i0];
   }
 
   for (i0 = 0; i0 < 5; i0++) {
@@ -494,7 +511,7 @@ void forCoder(double seed)
   filename_Value[12] = 't';
   filename_Value[13] = 'x';
   filename_Value[14] = 't';
-  fileid = cfopen(filename_Value, "rb");
+  fileid = b_cfopen(filename_Value, "rb");
   b_fseek(fileid);
   cdiff = rt_roundd_snf(b_ftell(fileid));
   if (cdiff < 2.147483648E+9) {
@@ -2060,7 +2077,7 @@ void forCoder(double seed)
               obj_Value[1] = '_';
               for (i0 = 0; i0 < 5; i0++) {
                 obj_Value[i0 + 2] = seed_str[i0];
-                obj_Value[i0 + 7] = cv1[i0];
+                obj_Value[i0 + 7] = cv2[i0];
               }
 
               string_string(b_ant, filename_Value_data, b_tmp_size);
@@ -2100,9 +2117,16 @@ void forCoder(double seed)
                             name_Value_size, t0_Value_data, t0_Value_size);
               j_string_plus(t0_Value_data, t0_Value_size, name_Value_data,
                             name_Value_size);
-              k_string_plus(name_Value_data, name_Value_size,
+              b_obj_Value[0] = '.';
+              b_obj_Value[1] = '/';
+              for (i0 = 0; i0 < 11; i0++) {
+                b_obj_Value[i0 + 2] = subdir_Value[i0];
+              }
+
+              b_obj_Value[13] = '/';
+              k_string_plus(b_obj_Value, name_Value_data, name_Value_size,
                             filename_Value_data, b_tmp_size);
-              fileid = b_cfopen(filename_Value_data, b_tmp_size, "wb");
+              fileid = c_cfopen(filename_Value_data, b_tmp_size, "wb");
               i0 = nsDelayAngleSpotfiEstimated->size[1];
               for (j = 0; j < i0; j++) {
                 b_NULL = NULL;

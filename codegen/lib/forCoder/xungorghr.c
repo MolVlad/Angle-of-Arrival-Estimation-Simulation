@@ -2,7 +2,7 @@
  * File: xungorghr.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 15-Jul-2020 12:14:31
+ * C/C++ source code generated on  : 15-Jul-2020 16:54:31
  */
 
 /* Include Files */
@@ -28,24 +28,24 @@ void xungorghr(int n, int ihi, emxArray_creal_T *A, int lda, const creal_T
   int i;
   int ia;
   int iajm1;
-  int i33;
+  int i35;
   if (n != 0) {
     for (j = ihi; j >= 2; j--) {
       ia = (j - 1) * lda;
       for (i = 0; i <= j - 2; i++) {
-        i33 = ia + i;
-        A->data[i33].re = 0.0;
-        A->data[i33].im = 0.0;
+        i35 = ia + i;
+        A->data[i35].re = 0.0;
+        A->data[i35].im = 0.0;
       }
 
       iajm1 = ia - lda;
-      i33 = j + 1;
-      for (i = i33; i <= ihi; i++) {
+      i35 = j + 1;
+      for (i = i35; i <= ihi; i++) {
         A->data[(ia + i) - 1] = A->data[(iajm1 + i) - 1];
       }
 
-      i33 = ihi + 1;
-      for (i = i33; i <= n; i++) {
+      i35 = ihi + 1;
+      for (i = i35; i <= n; i++) {
         iajm1 = (ia + i) - 1;
         A->data[iajm1].re = 0.0;
         A->data[iajm1].im = 0.0;
@@ -59,8 +59,8 @@ void xungorghr(int n, int ihi, emxArray_creal_T *A, int lda, const creal_T
 
     A->data[0].re = 1.0;
     A->data[0].im = 0.0;
-    i33 = ihi + 1;
-    for (j = i33; j <= n; j++) {
+    i35 = ihi + 1;
+    for (j = i35; j <= n; j++) {
       ia = (j - 1) * lda;
       for (i = 0; i < n; i++) {
         iajm1 = ia + i;

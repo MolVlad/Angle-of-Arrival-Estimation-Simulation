@@ -2,7 +2,7 @@
  * File: sort1.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 15-Jul-2020 12:14:31
+ * C/C++ source code generated on  : 15-Jul-2020 16:54:31
  */
 
 /* Include Files */
@@ -24,7 +24,7 @@
 void sort(double x_data[], int x_size[1], int idx_data[], int idx_size[1])
 {
   int dim;
-  int i41;
+  int i43;
   int vlen;
   int vwork_size[1];
   int vstride;
@@ -34,13 +34,13 @@ void sort(double x_data[], int x_size[1], int idx_data[], int idx_size[1])
   int iidx_size[1];
   dim = nonSingletonDim(x_size);
   if (dim <= 1) {
-    i41 = x_size[0];
+    i43 = x_size[0];
   } else {
-    i41 = 1;
+    i43 = 1;
   }
 
-  vlen = i41 - 1;
-  vwork_size[0] = (unsigned char)i41;
+  vlen = i43 - 1;
+  vwork_size[0] = (unsigned char)i43;
   idx_size[0] = (unsigned char)x_size[0];
   vstride = 1;
   for (k = 0; k <= dim - 2; k++) {
@@ -54,9 +54,9 @@ void sort(double x_data[], int x_size[1], int idx_data[], int idx_size[1])
 
     sortIdx(vwork_data, vwork_size, iidx_data, iidx_size);
     for (k = 0; k <= vlen; k++) {
-      i41 = dim + k * vstride;
-      x_data[i41] = vwork_data[k];
-      idx_data[i41] = iidx_data[k];
+      i43 = dim + k * vstride;
+      x_data[i43] = vwork_data[k];
+      idx_data[i43] = iidx_data[k];
     }
   }
 }

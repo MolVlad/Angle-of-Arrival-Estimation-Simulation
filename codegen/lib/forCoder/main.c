@@ -38,9 +38,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include"string.h"
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include "time.h"
 
 /* Function Declarations */
 static double argInit_real_T(void);
@@ -94,11 +92,8 @@ char* concat(char *s1, char *s2) {
  */
 int main(int argc, char * const argv[])
 {
-  char name[] = "music_";
-  char *s = concat(name, argv[1]);
-  mkdir(s, S_IRUSR | S_IWUSR);
-  chdir(s);
-  free(s);
+  long int end = time(NULL);
+  printf("programm start: %s\n", ctime(&end));
 
   (void)argc;
   (void)argv;

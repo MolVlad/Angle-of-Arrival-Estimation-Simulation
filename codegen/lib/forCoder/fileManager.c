@@ -2,7 +2,7 @@
  * File: fileManager.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 15-Jul-2020 12:14:31
+ * C/C++ source code generated on  : 15-Jul-2020 16:54:31
  */
 
 /* Include Files */
@@ -44,19 +44,55 @@ static signed char filedata(void)
 }
 
 /*
+ * Arguments    : const char cfilename[15]
+ *                const char * cpermission
+ * Return Type  : signed char
+ */
+signed char b_cfopen(const char cfilename[15], const char * cpermission)
+{
+  signed char fileid;
+  signed char j;
+  int i6;
+  char ccfilename[16];
+  FILE * filestar;
+  fileid = -1;
+  j = filedata();
+  if (j >= 1) {
+    for (i6 = 0; i6 < 15; i6++) {
+      ccfilename[i6] = cfilename[i6];
+    }
+
+    ccfilename[15] = '\x00';
+    filestar = fopen(&ccfilename[0], cpermission);
+    if (filestar != NULL) {
+      eml_openfiles[j - 1] = filestar;
+      eml_autoflush[j - 1] = true;
+      i6 = j + 2;
+      if (i6 > 127) {
+        i6 = 127;
+      }
+
+      fileid = (signed char)i6;
+    }
+  }
+
+  return fileid;
+}
+
+/*
  * Arguments    : const char cfilename_data[]
  *                const int cfilename_size[2]
  *                const char * cpermission
  * Return Type  : signed char
  */
-signed char b_cfopen(const char cfilename_data[], const int cfilename_size[2],
+signed char c_cfopen(const char cfilename_data[], const int cfilename_size[2],
                      const char * cpermission)
 {
   signed char fileid;
   signed char j;
-  char ccfilename_data[1465];
+  char ccfilename_data[1477];
   FILE * filestar;
-  int i19;
+  int i21;
   fileid = -1;
   j = filedata();
   if (j >= 1) {
@@ -70,12 +106,12 @@ signed char b_cfopen(const char cfilename_data[], const int cfilename_size[2],
     if (filestar != NULL) {
       eml_openfiles[j - 1] = filestar;
       eml_autoflush[j - 1] = true;
-      i19 = j + 2;
-      if (i19 > 127) {
-        i19 = 127;
+      i21 = j + 2;
+      if (i21 > 127) {
+        i21 = 127;
       }
 
-      fileid = (signed char)i19;
+      fileid = (signed char)i21;
     }
   }
 
@@ -83,25 +119,25 @@ signed char b_cfopen(const char cfilename_data[], const int cfilename_size[2],
 }
 
 /*
- * Arguments    : const char cfilename[15]
+ * Arguments    : const char cfilename[11]
  *                const char * cpermission
  * Return Type  : signed char
  */
-signed char cfopen(const char cfilename[15], const char * cpermission)
+signed char cfopen(const char cfilename[11], const char * cpermission)
 {
   signed char fileid;
   signed char j;
   int i5;
-  char ccfilename[16];
+  char ccfilename[12];
   FILE * filestar;
   fileid = -1;
   j = filedata();
   if (j >= 1) {
-    for (i5 = 0; i5 < 15; i5++) {
+    for (i5 = 0; i5 < 11; i5++) {
       ccfilename[i5] = cfilename[i5];
     }
 
-    ccfilename[15] = '\x00';
+    ccfilename[11] = '\x00';
     filestar = fopen(&ccfilename[0], cpermission);
     if (filestar != NULL) {
       eml_openfiles[j - 1] = filestar;

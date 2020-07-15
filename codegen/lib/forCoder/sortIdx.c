@@ -2,7 +2,7 @@
  * File: sortIdx.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 15-Jul-2020 12:14:31
+ * C/C++ source code generated on  : 15-Jul-2020 16:54:31
  */
 
 /* Include Files */
@@ -35,15 +35,15 @@ static void merge(int idx_data[], double x_data[], int offset, int np, int nq,
   int n_tmp;
   int iout;
   int p;
-  int i42;
+  int i44;
   int q;
   int exitg1;
   if (nq != 0) {
     n_tmp = np + nq;
     for (iout = 0; iout < n_tmp; iout++) {
-      i42 = offset + iout;
-      iwork_data[iout] = idx_data[i42];
-      xwork_data[iout] = x_data[i42];
+      i44 = offset + iout;
+      iwork_data[iout] = idx_data[i44];
+      xwork_data[iout] = x_data[i44];
     }
 
     p = 0;
@@ -68,9 +68,9 @@ static void merge(int idx_data[], double x_data[], int offset, int np, int nq,
         } else {
           q = iout - p;
           for (iout = p + 1; iout <= np; iout++) {
-            i42 = q + iout;
-            idx_data[i42] = iwork_data[iout - 1];
-            x_data[i42] = xwork_data[iout - 1];
+            i44 = q + iout;
+            idx_data[i44] = iwork_data[iout - 1];
+            x_data[i44] = xwork_data[iout - 1];
           }
 
           exitg1 = 1;

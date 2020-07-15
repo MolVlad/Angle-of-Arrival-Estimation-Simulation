@@ -5,6 +5,10 @@ spotfi_dir = "./";
 winner_dir = "./";
 
 s=sprintf('%d',int32(seed)); seed_str = '00000'; seed_str(end+1-length(s):end) = s;
+subdir = "music_"+seed_str;
+f = fopen(subdir, 'w');
+fprintf(f,"lol\n");
+
 filename = winner_dir+"csi_" + seed_str + ".txt";
 f = fopen(filename, 'r');
 fseek(f, 0, 'eof');
@@ -272,7 +276,7 @@ for ant = antennasNum
                             name = "r_"+seed_str+"_ant_"+string(ant)+"_sm_"+string(smoothing)+"_backw_"+string(backw)+"_pack_"+string(p)+"_perSp_"+...
                                 string(perSpec)+"_bw_"+string(band)+"_dec_" + string(dec) + ".txt";
                             
-                            fileID = fopen(spotfi_dir+name, 'w');
+                            fileID = fopen(spotfi_dir+subdir+"/"+name, 'w');
                             for k = 1:size(nsDelayAngleSpotfiEstimated,3)
                                 for j = 1:size(nsDelayAngleSpotfiEstimated,2)
                                     for i = 1:size(nsDelayAngleSpotfiEstimated,1)

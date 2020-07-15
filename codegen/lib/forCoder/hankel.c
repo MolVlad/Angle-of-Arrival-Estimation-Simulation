@@ -2,7 +2,7 @@
  * File: hankel.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 15-Jul-2020 12:14:31
+ * C/C++ source code generated on  : 15-Jul-2020 16:54:31
  */
 
 /* Include Files */
@@ -29,7 +29,7 @@ void hankel(const creal_T c_data[], const int c_size[1], const creal_T r_data[],
   int istop;
   int u1;
   int j;
-  int i7;
+  int i8;
   int i;
   nrows = c_size[0];
   ncols = r_size[0];
@@ -47,14 +47,14 @@ void hankel(const creal_T c_data[], const int c_size[1], const creal_T r_data[],
       H_data[i + H_size[0] * j] = c_data[i + j];
     }
 
-    i7 = istop + 1;
-    for (i = i7; i <= nrows; i++) {
+    i8 = istop + 1;
+    for (i = i8; i <= nrows; i++) {
       H_data[(i + H_size[0] * j) - 1] = r_data[i - istop];
     }
   }
 
-  i7 = c_size[0] + 1;
-  for (j = i7; j <= ncols; j++) {
+  i8 = c_size[0] + 1;
+  for (j = i8; j <= ncols; j++) {
     istop = j - nrows;
     for (i = 0; i < nrows; i++) {
       H_data[i + H_size[0] * (j - 1)] = r_data[i + istop];

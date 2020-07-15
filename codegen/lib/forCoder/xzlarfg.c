@@ -2,7 +2,7 @@
  * File: xzlarfg.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 15-Jul-2020 12:14:31
+ * C/C++ source code generated on  : 15-Jul-2020 16:54:31
  */
 
 /* Include Files */
@@ -30,7 +30,7 @@ creal_T xzlarfg(int n, creal_T *alpha1, emxArray_creal_T *x, int ix0)
   double beta1;
   int knt;
   double ai;
-  int i24;
+  int i26;
   int k;
   creal_T b_alpha1;
   double x_re;
@@ -47,10 +47,10 @@ creal_T xzlarfg(int n, creal_T *alpha1, emxArray_creal_T *x, int ix0)
 
       if (fabs(beta1) < 1.0020841800044864E-292) {
         knt = -1;
-        i24 = (ix0 + n) - 2;
+        i26 = (ix0 + n) - 2;
         do {
           knt++;
-          for (k = ix0; k <= i24; k++) {
+          for (k = ix0; k <= i26; k++) {
             x_re = x->data[k - 1].re;
             x_im = x->data[k - 1].im;
             x->data[k - 1].re = 9.9792015476736E+291 * x_re - 0.0 * x_im;
@@ -83,8 +83,8 @@ creal_T xzlarfg(int n, creal_T *alpha1, emxArray_creal_T *x, int ix0)
         b_alpha1.re = alpha1->re - beta1;
         b_alpha1.im = alpha1->im;
         *alpha1 = recip(b_alpha1);
-        i24 = (ix0 + n) - 2;
-        for (k = ix0; k <= i24; k++) {
+        i26 = (ix0 + n) - 2;
+        for (k = ix0; k <= i26; k++) {
           xnorm = alpha1->re;
           ai = alpha1->im;
           x_re = x->data[k - 1].re;
@@ -116,8 +116,8 @@ creal_T xzlarfg(int n, creal_T *alpha1, emxArray_creal_T *x, int ix0)
         b_alpha1.re = alpha1->re - beta1;
         b_alpha1.im = alpha1->im;
         *alpha1 = recip(b_alpha1);
-        i24 = (ix0 + n) - 2;
-        for (k = ix0; k <= i24; k++) {
+        i26 = (ix0 + n) - 2;
+        for (k = ix0; k <= i26; k++) {
           xnorm = alpha1->re;
           ai = alpha1->im;
           x_re = x->data[k - 1].re;

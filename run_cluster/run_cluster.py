@@ -70,7 +70,7 @@ def createStr(x):
     return s[0:5-len(sx)]+sx
 
 def submit_jobs(config, regex=None, execute=False):
-    kek = [r for r in range(1,11)]
+    kek = [r for r in range(1,10001)]
     runs = opt(kek, lambda x: '{}'.format(x))
     isd = opt(config['range'], lambda x: config['range_format'].format(x))
 
@@ -103,7 +103,7 @@ JobBatchName = music
         for t in g:
             if not t:
                 continue
-            base = 'music_'+'-'.join(map(str, list(zip(*t))[0]))
+            base = 'music_'+createStr(kek[i])
 
             if os.path.isfile(base + '.log'):
                 # Do not schedule one job twice.
