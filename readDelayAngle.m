@@ -1,6 +1,9 @@
 tic
 
-nsDelayAngleSpotfiEstimated=load('experiment_spotfi/r_00005_ant_8_sm_1_backw_1_pack_30_perSp_2_bw_40_dec_0.txt');
+clear all
+CreateParams();
+
+nsDelayAngleSpotfiEstimated=load('main_test/experiment_spotfi/reduced_test_r_00001_ant_8_sm_1_backw_1_pack_30_perSp_2_bw_40_dec_0.txt');
 nsDelayAngleSpotfiEstimated=reshape(nsDelayAngleSpotfiEstimated,2,[]);
 % nsDelayAngleSpotfiEstimated
 
@@ -8,12 +11,12 @@ clusterNumber = 10;
 
 global globalParam;
 
-delayMax = globalParam.SpotfiNSDelayRange(2);
-angleMax = globalParam.SpotfiAngleRange(2);
+delayMax = 300;
+angleMax = 90;
 
 Y = nsDelayAngleSpotfiEstimated(1:2,:)';
-X(:,1) = Y(:,2) / angleMax;
-X(:,2) = Y(:,1) / delayMax;
+X(:,1) = double(Y(:,2)) / angleMax;
+X(:,2) = double(Y(:,1)) / delayMax;
 
 rng(3);
 options = statset('MaxIter',3000);
