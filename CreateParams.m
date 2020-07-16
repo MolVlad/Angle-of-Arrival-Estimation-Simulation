@@ -12,7 +12,7 @@ for CSI = 1
     globalParam.subCarrIndStart = 1;
     globalParam.subCarrIndStep = 1;
     globalParam.subCarrIndEnd = 10;
-    globalParam.csiSource = 0; % 0 - winner; 1 - sporfi's sample_csi_trace; 2 - csi from Gao; 3 - csi from RF dataset
+    globalParam.csiSource = 4; % for Spotfi only. 0 - winner; 1 - sporfi's sample_csi_trace; 2 - csi from Gao; 3 - csi from RF dataset; 4 - from winner_csi/csi_?????.txt
 end % CSI
 for ExperimentSetupSettings = 1
     globalParam.centralFrequency = 5.63e9;
@@ -28,7 +28,7 @@ for outputConfig = 1
     globalParam.printArraytrackOutput = 0;
     globalParam.printArraytrackStablePeaks = 0;
     globalParam.printSpotfiOutput = 0;
-    globalParam.printResultingSpotfiOutput = 1;
+    globalParam.printResultingSpotfiOutput = 0;
     globalParam.printWinnerChannelInfo = 0;
     globalParam.printWinnerExecutionTime = 0;
     globalParam.printSpotfiExecutionTime = 0;    
@@ -70,7 +70,7 @@ for PlotConfig = 1
     globalParam.saveArraytrackPeaks = 0;
     globalParam.plotPureCSI = 0;
     globalParam.plotSanitizedCSI = 0;
-    globalParam.plotWinnerImpulseResponse = 1;
+    globalParam.plotWinnerImpulseResponse = 0;
     globalParam.plotPacketPreambule = 0;
     globalParam.plotAntennasArrangement = 0;
 end % PlotConfig
@@ -103,6 +103,7 @@ for OrionConfig = 1
     globalParam.printOrionOutput = 0;
     globalParam.printOrionStablePeaks = 0;
     globalParam.OrionNumberOfIterations = 10;
+    globalParam.OrionCsiSource = 1; % 0 - from csi.mat; 1 - from winner_csi/csi_?????
 end
 for classicalMusicConfig = 1
     globalParam.classicalMusicBackwardSmoothingUsed = 0;

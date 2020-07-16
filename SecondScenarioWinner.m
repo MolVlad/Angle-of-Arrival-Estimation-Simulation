@@ -156,17 +156,17 @@ for saveData = 1
     save('data/signal.mat', 'signalToSave');
     save('data/matrixCSI.mat', 'matrixCSI');
     
-    matrixCSI = matrixCSI(1:120,1:8,1:30);
-    s=num2str(globalParam.seedForScenario); str = '00000'; str(end+1-length(s):end) = s; str = "experiment/winner_csi/csi_" + str + ".txt";
-    fileID = fopen(str, 'w');
-    for k = 1:size(matrixCSI,3)
-        for j = 1:size(matrixCSI,2)
-            for i = 1:size(matrixCSI,1)
-                fprintf(fileID, "%.10f+%.10fi ", real(matrixCSI(i,j,k)),imag(matrixCSI(i,j,k)));
-            end
-        end
-    end
-    fclose(fileID);
+%     matrixCSI = matrixCSI(1:120,1:8,1:30);
+%     s=num2str(globalParam.seedForScenario); str = '00000'; str(end+1-length(s):end) = s; str = "experiment/winner_csi/csi_" + str + ".txt";
+%     fileID = fopen(str, 'w');
+%     for k = 1:size(matrixCSI,3)
+%         for j = 1:size(matrixCSI,2)
+%             for i = 1:size(matrixCSI,1)
+%                 fprintf(fileID, "%.10f+%.10fi ", real(matrixCSI(i,j,k)),imag(matrixCSI(i,j,k)));
+%             end
+%         end
+%     end
+%     fclose(fileID);
 
 end % save data, such as signal and vector of CSI
 for plotImpulseResponse = 1

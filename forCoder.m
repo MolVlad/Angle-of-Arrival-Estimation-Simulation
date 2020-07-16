@@ -65,13 +65,13 @@ sourceMatrixCSI = reshape(y,120,8,30);
 
 % reading completed
 
-packetNum = [30 10];
-packetPerSpectrum = [2 1];
-antennasNum = [8 4];
+packetNum = [10 30];
+packetPerSpectrum = [1 2];
+antennasNum = [4 8];
 bandwidth = [20];
 subcarrierDecimationUsed = [0 1];
-backwardSmoothing = [1 0];
-useSmothing = [1 0];
+backwardSmoothing = [0 1];
+useSmothing = [0 1];
 
 % packetNum = [10];
 % packetPerSpectrum = [1];

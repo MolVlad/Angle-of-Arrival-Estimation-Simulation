@@ -5,10 +5,17 @@ global globalParam;
 for readCSIfromFile = 1
     subCarrInd = globalParam.subCarrIndStart:globalParam.subCarrIndStep:globalParam.subCarrIndEnd;
 
-    file = load('data/matrixCSI');
-    matrixCSI = file.matrixCSI;
-    
-    matrixCSI = matrixCSI(subCarrInd,1:globalParam.numberOfAntennas,:);
+    switch globalParam.OrionCsiSource
+        case 0
+            file = load('data/matrixCSI');
+            matrixCSI = file.matrixCSI;
+            matrixCSI = matrixCSI(subCarrInd,1:globalParam.numberOfAntennas,:);
+        case 1
+            s=sprintf('%d',int32(globalParam.seedForScenario)); seed_str = '00000'; seed_str(end+1-length(s):end) = s;
+            matrixCSI = readfile("../music/experiment/winner_csi/csi_"+seed_str+".txt",28080);
+            matrixCSI = reshape(matrixCSI, 117, 8, 30);
+            matrixCSI = matrixCSI(subCarrInd,1:globalParam.numberOfAntennas,:);
+    end
 end % read CSI from file
 
 for mainPartOfComputingSpotfi = 1
@@ -111,17 +118,17 @@ for mainPartOfComputingSpotfi = 1
         fclose(fileID);
         dlmwrite(globalParam.directory+"OrionStableStdMean.txt", OrionStableStdMean, '-append', 'delimiter', '\t');
         
-        if size(OrionStableStdMean,1) < 2
-            OrionStableStdMean(2,:) = [999 999];
-        end
-        fileID = fopen(globalParam.fileForOrionResults, 'a');
-        fprintf(fileID, string(globalParam.numberOfAntennas)+ ...
-            "\t"+string(globalParam.seedForScenario)+"\t"+string(globalParam.SNR)+"\t"+string(globalParam.Kfactor)+ ...
-            "\t"+string(globalParam.AngleOfLOS)+"\t"+string(OrionStableStdMean(1,2))+"\t"+string(OrionStableStdMean(1,1))+ ...
-            "\t"+string(abs(OrionStableStdMean(1,2)-globalParam.AngleOfLOS))+"\t"+string(OrionStableStdMean(2,2))+ ...
-            "\t"+string(OrionStableStdMean(2,1))+ ...
-            "\t"+string(globalParam.ArraytrackUsedPacketNum)+"\t"+string(globalParam.numberOfPacketsPerIteration)+"\t");
-        fclose(fileID);
+%         if size(OrionStableStdMean,1) < 2
+%             OrionStableStdMean(2,:) = [999 999];
+%         end
+%         fileID = fopen(globalParam.fileForOrionResults, 'a');
+%         fprintf(fileID, string(globalParam.numberOfAntennas)+ ...
+%             "\t"+string(globalParam.seedForScenario)+"\t"+string(globalParam.SNR)+"\t"+string(globalParam.Kfactor)+ ...
+%             "\t"+string(globalParam.AngleOfLOS)+"\t"+string(OrionStableStdMean(1,2))+"\t"+string(OrionStableStdMean(1,1))+ ...
+%             "\t"+string(abs(OrionStableStdMean(1,2)-globalParam.AngleOfLOS))+"\t"+string(OrionStableStdMean(2,2))+ ...
+%             "\t"+string(OrionStableStdMean(2,1))+ ...
+%             "\t"+string(globalParam.ArraytrackUsedPacketNum)+"\t"+string(globalParam.numberOfPacketsPerIteration)+"\t");
+%         fclose(fileID);
     end
     
     if globalParam.plotOrionSpectrum

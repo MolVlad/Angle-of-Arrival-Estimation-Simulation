@@ -45,8 +45,6 @@ globalParam.plotArraytrackSpectrum = 0;
 globalParam.plotOrionSpectrum = 0;
 globalParam.realisticScenario = 1;
 
-globalParam.numberOfIterations = 10;
-
 randomSeedForScenario = 1:10000;
 numberOfAntennas = [8 4];
 
@@ -191,7 +189,7 @@ for r=randomSeedForScenario
 %                             for dec = subcarrierDecimationUsed
 %                                 for perSpec = packetPerSpectrum
 %                                     for p = packetNum
-%                                         globalParam.ArraytrackBackwardSmoothingUsed = backw;
+%                                         globalParam.SpotfiBackwardSmoothingUsed = backw;
 %                                         globalParam.numberOfPacketsPerIteration = perSpec;
 %                                         globalParam.SpotfiNumberOfIterations = floor(p / perSpec);
 %                                         if smoothing

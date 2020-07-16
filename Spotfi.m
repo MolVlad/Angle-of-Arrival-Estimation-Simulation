@@ -40,6 +40,11 @@ for readCSIfromFile = 1
             subCarrInd = 6:18;
 %             matrixCSI = permute(csi.H(6, subCarrNum,1,:), [2 4 1 3]);
             matrixCSI = permute(csi.H(2, subCarrInd,:,1), [2 3 1 4]);
+        case 4
+            s=sprintf('%d',int32(globalParam.seedForScenario)); seed_str = '00000'; seed_str(end+1-length(s):end) = s;
+            matrixCSI = readfile("../music/experiment/winner_csi/csi_"+seed_str+".txt",28800);
+            matrixCSI = reshape(matrixCSI, 120, 8, 30);
+            matrixCSI = matrixCSI(subCarrInd,1:globalParam.numberOfAntennas,:);
     end
     
     if globalParam.plotPureCSI == 1
@@ -673,22 +678,32 @@ if globalParam.SpotfiMeasurement
     T = sortrows(T, 1, 'descend');
     writetable(T, globalParam.directory+"SpotfiClusterization.txt", 'Delimiter','\t');
     
-    if length(T.clSize) == 1
-        T.stdA(2) = -1;
-        T.meanA(2) = -1;
-    elseif T.clSize(2) == 0
-        T.stdA(2) = -1;
-        T.meanA(2) = -1;
+    fileID = fopen(globalParam.directory+"nsDelayAngleSpotfiEstimated.txt", 'w');
+    for k = 1:size(nsDelayAngleSpotfiEstimated,3)
+        for j = 1:size(nsDelayAngleSpotfiEstimated,2)
+            for i = 1:size(nsDelayAngleSpotfiEstimated,1)
+                fprintf(fileID, "%.1f ", nsDelayAngleSpotfiEstimated(i,j,k));
+            end
+        end
     end
-    
-    fileID = fopen(globalParam.fileForSpotfiResults, 'a');
-    fprintf(fileID, string(globalParam.numberOfAntennas)+"\t"+string(globalParam.SpotfiSubarrayNum)+ ...
-        "\t"+string(globalParam.seedForScenario)+"\t"+string(globalParam.SNR)+"\t"+string(globalParam.Kfactor)+ ...
-        "\t"+string(globalParam.AngleOfLOS)+"\t"+string(T.meanA(1))+"\t"+string(T.stdA(1))+"\t"+string(T.clSize(1))+ ...
-        "\t"+string(abs(T.meanA(1)-globalParam.AngleOfLOS))+"\t"+string(T.meanA(2))+ ...
-        "\t"+string(T.stdA(2))+"\t"+string(T.clSize(2))+"\t"+string(globalParam.ArraytrackBackwardSmoothingUsed)+ ...
-        "\t"+string(globalParam.SpotfiNumberOfIterations)+"\t"+string(globalParam.numberOfPacketsPerIteration)+"\t");
     fclose(fileID);
+
+%     if length(T.clSize) == 1
+%         T.stdA(2) = -1;
+%         T.meanA(2) = -1;
+%     elseif T.clSize(2) == 0
+%         T.stdA(2) = -1;
+%         T.meanA(2) = -1;
+%     end
+%     
+%     fileID = fopen(globalParam.fileForSpotfiResults, 'a');
+%     fprintf(fileID, string(globalParam.numberOfAntennas)+"\t"+string(globalParam.SpotfiSubarrayNum)+ ...
+%         "\t"+string(globalParam.seedForScenario)+"\t"+string(globalParam.SNR)+"\t"+string(globalParam.Kfactor)+ ...
+%         "\t"+string(globalParam.AngleOfLOS)+"\t"+string(T.meanA(1))+"\t"+string(T.stdA(1))+"\t"+string(T.clSize(1))+ ...
+%         "\t"+string(abs(T.meanA(1)-globalParam.AngleOfLOS))+"\t"+string(T.meanA(2))+ ...
+%         "\t"+string(T.stdA(2))+"\t"+string(T.clSize(2))+"\t"+string(globalParam.ArraytrackBackwardSmoothingUsed)+ ...
+%         "\t"+string(globalParam.SpotfiNumberOfIterations)+"\t"+string(globalParam.numberOfPacketsPerIteration)+"\t");
+%     fclose(fileID);
 end
 
 if globalParam.plotClusters
