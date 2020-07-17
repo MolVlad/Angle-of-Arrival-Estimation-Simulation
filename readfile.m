@@ -20,7 +20,7 @@ filelen = int32(ftell(f));
 fseek(f,0,'bof');
 
 % Initialize a buffer
-maxBufferSize = int32(2^20);
+maxBufferSize = int32(2^21);
 buffer = zeros(1, maxBufferSize,'uint8');
 
 % Remaining is the number of bytes to read (from the file)

@@ -5,3 +5,5 @@
 *.m~
 .ipynb_checkpoints/
 *.swp
+debug
+run_cluster/results

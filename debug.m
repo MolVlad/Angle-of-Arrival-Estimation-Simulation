@@ -1,16 +1,16 @@
-algorithm = [0];  % 0 - spotfi; 1 - arraytrack; 2 - orion
-randomSeedForScenario = [11];
+algorithm = [1, 0];  % 0 - spotfi; 1 - arraytrack; 2 - orion
+randomSeedForScenario = [5];
 numberOfAntennas = [4];
 useSmothing = [0];
 backwardSmoothingUsed = [0];
-packetNum = [30];
+packetNum = [10];
 packetPerSpectrum = [1];
 bandwidth = [20];
 subcarrierDecimationUsed = [0];
 
 closePlots = 0;
 closeSpectrums = 1;
-plotSpotfiSpectrums = 0;
+plotSpotfiSpectrums = 1;
 
 directory = "debug/";
 
@@ -18,6 +18,11 @@ global globalParam;
 global globalData;
 
 CreateParams();
+
+globalParam.printResultingSpotfiOutput = 0;
+
+% globalParam.SpotfiEigenMode = 1;
+globalParam.SpotfiEigenMode = 1;
 
 for seed = randomSeedForScenario
     for ant = numberOfAntennas
@@ -48,7 +53,6 @@ for seed = randomSeedForScenario
                                             globalParam.csiSource = 4;
 
                                             globalParam.SpotfiMeasurement = 1;
-                                            globalParam.printResultingSpotfiOutput = 1;
 
                                             if plotSpotfiSpectrums
                                                 globalParam.plotSpotfiSpectrum = 1;

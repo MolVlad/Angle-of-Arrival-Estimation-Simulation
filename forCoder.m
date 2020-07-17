@@ -5,9 +5,14 @@ spotfi_dir = "./";
 winner_dir = "./";
 
 s=sprintf('%d',int32(seed)); seed_str = '00000'; seed_str(end+1-length(s):end) = s;
+
 subdir = "music_"+seed_str;
+
+% LOLKEK tupo chill
 f = fopen(subdir, 'w');
 fprintf(f,"lol\n");
+% LOLKEK tupo chill
+
 
 filename = winner_dir+"csi_" + seed_str + ".txt";
 f = fopen(filename, 'r');
@@ -234,7 +239,8 @@ for ant = antennasNum
                                 
                                 % eig completed
                                 
-                                Qn = U(:,1:numberOfSourses);
+%                                 Qn = U(:,1:numberOfSourses);
+                                Qn = U(:,1:end-2);
                                 Pn = (Qn*Qn');
                                 
                                 % Pn completed

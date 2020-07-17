@@ -97,7 +97,7 @@ def submit_jobs(config, regex=None, execute=False):
 
         condor_submit_input = f'''\
 executable = ../../main
-JobBatchName = music
+JobBatchName = music_fixed_eigen
 '''
         i = 0;
         for t in g:

@@ -2,7 +2,7 @@
  * File: forCoder.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 15-Jul-2020 16:54:31
+ * C/C++ source code generated on  : 16-Jul-2020 16:31:04
  */
 
 /* Include Files */
@@ -137,7 +137,7 @@ void forCoder(double seed)
   emxArray_real_T *nsDelayAngleSpotfiEstimated;
   emxArray_creal_T *mat;
   emxArray_creal_T *Rxx;
-  emxArray_creal_T *Pn;
+  emxArray_creal_T *Qn;
   emxArray_boolean_T *isStrongEnough;
   emxArray_real_T *newEstimation;
   emxArray_creal_T *Utmp;
@@ -174,15 +174,15 @@ void forCoder(double seed)
   double a;
   double b_b;
   int backw;
-  static const signed char iv0[2] = { 1, 0 };
+  static const signed char iv0[2] = { 0, 1 };
 
   int boffset;
-  int columnsNum;
   int aoffset;
   int c_loop_ub;
   int d_loop_ub;
   int t;
   signed char y_data[28];
+  int b_s;
   int e_loop_ub;
   int i3;
   double b_y_data[8];
@@ -448,9 +448,7 @@ void forCoder(double seed)
   creal_T d_tmp_data[1596];
   char b_obj_Value[14];
   double d_data[224];
-  double x_data[224];
   int iidx_data[224];
-  double b_d_data[224];
   double temp_re;
   double temp_im;
   static creal_T dcv2[108781];
@@ -711,7 +709,7 @@ void forCoder(double seed)
   emxInit_real_T(&nsDelayAngleSpotfiEstimated, 2);
   emxInit_creal_T(&mat, 2);
   emxInit_creal_T(&Rxx, 2);
-  emxInit_creal_T(&Pn, 2);
+  emxInit_creal_T(&Qn, 2);
   emxInit_boolean_T(&isStrongEnough, 1);
   emxInit_real_T(&newEstimation, 2);
   emxInit_creal_T(&Utmp, 2);
@@ -730,12 +728,12 @@ void forCoder(double seed)
   emxInit_real_T(&b_newEstimation, 2);
   emxInit_real_T(&b_nsDelayAngleSpotfiEstimated, 2);
   for (ant = 0; ant < 2; ant++) {
-    b_ant = 8 + -4 * ant;
+    b_ant = 4 + (ant << 2);
     for (p = 0; p < 2; p++) {
-      b_p = 30 + -20 * p;
+      b_p = 10 + 20 * p;
       for (perSpec = 0; perSpec < 2; perSpec++) {
-        numberOfSpectrums = (int)floor((double)b_p / (2.0 - (double)perSpec));
-        loop_ub_tmp = numberOfSpectrums * (2 - perSpec);
+        numberOfSpectrums = (int)floor((double)b_p / (1.0 + (double)perSpec));
+        loop_ub_tmp = numberOfSpectrums * (1 + perSpec);
         for (dec = 0; dec < 2; dec++) {
           if (dec != 0) {
             nm1d2 = 2;
@@ -754,7 +752,7 @@ void forCoder(double seed)
           }
 
           for (smoothing = 0; smoothing < 2; smoothing++) {
-            if (1 - smoothing != 0) {
+            if (smoothing != 0) {
               switch (b_ant) {
                case 8:
                 subarrayNum = 2;
@@ -799,43 +797,42 @@ void forCoder(double seed)
               }
 
               if (iv0[backw] != 0) {
-                columnsNum = ((b_ant - numberOfAntennaInSubset) + 1) *
+                k = ((b_ant - numberOfAntennaInSubset) + 1) *
                   ((subCarrInd_size_idx_1 - numberOfSubcarrierSubsets) + 1);
                 i0 = matrixCSI->size[0] * matrixCSI->size[1] * matrixCSI->size[2];
                 matrixCSI->size[0] = numberOfAntennaInSubset *
                   numberOfSubcarrierSubsets;
-                matrixCSI->size[1] = (columnsNum << 1) * (2 - perSpec);
+                matrixCSI->size[1] = (k << 1) * (1 + perSpec);
                 matrixCSI->size[2] = numberOfSpectrums;
                 emxEnsureCapacity_creal_T(matrixCSI, i0);
                 loop_ub = numberOfAntennaInSubset * numberOfSubcarrierSubsets *
-                  ((columnsNum << 1) * (2 - perSpec)) * numberOfSpectrums;
+                  ((k << 1) * (1 + perSpec)) * numberOfSpectrums;
                 for (i0 = 0; i0 < loop_ub; i0++) {
                   matrixCSI->data[i0].re = 0.0;
                   matrixCSI->data[i0].im = 0.0;
                 }
 
-                i0 = 2 - perSpec;
+                i0 = 1 + perSpec;
                 loop_ub = numberOfSubcarrierSubsets * (varargin_2 -
                   numberOfSubcarrierSubsets) * b_ant;
-                c_loop_ub = numberOfAntennaInSubset * numberOfSubcarrierSubsets *
-                  columnsNum;
-                d_loop_ub = numberOfSubcarrierSubsets * (((b_ant -
+                i = numberOfAntennaInSubset * numberOfSubcarrierSubsets * k;
+                c_loop_ub = numberOfSubcarrierSubsets * (((b_ant -
                   numberOfAntennaInSubset) + 1) * (varargin_2 -
                   numberOfSubcarrierSubsets));
                 i1 = b_ant - numberOfAntennaInSubset;
-                k = numberOfSubcarrierSubsets - 1;
-                for (i2 = 0; i2 <= k; i2++) {
+                d_loop_ub = numberOfSubcarrierSubsets - 1;
+                for (i2 = 0; i2 <= d_loop_ub; i2++) {
                   y_data[i2] = (signed char)(1 + i2);
                 }
 
                 for (t = 0; t < numberOfSpectrums; t++) {
-                  for (i = 0; i < i0; i++) {
-                    k = smoothedMatrixCSI->size[0];
+                  for (b_s = 0; b_s < i0; b_s++) {
+                    d_loop_ub = smoothedMatrixCSI->size[0];
                     e_loop_ub = smoothedMatrixCSI->size[1];
-                    remaining = t * (2 - perSpec) + i;
+                    remaining = t * (1 + perSpec) + b_s;
                     for (i2 = 0; i2 < e_loop_ub; i2++) {
-                      for (i3 = 0; i3 < k; i3++) {
-                        csiFromEachPacket_data[i3 + k * i2] =
+                      for (i3 = 0; i3 < d_loop_ub; i3++) {
+                        csiFromEachPacket_data[i3 + d_loop_ub * i2] =
                           smoothedMatrixCSI->data[(i3 + smoothedMatrixCSI->size
                           [0] * i2) + smoothedMatrixCSI->size[0] *
                           smoothedMatrixCSI->size[1] * remaining];
@@ -857,7 +854,7 @@ void forCoder(double seed)
                       csiFromEachPacket_size[0] = numberOfSubcarrierSubsets;
                       for (i2 = 0; i2 < numberOfSubcarrierSubsets; i2++) {
                         b_csiFromEachPacket_data[i2] = csiFromEachPacket_data[i2
-                          + k * m];
+                          + d_loop_ub * m];
                       }
 
                       b_csiFromEachPacket_size[0] = varargin_2 -
@@ -865,7 +862,8 @@ void forCoder(double seed)
                       e_loop_ub = (varargin_2 - numberOfSubcarrierSubsets) - 1;
                       for (i2 = 0; i2 <= e_loop_ub; i2++) {
                         c_csiFromEachPacket_data[i2] = csiFromEachPacket_data
-                          [((numberOfSubcarrierSubsets + i2) + k * m) - 1];
+                          [((numberOfSubcarrierSubsets + i2) + d_loop_ub * m) -
+                          1];
                       }
 
                       hankel(b_csiFromEachPacket_data, csiFromEachPacket_size,
@@ -884,9 +882,9 @@ void forCoder(double seed)
                     i2 = De->size[0] * De->size[1];
                     De->size[0] = numberOfAntennaInSubset *
                       numberOfSubcarrierSubsets;
-                    De->size[1] = columnsNum;
+                    De->size[1] = k;
                     emxEnsureCapacity_creal_T(De, i2);
-                    for (i2 = 0; i2 < c_loop_ub; i2++) {
+                    for (i2 = 0; i2 < i; i2++) {
                       De->data[i2].re = 0.0;
                       De->data[i2].im = 0.0;
                     }
@@ -898,7 +896,7 @@ void forCoder(double seed)
                       tmp->size[1] = ((b_ant - numberOfAntennaInSubset) + 1) *
                         (varargin_2 - numberOfSubcarrierSubsets);
                       emxEnsureCapacity_creal_T(tmp, i2);
-                      for (i2 = 0; i2 < d_loop_ub; i2++) {
+                      for (i2 = 0; i2 < c_loop_ub; i2++) {
                         tmp->data[i2].re = 0.0;
                         tmp->data[i2].im = 0.0;
                       }
@@ -912,21 +910,23 @@ void forCoder(double seed)
                           i2--;
                         }
 
-                        k = D->size[0];
+                        d_loop_ub = D->size[0];
                         e_loop_ub = D->size[1];
                         nm1d2 = b_index + j;
                         for (i3 = 0; i3 < e_loop_ub; i3++) {
-                          for (remaining = 0; remaining < k; remaining++) {
-                            d_tmp_data[remaining + k * i3] = D->data[(remaining
-                              + D->size[0] * i3) + D->size[0] * D->size[1] *
-                              nm1d2];
+                          for (remaining = 0; remaining < d_loop_ub; remaining++)
+                          {
+                            d_tmp_data[remaining + d_loop_ub * i3] = D->data
+                              [(remaining + D->size[0] * i3) + D->size[0] *
+                              D->size[1] * nm1d2];
                           }
                         }
 
                         for (i3 = 0; i3 < e_loop_ub; i3++) {
-                          for (remaining = 0; remaining < k; remaining++) {
+                          for (remaining = 0; remaining < d_loop_ub; remaining++)
+                          {
                             tmp->data[remaining + tmp->size[0] * (i2 + i3)] =
-                              d_tmp_data[remaining + k * i3];
+                              d_tmp_data[remaining + d_loop_ub * i3];
                           }
                         }
                       }
@@ -938,8 +938,8 @@ void forCoder(double seed)
                           y_data[i2] + start_idx) - 1U);
                       }
 
-                      k = tmp->size[1];
-                      for (i2 = 0; i2 < k; i2++) {
+                      d_loop_ub = tmp->size[1];
+                      for (i2 = 0; i2 < d_loop_ub; i2++) {
                         e_loop_ub = tmp->size[0];
                         for (i3 = 0; i3 < e_loop_ub; i3++) {
                           De->data[c_tmp_data[i3] + De->size[0] * i2] =
@@ -948,15 +948,15 @@ void forCoder(double seed)
                       }
                     }
 
-                    i2 = ((i * columnsNum) << 1) + 1;
-                    if (i2 > (((1 + i) * columnsNum) << 1) - columnsNum) {
+                    i2 = ((b_s * k) << 1) + 1;
+                    if (i2 > (((1 + b_s) * k) << 1) - k) {
                       i2 = 0;
                     } else {
                       i2--;
                     }
 
-                    k = De->size[1];
-                    for (i3 = 0; i3 < k; i3++) {
+                    d_loop_ub = De->size[1];
+                    for (i3 = 0; i3 < d_loop_ub; i3++) {
                       e_loop_ub = De->size[0];
                       for (remaining = 0; remaining < e_loop_ub; remaining++) {
                         matrixCSI->data[(remaining + matrixCSI->size[0] * (i2 +
@@ -972,15 +972,15 @@ void forCoder(double seed)
                 loop_ub = smoothedMatrixCSI->size[2];
                 i2 = conjCsiTracePerPacket->size[0] *
                   conjCsiTracePerPacket->size[1] * conjCsiTracePerPacket->size[2];
-                c_loop_ub = div_s32_floor(1 - i0, -1);
-                conjCsiTracePerPacket->size[0] = c_loop_ub + 1;
-                d_loop_ub = div_s32_floor(1 - i1, -1);
-                conjCsiTracePerPacket->size[1] = d_loop_ub + 1;
+                i = div_s32_floor(1 - i0, -1);
+                conjCsiTracePerPacket->size[0] = i + 1;
+                c_loop_ub = div_s32_floor(1 - i1, -1);
+                conjCsiTracePerPacket->size[1] = c_loop_ub + 1;
                 conjCsiTracePerPacket->size[2] = loop_ub;
                 emxEnsureCapacity_creal_T(conjCsiTracePerPacket, i2);
                 for (i2 = 0; i2 < loop_ub; i2++) {
-                  for (i3 = 0; i3 <= d_loop_ub; i3++) {
-                    for (remaining = 0; remaining <= c_loop_ub; remaining++) {
+                  for (i3 = 0; i3 <= c_loop_ub; i3++) {
+                    for (remaining = 0; remaining <= i; remaining++) {
                       conjCsiTracePerPacket->data[(remaining +
                         conjCsiTracePerPacket->size[0] * i3) +
                         conjCsiTracePerPacket->size[0] *
@@ -1001,29 +1001,29 @@ void forCoder(double seed)
                   }
                 }
 
-                i0 = 2 - perSpec;
+                i0 = 1 + perSpec;
                 loop_ub = numberOfSubcarrierSubsets * (varargin_2 -
                   numberOfSubcarrierSubsets) * b_ant;
-                c_loop_ub = numberOfAntennaInSubset * numberOfSubcarrierSubsets *
+                i = numberOfAntennaInSubset * numberOfSubcarrierSubsets *
                   (((b_ant - numberOfAntennaInSubset) + 1) * (varargin_2 -
                     numberOfSubcarrierSubsets));
-                d_loop_ub = numberOfSubcarrierSubsets * (((b_ant -
+                c_loop_ub = numberOfSubcarrierSubsets * (((b_ant -
                   numberOfAntennaInSubset) + 1) * (varargin_2 -
                   numberOfSubcarrierSubsets));
                 i1 = b_ant - numberOfAntennaInSubset;
-                k = numberOfSubcarrierSubsets - 1;
-                for (i2 = 0; i2 <= k; i2++) {
+                d_loop_ub = numberOfSubcarrierSubsets - 1;
+                for (i2 = 0; i2 <= d_loop_ub; i2++) {
                   y_data[i2] = (signed char)(1 + i2);
                 }
 
                 for (t = 0; t < numberOfSpectrums; t++) {
-                  for (i = 0; i < i0; i++) {
-                    k = conjCsiTracePerPacket->size[0];
+                  for (b_s = 0; b_s < i0; b_s++) {
+                    d_loop_ub = conjCsiTracePerPacket->size[0];
                     e_loop_ub = conjCsiTracePerPacket->size[1];
-                    remaining = t * (2 - perSpec) + i;
+                    remaining = t * (1 + perSpec) + b_s;
                     for (i2 = 0; i2 < e_loop_ub; i2++) {
-                      for (i3 = 0; i3 < k; i3++) {
-                        csiFromEachPacket_data[i3 + k * i2] =
+                      for (i3 = 0; i3 < d_loop_ub; i3++) {
+                        csiFromEachPacket_data[i3 + d_loop_ub * i2] =
                           conjCsiTracePerPacket->data[(i3 +
                           conjCsiTracePerPacket->size[0] * i2) +
                           conjCsiTracePerPacket->size[0] *
@@ -1046,7 +1046,7 @@ void forCoder(double seed)
                       csiFromEachPacket_size[0] = numberOfSubcarrierSubsets;
                       for (i2 = 0; i2 < numberOfSubcarrierSubsets; i2++) {
                         b_csiFromEachPacket_data[i2] = csiFromEachPacket_data[i2
-                          + k * m];
+                          + d_loop_ub * m];
                       }
 
                       b_csiFromEachPacket_size[0] = varargin_2 -
@@ -1054,7 +1054,8 @@ void forCoder(double seed)
                       e_loop_ub = (varargin_2 - numberOfSubcarrierSubsets) - 1;
                       for (i2 = 0; i2 <= e_loop_ub; i2++) {
                         c_csiFromEachPacket_data[i2] = csiFromEachPacket_data
-                          [((numberOfSubcarrierSubsets + i2) + k * m) - 1];
+                          [((numberOfSubcarrierSubsets + i2) + d_loop_ub * m) -
+                          1];
                       }
 
                       hankel(b_csiFromEachPacket_data, csiFromEachPacket_size,
@@ -1076,7 +1077,7 @@ void forCoder(double seed)
                     De->size[1] = ((b_ant - numberOfAntennaInSubset) + 1) *
                       (varargin_2 - numberOfSubcarrierSubsets);
                     emxEnsureCapacity_creal_T(De, i2);
-                    for (i2 = 0; i2 < c_loop_ub; i2++) {
+                    for (i2 = 0; i2 < i; i2++) {
                       De->data[i2].re = 0.0;
                       De->data[i2].im = 0.0;
                     }
@@ -1088,7 +1089,7 @@ void forCoder(double seed)
                       tmp->size[1] = ((b_ant - numberOfAntennaInSubset) + 1) *
                         (varargin_2 - numberOfSubcarrierSubsets);
                       emxEnsureCapacity_creal_T(tmp, i2);
-                      for (i2 = 0; i2 < d_loop_ub; i2++) {
+                      for (i2 = 0; i2 < c_loop_ub; i2++) {
                         tmp->data[i2].re = 0.0;
                         tmp->data[i2].im = 0.0;
                       }
@@ -1102,21 +1103,23 @@ void forCoder(double seed)
                           i2--;
                         }
 
-                        k = D->size[0];
+                        d_loop_ub = D->size[0];
                         e_loop_ub = D->size[1];
                         nm1d2 = b_index + j;
                         for (i3 = 0; i3 < e_loop_ub; i3++) {
-                          for (remaining = 0; remaining < k; remaining++) {
-                            d_tmp_data[remaining + k * i3] = D->data[(remaining
-                              + D->size[0] * i3) + D->size[0] * D->size[1] *
-                              nm1d2];
+                          for (remaining = 0; remaining < d_loop_ub; remaining++)
+                          {
+                            d_tmp_data[remaining + d_loop_ub * i3] = D->data
+                              [(remaining + D->size[0] * i3) + D->size[0] *
+                              D->size[1] * nm1d2];
                           }
                         }
 
                         for (i3 = 0; i3 < e_loop_ub; i3++) {
-                          for (remaining = 0; remaining < k; remaining++) {
+                          for (remaining = 0; remaining < d_loop_ub; remaining++)
+                          {
                             tmp->data[remaining + tmp->size[0] * (i2 + i3)] =
-                              d_tmp_data[remaining + k * i3];
+                              d_tmp_data[remaining + d_loop_ub * i3];
                           }
                         }
                       }
@@ -1128,8 +1131,8 @@ void forCoder(double seed)
                           y_data[i2] + start_idx) - 1U);
                       }
 
-                      k = tmp->size[1];
-                      for (i2 = 0; i2 < k; i2++) {
+                      d_loop_ub = tmp->size[1];
+                      for (i2 = 0; i2 < d_loop_ub; i2++) {
                         e_loop_ub = tmp->size[0];
                         for (i3 = 0; i3 < e_loop_ub; i3++) {
                           De->data[c_tmp_data[i3] + De->size[0] * i2] =
@@ -1138,15 +1141,15 @@ void forCoder(double seed)
                       }
                     }
 
-                    i2 = (((i * columnsNum) << 1) + columnsNum) + 1;
-                    if (i2 > (((1 + i) * columnsNum) << 1)) {
+                    i2 = (((b_s * k) << 1) + k) + 1;
+                    if (i2 > (((1 + b_s) * k) << 1)) {
                       i2 = 0;
                     } else {
                       i2--;
                     }
 
-                    k = De->size[1];
-                    for (i3 = 0; i3 < k; i3++) {
+                    d_loop_ub = De->size[1];
+                    for (i3 = 0; i3 < d_loop_ub; i3++) {
                       e_loop_ub = De->size[0];
                       for (remaining = 0; remaining < e_loop_ub; remaining++) {
                         matrixCSI->data[(remaining + matrixCSI->size[0] * (i2 +
@@ -1159,41 +1162,40 @@ void forCoder(double seed)
               } else {
                 boffset = b_ant - numberOfAntennaInSubset;
                 aoffset = boffset + 1;
-                columnsNum = aoffset * ((subCarrInd_size_idx_1 -
-                  numberOfSubcarrierSubsets) + 1);
+                k = aoffset * ((subCarrInd_size_idx_1 -
+                                numberOfSubcarrierSubsets) + 1);
                 i0 = matrixCSI->size[0] * matrixCSI->size[1] * matrixCSI->size[2];
                 matrixCSI->size[0] = numberOfAntennaInSubset *
                   numberOfSubcarrierSubsets;
-                matrixCSI->size[1] = columnsNum * (2 - perSpec);
+                matrixCSI->size[1] = k * (1 + perSpec);
                 matrixCSI->size[2] = numberOfSpectrums;
                 emxEnsureCapacity_creal_T(matrixCSI, i0);
                 loop_ub = numberOfAntennaInSubset * numberOfSubcarrierSubsets *
-                  (columnsNum * (2 - perSpec)) * numberOfSpectrums;
+                  (k * (1 + perSpec)) * numberOfSpectrums;
                 for (i0 = 0; i0 < loop_ub; i0++) {
                   matrixCSI->data[i0].re = 0.0;
                   matrixCSI->data[i0].im = 0.0;
                 }
 
-                i0 = 2 - perSpec;
+                i0 = 1 + perSpec;
                 loop_ub = numberOfSubcarrierSubsets * (varargin_2 -
                   numberOfSubcarrierSubsets) * b_ant;
-                c_loop_ub = numberOfAntennaInSubset * numberOfSubcarrierSubsets *
-                  columnsNum;
-                d_loop_ub = numberOfSubcarrierSubsets * (aoffset * (varargin_2 -
+                i = numberOfAntennaInSubset * numberOfSubcarrierSubsets * k;
+                c_loop_ub = numberOfSubcarrierSubsets * (aoffset * (varargin_2 -
                   numberOfSubcarrierSubsets));
-                k = numberOfSubcarrierSubsets - 1;
-                for (i1 = 0; i1 <= k; i1++) {
+                d_loop_ub = numberOfSubcarrierSubsets - 1;
+                for (i1 = 0; i1 <= d_loop_ub; i1++) {
                   y_data[i1] = (signed char)(1 + i1);
                 }
 
                 for (t = 0; t < numberOfSpectrums; t++) {
-                  for (i = 0; i < i0; i++) {
-                    k = smoothedMatrixCSI->size[0];
+                  for (b_s = 0; b_s < i0; b_s++) {
+                    d_loop_ub = smoothedMatrixCSI->size[0];
                     e_loop_ub = smoothedMatrixCSI->size[1];
-                    remaining = t * (2 - perSpec) + i;
+                    remaining = t * (1 + perSpec) + b_s;
                     for (i1 = 0; i1 < e_loop_ub; i1++) {
-                      for (i2 = 0; i2 < k; i2++) {
-                        csiFromEachPacket_data[i2 + k * i1] =
+                      for (i2 = 0; i2 < d_loop_ub; i2++) {
+                        csiFromEachPacket_data[i2 + d_loop_ub * i1] =
                           smoothedMatrixCSI->data[(i2 + smoothedMatrixCSI->size
                           [0] * i1) + smoothedMatrixCSI->size[0] *
                           smoothedMatrixCSI->size[1] * remaining];
@@ -1215,7 +1217,7 @@ void forCoder(double seed)
                       csiFromEachPacket_size[0] = numberOfSubcarrierSubsets;
                       for (i1 = 0; i1 < numberOfSubcarrierSubsets; i1++) {
                         b_csiFromEachPacket_data[i1] = csiFromEachPacket_data[i1
-                          + k * m];
+                          + d_loop_ub * m];
                       }
 
                       b_csiFromEachPacket_size[0] = varargin_2 -
@@ -1223,7 +1225,8 @@ void forCoder(double seed)
                       e_loop_ub = (varargin_2 - numberOfSubcarrierSubsets) - 1;
                       for (i1 = 0; i1 <= e_loop_ub; i1++) {
                         c_csiFromEachPacket_data[i1] = csiFromEachPacket_data
-                          [((numberOfSubcarrierSubsets + i1) + k * m) - 1];
+                          [((numberOfSubcarrierSubsets + i1) + d_loop_ub * m) -
+                          1];
                       }
 
                       hankel(b_csiFromEachPacket_data, csiFromEachPacket_size,
@@ -1242,9 +1245,9 @@ void forCoder(double seed)
                     i1 = De->size[0] * De->size[1];
                     De->size[0] = numberOfAntennaInSubset *
                       numberOfSubcarrierSubsets;
-                    De->size[1] = columnsNum;
+                    De->size[1] = k;
                     emxEnsureCapacity_creal_T(De, i1);
-                    for (i1 = 0; i1 < c_loop_ub; i1++) {
+                    for (i1 = 0; i1 < i; i1++) {
                       De->data[i1].re = 0.0;
                       De->data[i1].im = 0.0;
                     }
@@ -1256,7 +1259,7 @@ void forCoder(double seed)
                       tmp->size[1] = aoffset * (varargin_2 -
                         numberOfSubcarrierSubsets);
                       emxEnsureCapacity_creal_T(tmp, i1);
-                      for (i1 = 0; i1 < d_loop_ub; i1++) {
+                      for (i1 = 0; i1 < c_loop_ub; i1++) {
                         tmp->data[i1].re = 0.0;
                         tmp->data[i1].im = 0.0;
                       }
@@ -1270,20 +1273,20 @@ void forCoder(double seed)
                           i1--;
                         }
 
-                        k = D->size[0];
+                        d_loop_ub = D->size[0];
                         e_loop_ub = D->size[1];
                         nm1d2 = b_index + j;
                         for (i2 = 0; i2 < e_loop_ub; i2++) {
-                          for (i3 = 0; i3 < k; i3++) {
-                            d_tmp_data[i3 + k * i2] = D->data[(i3 + D->size[0] *
-                              i2) + D->size[0] * D->size[1] * nm1d2];
+                          for (i3 = 0; i3 < d_loop_ub; i3++) {
+                            d_tmp_data[i3 + d_loop_ub * i2] = D->data[(i3 +
+                              D->size[0] * i2) + D->size[0] * D->size[1] * nm1d2];
                           }
                         }
 
                         for (i2 = 0; i2 < e_loop_ub; i2++) {
-                          for (i3 = 0; i3 < k; i3++) {
+                          for (i3 = 0; i3 < d_loop_ub; i3++) {
                             tmp->data[i3 + tmp->size[0] * (i1 + i2)] =
-                              d_tmp_data[i3 + k * i2];
+                              d_tmp_data[i3 + d_loop_ub * i2];
                           }
                         }
                       }
@@ -1295,8 +1298,8 @@ void forCoder(double seed)
                           y_data[i1] + start_idx) - 1U);
                       }
 
-                      k = tmp->size[1];
-                      for (i1 = 0; i1 < k; i1++) {
+                      d_loop_ub = tmp->size[1];
+                      for (i1 = 0; i1 < d_loop_ub; i1++) {
                         e_loop_ub = tmp->size[0];
                         for (i2 = 0; i2 < e_loop_ub; i2++) {
                           De->data[c_tmp_data[i2] + De->size[0] * i1] =
@@ -1305,15 +1308,15 @@ void forCoder(double seed)
                       }
                     }
 
-                    i1 = i * columnsNum + 1;
-                    if (i1 > (1 + i) * columnsNum) {
+                    i1 = b_s * k + 1;
+                    if (i1 > (1 + b_s) * k) {
                       i1 = 0;
                     } else {
                       i1--;
                     }
 
-                    k = De->size[1];
-                    for (i2 = 0; i2 < k; i2++) {
+                    d_loop_ub = De->size[1];
+                    for (i2 = 0; i2 < d_loop_ub; i2++) {
                       e_loop_ub = De->size[0];
                       for (i3 = 0; i3 < e_loop_ub; i3++) {
                         matrixCSI->data[(i3 + matrixCSI->size[0] * (i1 + i2)) +
@@ -1411,12 +1414,12 @@ void forCoder(double seed)
               nsDelayAngleSpotfiEstimated->size[1] = 0;
               for (t = 0; t < numberOfSpectrums; t++) {
                 loop_ub = matrixCSI->size[0];
-                c_loop_ub = matrixCSI->size[1];
+                i = matrixCSI->size[1];
                 i0 = mat->size[0] * mat->size[1];
                 mat->size[0] = loop_ub;
-                mat->size[1] = c_loop_ub;
+                mat->size[1] = i;
                 emxEnsureCapacity_creal_T(mat, i0);
-                for (i0 = 0; i0 < c_loop_ub; i0++) {
+                for (i0 = 0; i0 < i; i0++) {
                   for (i1 = 0; i1 < loop_ub; i1++) {
                     mat->data[i1 + mat->size[0] * i0] = matrixCSI->data[(i1 +
                       matrixCSI->size[0] * i0) + matrixCSI->size[0] *
@@ -1430,8 +1433,8 @@ void forCoder(double seed)
                 emxEnsureCapacity_creal_T(b, i0);
                 loop_ub = mat->size[0];
                 for (i0 = 0; i0 < loop_ub; i0++) {
-                  c_loop_ub = mat->size[1];
-                  for (i1 = 0; i1 < c_loop_ub; i1++) {
+                  i = mat->size[1];
+                  for (i1 = 0; i1 < i; i1++) {
                     b->data[i1 + b->size[0] * i0].re = mat->data[i0 + mat->size
                       [0] * i1].re;
                     b->data[i1 + b->size[0] * i0].im = -mat->data[i0 + mat->
@@ -1447,12 +1450,12 @@ void forCoder(double seed)
                   emxEnsureCapacity_creal_T(Rxx, i0);
                   loop_ub = mat->size[0];
                   for (i0 = 0; i0 < loop_ub; i0++) {
-                    c_loop_ub = b->size[1];
-                    for (i1 = 0; i1 < c_loop_ub; i1++) {
+                    i = b->size[1];
+                    for (i1 = 0; i1 < i; i1++) {
                       Rxx->data[i0 + Rxx->size[0] * i1].re = 0.0;
                       Rxx->data[i0 + Rxx->size[0] * i1].im = 0.0;
-                      d_loop_ub = mat->size[1];
-                      for (i2 = 0; i2 < d_loop_ub; i2++) {
+                      c_loop_ub = mat->size[1];
+                      for (i2 = 0; i2 < c_loop_ub; i2++) {
                         apnd = mat->data[i0 + mat->size[0] * i2].re * b->data[i2
                           + b->size[0] * i1].re - mat->data[i0 + mat->size[0] *
                           i2].im * b->data[i2 + b->size[0] * i1].im;
@@ -1505,100 +1508,82 @@ void forCoder(double seed)
                 eig(Rxx, Utmp);
                 b_abs(Rxx, r6);
                 diag(r6, d_data, csiFromEachPacket_size);
-                b_csiFromEachPacket_size[0] = csiFromEachPacket_size[0];
-                if (0 <= csiFromEachPacket_size[0] - 1) {
-                  memcpy(&x_data[0], &d_data[0], (unsigned int)
-                         (csiFromEachPacket_size[0] * (int)sizeof(double)));
-                }
-
-                sort(x_data, b_csiFromEachPacket_size, iidx_data,
-                     csiFromEachPacket_size);
-                loop_ub = csiFromEachPacket_size[0];
+                sort(d_data, csiFromEachPacket_size, iidx_data,
+                     b_csiFromEachPacket_size);
+                loop_ub = b_csiFromEachPacket_size[0];
                 for (i0 = 0; i0 < loop_ub; i0++) {
-                  x_data[i0] = iidx_data[i0];
-                }
-
-                loop_ub = csiFromEachPacket_size[0];
-                for (i0 = 0; i0 < loop_ub; i0++) {
-                  b_d_data[i0] = d_data[(int)x_data[i0] - 1];
-                }
-
-                if (0 <= csiFromEachPacket_size[0] - 1) {
-                  memcpy(&d_data[0], &b_d_data[0], (unsigned int)
-                         (csiFromEachPacket_size[0] * (int)sizeof(double)));
-                }
-
-                columnsNum = 0;
-                i0 = csiFromEachPacket_size[0];
-                for (i = 0; i < i0; i++) {
-                  if (d_data[i] < 1.0) {
-                    columnsNum = 1 + i;
-                  }
+                  d_data[i0] = iidx_data[i0];
                 }
 
                 /*  eig completed */
-                loop_ub = Utmp->size[0];
+                /*                                  Qn = U(:,1:numberOfSourses); */
+                if (1 > b_csiFromEachPacket_size[0] - 2) {
+                  loop_ub = 0;
+                } else {
+                  loop_ub = b_csiFromEachPacket_size[0] - 2;
+                }
+
+                i = Utmp->size[0];
                 c_loop_ub = Utmp->size[0];
-                i0 = Pn->size[0] * Pn->size[1];
-                Pn->size[0] = c_loop_ub;
-                Pn->size[1] = csiFromEachPacket_size[0];
-                emxEnsureCapacity_creal_T(Pn, i0);
-                d_loop_ub = csiFromEachPacket_size[0];
+                i0 = Rxx->size[0] * Rxx->size[1];
+                Rxx->size[0] = c_loop_ub;
+                Rxx->size[1] = b_csiFromEachPacket_size[0];
+                emxEnsureCapacity_creal_T(Rxx, i0);
+                d_loop_ub = b_csiFromEachPacket_size[0];
                 for (i0 = 0; i0 < d_loop_ub; i0++) {
                   for (i1 = 0; i1 < c_loop_ub; i1++) {
-                    Pn->data[i1 + Pn->size[0] * i0] = Utmp->data[i1 + Utmp->
-                      size[0] * ((int)x_data[i0] - 1)];
+                    Rxx->data[i1 + Rxx->size[0] * i0] = Utmp->data[i1 +
+                      Utmp->size[0] * ((int)d_data[i0] - 1)];
                   }
                 }
 
-                i0 = Rxx->size[0] * Rxx->size[1];
-                Rxx->size[0] = loop_ub;
-                Rxx->size[1] = columnsNum;
-                emxEnsureCapacity_creal_T(Rxx, i0);
-                for (i0 = 0; i0 < columnsNum; i0++) {
-                  for (i1 = 0; i1 < loop_ub; i1++) {
-                    Rxx->data[i1 + Rxx->size[0] * i0] = Pn->data[i1 + Pn->size[0]
+                i0 = Qn->size[0] * Qn->size[1];
+                Qn->size[0] = i;
+                Qn->size[1] = loop_ub;
+                emxEnsureCapacity_creal_T(Qn, i0);
+                for (i0 = 0; i0 < loop_ub; i0++) {
+                  for (i1 = 0; i1 < i; i1++) {
+                    Qn->data[i1 + Qn->size[0] * i0] = Rxx->data[i1 + Rxx->size[0]
                       * i0];
                   }
                 }
 
                 i0 = b->size[0] * b->size[1];
-                b->size[0] = Rxx->size[1];
-                b->size[1] = Rxx->size[0];
+                b->size[0] = Qn->size[1];
+                b->size[1] = Qn->size[0];
                 emxEnsureCapacity_creal_T(b, i0);
-                loop_ub = Rxx->size[0];
-                for (i0 = 0; i0 < loop_ub; i0++) {
-                  c_loop_ub = Rxx->size[1];
+                i = Qn->size[0];
+                for (i0 = 0; i0 < i; i0++) {
+                  c_loop_ub = Qn->size[1];
                   for (i1 = 0; i1 < c_loop_ub; i1++) {
-                    b->data[i1 + b->size[0] * i0].re = Rxx->data[i0 + Rxx->size
-                      [0] * i1].re;
-                    b->data[i1 + b->size[0] * i0].im = -Rxx->data[i0 + Rxx->
-                      size[0] * i1].im;
+                    b->data[i1 + b->size[0] * i0].re = Qn->data[i0 + Qn->size[0]
+                      * i1].re;
+                    b->data[i1 + b->size[0] * i0].im = -Qn->data[i0 + Qn->size[0]
+                      * i1].im;
                   }
                 }
 
-                if ((columnsNum == 1) || (b->size[0] == 1)) {
-                  i0 = Pn->size[0] * Pn->size[1];
-                  Pn->size[0] = Rxx->size[0];
-                  Pn->size[1] = b->size[1];
-                  emxEnsureCapacity_creal_T(Pn, i0);
-                  loop_ub = Rxx->size[0];
+                if ((loop_ub == 1) || (b->size[0] == 1)) {
+                  i0 = Rxx->size[0] * Rxx->size[1];
+                  Rxx->size[0] = Qn->size[0];
+                  Rxx->size[1] = b->size[1];
+                  emxEnsureCapacity_creal_T(Rxx, i0);
+                  loop_ub = Qn->size[0];
                   for (i0 = 0; i0 < loop_ub; i0++) {
-                    c_loop_ub = b->size[1];
-                    for (i1 = 0; i1 < c_loop_ub; i1++) {
-                      Pn->data[i0 + Pn->size[0] * i1].re = 0.0;
-                      Pn->data[i0 + Pn->size[0] * i1].im = 0.0;
-                      d_loop_ub = Rxx->size[1];
-                      for (i2 = 0; i2 < d_loop_ub; i2++) {
-                        apnd = Rxx->data[i0 + Rxx->size[0] * i2].re * b->data[i2
-                          + b->size[0] * i1].re - Rxx->data[i0 + Rxx->size[0] *
-                          i2].im * b->data[i2 + b->size[0] * i1].im;
-                        cdiff = Rxx->data[i0 + Rxx->size[0] * i2].re * b->
-                          data[i2 + b->size[0] * i1].im + Rxx->data[i0 +
-                          Rxx->size[0] * i2].im * b->data[i2 + b->size[0] * i1].
-                          re;
-                        Pn->data[i0 + Pn->size[0] * i1].re += apnd;
-                        Pn->data[i0 + Pn->size[0] * i1].im += cdiff;
+                    i = b->size[1];
+                    for (i1 = 0; i1 < i; i1++) {
+                      Rxx->data[i0 + Rxx->size[0] * i1].re = 0.0;
+                      Rxx->data[i0 + Rxx->size[0] * i1].im = 0.0;
+                      c_loop_ub = Qn->size[1];
+                      for (i2 = 0; i2 < c_loop_ub; i2++) {
+                        apnd = Qn->data[i0 + Qn->size[0] * i2].re * b->data[i2 +
+                          b->size[0] * i1].re - Qn->data[i0 + Qn->size[0] * i2].
+                          im * b->data[i2 + b->size[0] * i1].im;
+                        cdiff = Qn->data[i0 + Qn->size[0] * i2].re * b->data[i2
+                          + b->size[0] * i1].im + Qn->data[i0 + Qn->size[0] * i2]
+                          .im * b->data[i2 + b->size[0] * i1].re;
+                        Rxx->data[i0 + Rxx->size[0] * i1].re += apnd;
+                        Rxx->data[i0 + Rxx->size[0] * i1].im += cdiff;
                       }
                     }
                   }
@@ -1606,59 +1591,58 @@ void forCoder(double seed)
                   i0 = Utmp->size[0];
                   remaining = b->size[1];
                   i1 = Utmp->size[0];
-                  i2 = Pn->size[0] * Pn->size[1];
-                  Pn->size[0] = i1;
-                  Pn->size[1] = b->size[1];
-                  emxEnsureCapacity_creal_T(Pn, i2);
+                  i2 = Rxx->size[0] * Rxx->size[1];
+                  Rxx->size[0] = i1;
+                  Rxx->size[1] = b->size[1];
+                  emxEnsureCapacity_creal_T(Rxx, i2);
                   for (j = 0; j < remaining; j++) {
                     nm1d2 = j * i0;
-                    boffset = j * columnsNum;
+                    boffset = j * loop_ub;
                     for (i = 0; i < i0; i++) {
                       i1 = nm1d2 + i;
-                      Pn->data[i1].re = 0.0;
-                      Pn->data[i1].im = 0.0;
+                      Rxx->data[i1].re = 0.0;
+                      Rxx->data[i1].im = 0.0;
                     }
 
-                    for (k = 0; k < columnsNum; k++) {
+                    for (k = 0; k < loop_ub; k++) {
                       aoffset = k * i0;
-                      b_index = boffset + k;
-                      apnd = b->data[b_index].re;
-                      cdiff = b->data[b_index].im;
+                      apnd = b->data[boffset + k].re;
+                      cdiff = b->data[boffset + k].im;
                       for (i = 0; i < i0; i++) {
                         b_index = aoffset + i;
-                        temp_re = apnd * Rxx->data[b_index].re - cdiff *
-                          Rxx->data[b_index].im;
-                        temp_im = apnd * Rxx->data[b_index].im + cdiff *
-                          Rxx->data[b_index].re;
+                        temp_re = apnd * Qn->data[b_index].re - cdiff * Qn->
+                          data[b_index].im;
+                        temp_im = apnd * Qn->data[b_index].im + cdiff * Qn->
+                          data[b_index].re;
                         i1 = nm1d2 + i;
-                        Pn->data[i1].re += temp_re;
-                        Pn->data[i1].im += temp_im;
+                        Rxx->data[i1].re += temp_re;
+                        Rxx->data[i1].im += temp_im;
                       }
                     }
                   }
                 }
 
                 /*  Pn completed */
-                if ((Pn->size[1] == 1) || (steeringVector->size[0] == 1)) {
+                if ((Rxx->size[1] == 1) || (steeringVector->size[0] == 1)) {
                   i0 = b_y->size[0] * b_y->size[1];
-                  b_y->size[0] = Pn->size[0];
+                  b_y->size[0] = Rxx->size[0];
                   b_y->size[1] = 108781;
                   emxEnsureCapacity_creal_T(b_y, i0);
-                  loop_ub = Pn->size[0];
+                  loop_ub = Rxx->size[0];
                   for (i0 = 0; i0 < loop_ub; i0++) {
                     for (i1 = 0; i1 < 108781; i1++) {
                       b_y->data[i0 + b_y->size[0] * i1].re = 0.0;
                       b_y->data[i0 + b_y->size[0] * i1].im = 0.0;
-                      c_loop_ub = Pn->size[1];
-                      for (i2 = 0; i2 < c_loop_ub; i2++) {
-                        apnd = Pn->data[i0 + Pn->size[0] * i2].re *
+                      i = Rxx->size[1];
+                      for (i2 = 0; i2 < i; i2++) {
+                        apnd = Rxx->data[i0 + Rxx->size[0] * i2].re *
                           steeringVector->data[i2 + steeringVector->size[0] * i1]
-                          .re - Pn->data[i0 + Pn->size[0] * i2].im *
+                          .re - Rxx->data[i0 + Rxx->size[0] * i2].im *
                           steeringVector->data[i2 + steeringVector->size[0] * i1]
                           .im;
-                        cdiff = Pn->data[i0 + Pn->size[0] * i2].re *
+                        cdiff = Rxx->data[i0 + Rxx->size[0] * i2].re *
                           steeringVector->data[i2 + steeringVector->size[0] * i1]
-                          .im + Pn->data[i0 + Pn->size[0] * i2].im *
+                          .im + Rxx->data[i0 + Rxx->size[0] * i2].im *
                           steeringVector->data[i2 + steeringVector->size[0] * i1]
                           .re;
                         b_y->data[i0 + b_y->size[0] * i1].re += apnd;
@@ -1667,10 +1651,10 @@ void forCoder(double seed)
                     }
                   }
                 } else {
-                  m = Pn->size[0];
-                  remaining = Pn->size[1];
+                  m = Rxx->size[0];
+                  remaining = Rxx->size[1];
                   i0 = b_y->size[0] * b_y->size[1];
-                  b_y->size[0] = Pn->size[0];
+                  b_y->size[0] = Rxx->size[0];
                   b_y->size[1] = 108781;
                   emxEnsureCapacity_creal_T(b_y, i0);
                   for (j = 0; j < 108781; j++) {
@@ -1689,10 +1673,10 @@ void forCoder(double seed)
                       cdiff = steeringVector->data[b_index].im;
                       for (i = 0; i < m; i++) {
                         b_index = aoffset + i;
-                        temp_re = apnd * Pn->data[b_index].re - cdiff * Pn->
-                          data[b_index].im;
-                        temp_im = apnd * Pn->data[b_index].im + cdiff * Pn->
-                          data[b_index].re;
+                        temp_re = apnd * Rxx->data[b_index].re - cdiff *
+                          Rxx->data[b_index].im;
+                        temp_im = apnd * Rxx->data[b_index].im + cdiff *
+                          Rxx->data[b_index].re;
                         i0 = nm1d2 + i;
                         b_y->data[i0].re += temp_re;
                         b_y->data[i0].im += temp_im;
@@ -2085,14 +2069,12 @@ void forCoder(double seed)
                           name_Value_data, name_Value_size);
               b_string_plus(name_Value_data, name_Value_size,
                             filename_Value_data, b_tmp_size);
-              string_string(1.0 - (double)smoothing, name_Value_data,
-                            name_Value_size);
+              string_string(smoothing, name_Value_data, name_Value_size);
               c_string_plus(filename_Value_data, b_tmp_size, name_Value_data,
                             name_Value_size, t0_Value_data, t0_Value_size);
               d_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
                             b_tmp_size);
-              string_string(1.0 - (double)backw, name_Value_data,
-                            name_Value_size);
+              string_string(backw, name_Value_data, name_Value_size);
               c_string_plus(filename_Value_data, b_tmp_size, name_Value_data,
                             name_Value_size, t0_Value_data, t0_Value_size);
               e_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
@@ -2102,7 +2084,7 @@ void forCoder(double seed)
                             name_Value_size, t0_Value_data, t0_Value_size);
               f_string_plus(t0_Value_data, t0_Value_size, filename_Value_data,
                             b_tmp_size);
-              string_string(2.0 - (double)perSpec, name_Value_data,
+              string_string(1.0 + (double)perSpec, name_Value_data,
                             name_Value_size);
               c_string_plus(filename_Value_data, b_tmp_size, name_Value_data,
                             name_Value_size, t0_Value_data, t0_Value_size);
@@ -2173,7 +2155,7 @@ void forCoder(double seed)
   emxFree_creal_T(&Utmp);
   emxFree_real_T(&newEstimation);
   emxFree_boolean_T(&isStrongEnough);
-  emxFree_creal_T(&Pn);
+  emxFree_creal_T(&Qn);
   emxFree_creal_T(&Rxx);
   emxFree_creal_T(&mat);
   emxFree_real_T(&nsDelayAngleSpotfiEstimated);
