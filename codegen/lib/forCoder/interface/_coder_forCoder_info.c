@@ -2,7 +2,7 @@
  * File: _coder_forCoder_info.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 16-Jul-2020 16:31:04
+ * C/C++ source code generated on  : 17-Jul-2020 17:26:12
  */
 
 /* Include Files */
@@ -20,7 +20,7 @@ const mxArray *emlrtMexFcnResolvedFunctionsInfo(void)
   const char * data[386] = {
     "789cecbd7d8c2bd97527468f3ceb9105af688de499b146f63c69f6ed58725ef3a3d9dd1c5b32bfbfbaf9d5ec26d91ccd7417c92259cd6255b1aac8261907a1e0"
     "dd8d36b10d19fe27860d48f963bdb6626b9f95603dce0a0e27d11f42fed8d880d67f4801327156880d180b038915049b2f92c5ead755c3fbc8d775798b553c17",
-    "18dcc73eddf77779e6d6ef9c3af7dc731d3f924cff88c3e1f8fbd3ff5efe8f1d8edc3ffe9863d67ec2a134e7a27fcea16d7af98f2cfa573ea4fdacb6e71d3faa"
+    "18dcc73eddf77779e6d6ef9c3af7dc731d3f924cff88c3e1f8fbd3ff5ef98f1d8edc3ffe9863d67ec2a134e7a27fcea16d7af98f2cfa573ea4fdacb6e71d3faa"
     "f9bb1f59e0fdcee2738de7647a202b1f5886a333bd4e9516a71f38aa43df0e53e73b0c4771f2d950a01d222df16c9faecf250d86a5cf980e7dc2dff99060a61f",
     "3ab13ba2db0f33d1ecdfe1165d6b177a1d87d8929e4c97bdfbc1b1d0cfac7d19f1fd7f744dfd3cd47d76e87e4f95bf157d7bafc577e83d819f6a83daabb134c5"
     "5d767a1253db6bf06298afd3e2a3ce93795d2170ffde9af3d2f76afbb0e3853b9ffef6bf55f10688f1d6d5c32710784e9dbc36ffa2cc7471881cc53e926491e1",
@@ -787,7 +787,7 @@ const mxArray *emlrtMexFcnResolvedFunctionsInfo(void)
     "7ff602f8f99d6e17a4c3c42811bfb9296647fe60cebf132b457c3b2e8afbbe87f83de4fddc91bb1ffc3ab6f5fff3d6bfb48ab7eabc406f1411456a8c6d9dbfe6"
     "7b1ad475fe7c9648dfd330fda7740af4b9d3f5f969818aa4c75cbcc185c6912ed5bd8e4bd544d23dfafc03c4efcdce238be8df6be05b5ee70f29966951327db1",
     "58d85f506267d0a339599aaff7e7eb35f57b792cd0779faf8e183f56b90c1f63d3f72f1a3e7b6eff4ee130922450a2443bf51ceef3d8fffbe8fbd9e42c0e7ca8"
-    "d36483fd0fbff8e5b741ef3b5def5f9f66a4247b554dfadb62991d5e16b2dc4dc905f93aff3f8ce10d46",
+    "d36483fd0fbff8e5b741ef3b5def5f9f66a4247b554dfadb62991d5e16b2dc4dc905f93aff3f99540d48",
     "" };
 
   nameCaptureInfo = NULL;
@@ -820,7 +820,7 @@ mxArray *emlrtMexFcnProperties(void)
   emlrtSetField(xEntryPoints, 0, "FullPath", emlrtMxCreateString(
     "/home/polina/clean_music/forCoder.m"));
   emlrtSetField(xEntryPoints, 0, "TimeStamp", emlrtMxCreateDoubleScalar
-                (737988.68806712958));
+                (737989.72637731477));
   xResult = emlrtCreateStructMatrix(1, 1, 4, b_fldNames);
   emlrtSetField(xResult, 0, "Version", emlrtMxCreateString(
     "9.5.0.944444 (R2018b)"));

@@ -240,7 +240,7 @@ for ant = antennasNum
                                 % eig completed
                                 
 %                                 Qn = U(:,1:numberOfSourses);
-                                Qn = U(:,1:end-2);
+                                Qn = U(:,1:end-1);
                                 Pn = (Qn*Qn');
                                 
                                 % Pn completed

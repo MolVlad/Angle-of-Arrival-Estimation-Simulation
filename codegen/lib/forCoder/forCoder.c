@@ -2,7 +2,7 @@
  * File: forCoder.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 16-Jul-2020 16:31:04
+ * C/C++ source code generated on  : 17-Jul-2020 17:26:12
  */
 
 /* Include Files */
@@ -495,8 +495,9 @@ void forCoder(double seed)
     subdir_Value[i0 + 6] = seed_str[i0];
   }
 
+  /*  LOLKEK tupo chill */
   mkdir(subdir_Value, 0777);
-
+  /*  LOLKEK tupo chill */
   for (i0 = 0; i0 < 6; i0++) {
     filename_Value[i0] = cv1[i0];
   }
@@ -1517,10 +1518,10 @@ void forCoder(double seed)
 
                 /*  eig completed */
                 /*                                  Qn = U(:,1:numberOfSourses); */
-                if (1 > b_csiFromEachPacket_size[0] - 2) {
+                if (1 > b_csiFromEachPacket_size[0] - 1) {
                   loop_ub = 0;
                 } else {
-                  loop_ub = b_csiFromEachPacket_size[0] - 2;
+                  loop_ub = b_csiFromEachPacket_size[0] - 1;
                 }
 
                 i = Utmp->size[0];
