@@ -1,4 +1,4 @@
-algorithm = [1, 0];  % 0 - spotfi; 1 - arraytrack; 2 - orion
+algorithm = [0];  % 0 - spotfi; 1 - arraytrack; 2 - orion
 randomSeedForScenario = [5];
 numberOfAntennas = [4];
 useSmothing = [0];
@@ -23,6 +23,7 @@ globalParam.printResultingSpotfiOutput = 0;
 
 % globalParam.SpotfiEigenMode = 1;
 globalParam.SpotfiEigenMode = 1;
+globalParam.SpotfiNumNoiseEigVector = -1; % if < 0 then num of strongest signal eigen vectors
 
 for seed = randomSeedForScenario
     for ant = numberOfAntennas
