@@ -11,22 +11,36 @@ for readCSIfromFile = 1
             matrixCSI = file.matrixCSI;
             matrixCSI = matrixCSI(subCarrInd,1:globalParam.numberOfAntennas,:);
         case 1
-            s=sprintf('%d',int32(globalParam.seedForScenario)); seed_str = '00000'; seed_str(end+1-length(s):end) = s;
-            matrixCSI = readfile("../music/experiment/winner_csi/csi_"+seed_str+".txt",28080);
-            matrixCSI = reshape(matrixCSI, 117, 8, 30);
+            csi=sprintf('%d',int32(globalParam.seedForScenario)); seed_str = '00000'; seed_str(end+1-length(csi):end) = csi;
+            matrixCSI = readfile("../music/experiment/winner_csi/csi_"+seed_str+".txt",28800);
+            matrixCSI = reshape(matrixCSI, 120, 8, 30);
             matrixCSI = matrixCSI(subCarrInd,1:globalParam.numberOfAntennas,:);
     end
+    
 end % read CSI from file
 
 for mainPartOfComputingSpotfi = 1
     sanitizedVectorCSI = sanitizeCSI(matrixCSI, subCarrInd);
 
     sanitizedVectorCSI = permute(sanitizedVectorCSI, [2 1 3]);
-    Rxx = zeros(size(sanitizedVectorCSI, 1), size(sanitizedVectorCSI, 1), globalParam.OrionNumberOfIterations);
+    
+    if globalParam.OrionBackwardSmoothingUsed
+        sanitizedVectorCSI = [sanitizedVectorCSI conj(sanitizedVectorCSI(size(sanitizedVectorCSI,1):-1:1,:,:))];
+    end
+    
+    L = size(sanitizedVectorCSI, 1) - globalParam.OrionSubarrayNum + 1;
+    Rxx = zeros(L, L, globalParam.OrionNumberOfIterations);
     for j = 1:globalParam.OrionNumberOfIterations
         for i = 1:globalParam.numberOfPacketsPerIteration
-            s = sanitizedVectorCSI(:,:,i+(j-1)*globalParam.numberOfPacketsPerIteration);
-            Rxx(:,:,j) = Rxx(:,:,j) + s*s'; % correlation matrix
+            csi = sanitizedVectorCSI(:,:,i+(j-1)*globalParam.numberOfPacketsPerIteration);
+            
+            for i = 1:globalParam.OrionSubarrayNum
+                s = csi(i:i+L-1,:);
+                rxx(:,:,i)=s*s';
+            end
+            rxx = sum(rxx,3) / globalParam.OrionSubarrayNum;
+    
+            Rxx(:,:,j) = Rxx(:,:,j) + rxx; % correlation matrix
         end
     end
     
@@ -52,23 +66,23 @@ for mainPartOfComputingSpotfi = 1
                 En{j} = U(:,1:numberOfSpatialSources);
             end
             
-            if globalParam.OrionMeasurement
-                d = sort(eigenValue);
-                N = length(ne);
-                
-                str = "noise:";
-                for i = 1:N
-                    str = str + " " + string(round(d(i)*1000)/1000);
-                end
-                str = str + " signal:";
-                for i = N+1:length(d)
-                    str = str + " " + string(round(d(i)*1000)/1000);
-                end
-                str = str + "\n";
-                fileID = fopen(globalParam.directory+"OrionEigen.txt", 'a');
-                fprintf(fileID, str);
-                fclose(fileID);
-            end
+%             if globalParam.OrionMeasurement
+%                 d = sort(eigenValue);
+%                 N = length(ne);
+%                 
+%                 str = "noise:";
+%                 for i = 1:N
+%                     str = str + " " + string(round(d(i)*1000)/1000);
+%                 end
+%                 str = str + " signal:";
+%                 for i = N+1:length(d)
+%                     str = str + " " + string(round(d(i)*1000)/1000);
+%                 end
+%                 str = str + "\n";
+%                 fileID = fopen(globalParam.directory+"OrionEigen.txt", 'a');
+%                 fprintf(fileID, str);
+%                 fclose(fileID);
+%             end
         elseif globalParam.OrionMode == 1
             [Utmp,eigenValue] = eig(Rxx(:,:,j));
             eigenValue = diag(eigenValue);
@@ -79,8 +93,8 @@ for mainPartOfComputingSpotfi = 1
         end
     end
     
-    antennasPositions = zeros(globalParam.numberOfAntennas,3);
-    for i=1:globalParam.numberOfAntennas
+    antennasPositions = zeros(globalParam.numberOfAntennas - globalParam.OrionSubarrayNum + 1,3);
+    for i=1:size(antennasPositions,1)
         antennasPositions(i,1)=globalParam.separationBetweenAntennas*i;
     end
     
@@ -109,26 +123,25 @@ for mainPartOfComputingSpotfi = 1
     end
     
     if globalParam.OrionMeasurement
-        for i = 1:length(OrionEstimatedAngles)
-            dlmwrite(globalParam.directory+"OrionEstimatedAngles.txt", OrionEstimatedAngles{i}', '-append', 'delimiter', '\t');
-        end
-        
-        fileID = fopen(globalParam.directory+'OrionStableStdMean.txt', 'w');
-        fprintf(fileID, 'std\tangle\n');
-        fclose(fileID);
-        dlmwrite(globalParam.directory+"OrionStableStdMean.txt", OrionStableStdMean, '-append', 'delimiter', '\t');
-        
-%         if size(OrionStableStdMean,1) < 2
-%             OrionStableStdMean(2,:) = [999 999];
+%         for i = 1:length(OrionEstimatedAngles)
+%             dlmwrite(globalParam.directory+"OrionEstimatedAngles.txt", OrionEstimatedAngles{i}', '-append', 'delimiter', '\t');
 %         end
-%         fileID = fopen(globalParam.fileForOrionResults, 'a');
-%         fprintf(fileID, string(globalParam.numberOfAntennas)+ ...
-%             "\t"+string(globalParam.seedForScenario)+"\t"+string(globalParam.SNR)+"\t"+string(globalParam.Kfactor)+ ...
-%             "\t"+string(globalParam.AngleOfLOS)+"\t"+string(OrionStableStdMean(1,2))+"\t"+string(OrionStableStdMean(1,1))+ ...
-%             "\t"+string(abs(OrionStableStdMean(1,2)-globalParam.AngleOfLOS))+"\t"+string(OrionStableStdMean(2,2))+ ...
-%             "\t"+string(OrionStableStdMean(2,1))+ ...
-%             "\t"+string(globalParam.ArraytrackUsedPacketNum)+"\t"+string(globalParam.numberOfPacketsPerIteration)+"\t");
+        
+%         fileID = fopen(globalParam.directory+'OrionStableStdMean.txt', 'w');
+%         fprintf(fileID, 'std\tangle\n');
 %         fclose(fileID);
+%         dlmwrite(globalParam.directory+"OrionStableStdMean.txt", OrionStableStdMean, '-append', 'delimiter', '\t');
+        
+        if size(OrionStableStdMean,1) < 2
+            OrionStableStdMean(2,:) = [999 999];
+        end
+        fileID = fopen(globalParam.fileForOrionResults, 'a');
+        fprintf(fileID, string(globalParam.numberOfAntennas)+ ...
+            "\t"+string(globalParam.seedForScenario)+"\t"+string(globalParam.SNR)+"\t"+string(globalParam.Kfactor)+ ...
+            "\t"+string(globalParam.AngleOfLOS)+"\t"+string(OrionStableStdMean(1,2))+"\t"+string(OrionStableStdMean(1,1))+ ...
+            "\t"+string(abs(OrionStableStdMean(1,2)-globalParam.AngleOfLOS))+"\t"+string(OrionStableStdMean(2,2))+ ...
+            "\t"+string(OrionStableStdMean(2,1))+"\t");
+        fclose(fileID);
     end
     
     if globalParam.plotOrionSpectrum
@@ -160,7 +173,7 @@ for mainPartOfComputingSpotfi = 1
     end
 end
 
-end % Spotfi
+end
 
 function sanitizedVectorCSI = sanitizeCSI(vectorCSI, subCarrInd)
 

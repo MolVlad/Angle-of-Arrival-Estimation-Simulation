@@ -112,21 +112,13 @@ global globalParam;
 
 for findingEigenVectors = 1
     L = size(antennasPositions,1);
-    if globalParam.ArraytrackSumFirst
-        s = zeros(L, size(signal,2));
-        for i = 1:globalParam.ArraytrackSubarrayNum
-            s = s + signal(i:i+L-1,:);
-        end
-        s = s / globalParam.ArraytrackSubarrayNum;
-        Rxx=s*s' / globalParam.ArraytrackSampleNum; % correlation matrix
-    else
-        Rxx = zeros(L,L, globalParam.ArraytrackSubarrayNum);
-        for i = 1:globalParam.ArraytrackSubarrayNum
-            s = signal(i:i+L-1,:);
-            Rxx(:,:,i)=s*s'/globalParam.ArraytrackSampleNum; % correlation matrix
-        end
-        Rxx = sum(Rxx,3) / globalParam.ArraytrackSubarrayNum;
+
+    Rxx = zeros(L,L, globalParam.ArraytrackSubarrayNum);
+    for i = 1:globalParam.ArraytrackSubarrayNum
+        s = signal(i:i+L-1,:);
+        Rxx(:,:,i)=s*s'/globalParam.ArraytrackSampleNum; % correlation matrix
     end
+    Rxx = sum(Rxx,3) / globalParam.ArraytrackSubarrayNum;
     
     if globalParam.ArraytrackMode == 0 % old way, comparison with threshold
         [Utmp, eigenValue]=eig(Rxx);

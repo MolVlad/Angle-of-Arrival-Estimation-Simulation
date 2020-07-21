@@ -35,6 +35,8 @@ saveArraytrackSpectrum = 0;
 saveSpotfiClusters = 0;
 saveOrionSpectrum = 0;
 
+globalParam.OrionCsiSource = 1; % 0 - from csi.mat; 1 - from winner_csi/csi_?????
+
 globalParam.OrionMeasurement = 1;
 globalParam.SpotfiMeasurement = 1;
 globalParam.ArraytrackMeasurement = 1;
@@ -263,44 +265,48 @@ for r=randomSeedForScenario
                 globalParam.numberOfAntennas = ant;
                 for smoothing = useSmothing
                     for band = bandwidth
-                        for dec = subcarrierDecimationUsed
-                            for perSpec = packetPerSpectrum
-                                for p = packetNum
-                                    globalParam.numberOfPacketsPerIteration = perSpec;
-                                    globalParam.OrionNumberOfIterations = floor(p / perSpec);
-                                    
-                                    switch band
-                                        case 20
-                                            globalParam.subCarrIndEnd = 56;
-                                            if dec
-                                                globalParam.subCarrIndStep = 2;
-                                            else
-                                                globalParam.subCarrIndStep = 1;
-                                            end
-                                        case 40
-                                            globalParam.subCarrIndEnd = 117;
-                                            if dec
-                                                globalParam.subCarrIndStep = 4;
-                                            else
-                                                globalParam.subCarrIndStep = 1;
-                                            end
-                                        otherwise
-                                            error('band error');
-                                    end
-                                    
-                                    directory = "experiment/"+"r_"+string(r)+"/ant_"+string(ant)+"/subArr_"+string(smoothing)+ ...
-                                        "/Orion/packNum_"+string(p)+"/perSpec_"+string(perSpec)+"/bandwidth_"+ ...
-                                        string(band)+"/dec_" + string(dec)+"/";
-                                    
-                                    [status, msg] = mkdir(directory); 
-                                    
-                                    if isempty(msg)
-                                        globalParam.directory = directory;
+                        for backw = backwardSmoothingUsed
+                            for dec = subcarrierDecimationUsed
+                                for perSpec = packetPerSpectrum
+                                    for p = packetNum
+                                        globalParam.numberOfPacketsPerIteration = perSpec;
+                                        globalParam.OrionNumberOfIterations = floor(p / perSpec);
                                         
-                                        Orion();
-                                        fileID = fopen(globalParam.fileForOrionResults, 'a');
-                                        fprintf(fileID, string(band)+"\t"+string(dec)+"\n");
-                                        fclose(fileID);
+                                        globalParam.OrionBackwardSmoothingUsed = backw;
+                                        
+                                        switch band
+                                            case 20
+                                                globalParam.subCarrIndEnd = 56;
+                                                if dec
+                                                    globalParam.subCarrIndStep = 2;
+                                                else
+                                                    globalParam.subCarrIndStep = 1;
+                                                end
+                                            case 40
+                                                globalParam.subCarrIndEnd = 117;
+                                                if dec
+                                                    globalParam.subCarrIndStep = 4;
+                                                else
+                                                    globalParam.subCarrIndStep = 1;
+                                                end
+                                            otherwise
+                                                error('band error');
+                                        end
+                                        
+                                        directory = "experiment/"+"r_"+string(r)+"/ant_"+string(ant)+"/subArr_"+string(smoothing)+ ...
+                                            "/backw_"+string(backw)+"/Orion/packNum_"+string(p)+"/perSpec_"+string(perSpec)+"/bandwidth_"+ ...
+                                            string(band)+"/dec_" + string(dec)+"/";
+                                        
+                                        [status, msg] = mkdir(directory);
+                                        
+                                        if isempty(msg)
+                                            globalParam.directory = directory;
+                                            
+                                            Orion();
+                                            fileID = fopen(globalParam.fileForOrionResults, 'a');
+                                            fprintf(fileID, string(band)+"\t"+string(dec)+"\n");
+                                            fclose(fileID);
+                                        end
                                     end
                                 end
                             end

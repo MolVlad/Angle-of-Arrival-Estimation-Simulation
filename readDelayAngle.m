@@ -8,7 +8,7 @@ SpotfiMeasurement = 1;
 directory = "SpotfiClusters/";
 mkdir(directory);
 data_dir = "experiment_spotfi/";
-fileForResults = "SpotfiResults_fixed_eigen.txt";
+fileForResults = "SpotfiResults_fixed_eigen_1.txt";
 
 if ~isfile(directory+fileForResults)
     fileID = fopen(directory+fileForResults, 'w');
@@ -35,7 +35,7 @@ all = length(randomSeedForScenario);
 i = 0;
 for seed=randomSeedForScenario
     s=sprintf('%d',int32(seed)); seed_str = '00000'; seed_str(end+1-length(s):end) = s;
-    data_dir = "run_cluster/results/music_fixed_eigen/music_"+seed_str+"/";
+    data_dir = "run_cluster/results/music_fixed_eigen_1/music_"+seed_str+"/";
     for ant=numberOfAntennas
         for smoothing = useSmothing
             for backw = backwardSmoothingUsed

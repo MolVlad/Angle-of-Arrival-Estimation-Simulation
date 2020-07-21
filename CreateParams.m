@@ -3,7 +3,7 @@ function CreateParams()
 global globalParam;
 
 for runSettings = 1
-    globalParam.runSpotfi = 1;
+    globalParam.runSpotfi = 0;
     globalParam.runClassicalMusic = 0;
     globalParam.runOrion = 0;
     globalParam.runArraytrack = 0;
@@ -18,10 +18,10 @@ for ExperimentSetupSettings = 1
     globalParam.centralFrequency = 5.63e9;
     globalParam.frequencyGap = 312.5e3; % frequency gap in Hz between successive subcarriers in WiFi
     globalParam.separationBetweenAntennas = physconst('LightSpeed')/globalParam.centralFrequency/2; % lambda/2 - distance between antennas
-    globalParam.numberOfAntennas = 4;   % max 10, after reboot - 14 or 19
+    globalParam.numberOfAntennas = 8;   % max 10, after reboot - 14 or 19
 end % experiment setup settings such as central frequency, antennas number, antennas separation
 for outputConfig = 1
-    globalParam.printWinnerOutput = 0;
+    globalParam.printWinnerOutput = 1;
     globalParam.printWinnerOutputMatrix = 0;
     globalParam.printDifAngleCSI = 0;
     globalParam.printClassicalMusicOutput = 0;
@@ -52,10 +52,10 @@ for PlotConfig = 1
     globalParam.directory = "graphs/";
     globalParam.plotClassicalMusicSpectrum = 1;
     globalParam.saveClassicalMusicSpectrum = 0;  % to save it's necessary to plot
-    globalParam.plotOrionSpectrum = 0;
+    globalParam.plotOrionSpectrum = 1;
     globalParam.saveOrionSpectrum = 0;
     globalParam.closeOrionSpectrum = 0;
-    globalParam.plotArraytrackSpectrum = 0;
+    globalParam.plotArraytrackSpectrum = 1;
     globalParam.saveArraytrackSpectrum = 0;  % to save it's necessary to plot
     globalParam.closeArraytrackSpectrum = 0;
     globalParam.plotSpotfiSpectrum = 0;
@@ -77,8 +77,7 @@ end % PlotConfig
 for ArraytrackConfig = 1
     globalParam.fileForArraytrackResults = 'experiment/ArraytrackResults.txt';
     globalParam.ArraytrackBackwardSmoothingUsed = 0;
-    globalParam.ArraytrackUsedPacketNum = 10;
-    globalParam.ArraytrackSumFirst = 0;
+    globalParam.ArraytrackUsedPacketNum = 1;
     globalParam.ArraytrackSampleNum = 600; % number of samples used in correlation matrix finding
     globalParam.ArraytrackSubarrayNum = 2;
     globalParam.ArraytrackMode = 0; % 0 - default with threshold, 1 - fixed amount of noise eig value
@@ -92,6 +91,8 @@ for ArraytrackConfig = 1
 end
 for OrionConfig = 1
     globalParam.fileForOrionResults = 'OrionResults.txt';
+    globalParam.OrionBackwardSmoothingUsed = 0;
+    globalParam.OrionSubarrayNum = 1;
     globalParam.OrionMeasurement = 0;
     globalParam.OrionMode = 0;
     globalParam.OrionThreshold = 0.1;
@@ -102,8 +103,8 @@ for OrionConfig = 1
     globalParam.saveArraytrackPeaks = 0;
     globalParam.printOrionOutput = 0;
     globalParam.printOrionStablePeaks = 0;
-    globalParam.OrionNumberOfIterations = 10;
-    globalParam.OrionCsiSource = 1; % 0 - from csi.mat; 1 - from winner_csi/csi_?????
+    globalParam.OrionNumberOfIterations = 1;
+    globalParam.OrionCsiSource = 0; % 0 - from csi.mat; 1 - from winner_csi/csi_?????
 end
 for classicalMusicConfig = 1
     globalParam.classicalMusicBackwardSmoothingUsed = 0;
@@ -152,11 +153,11 @@ end
 for WinnerChannelConfiguration = 1
     globalParam.roundDelays = 1;
     globalParam.oversamplingFactor = 1;
-    globalParam.seedForScenario = 5;
+    globalParam.seedForScenario = 1;
     globalParam.realisticScenario = 1;
-    globalParam.AngleOfLOS = 10;
+    globalParam.AngleOfLOS = 0;
     globalParam.WinnerUseLos = 0;
-    globalParam.Kfactor = 0.5; % в разах по мощности. previous: 2.0338. if 0 then is set automatically 
+    globalParam.Kfactor = 2; % в разах по мощности. previous: 2.0338. if 0 then is set automatically 
     % normStream = RandStream('v5normal','Seed',1); 10.^(0.1*(6*randn(normStream, 25, 1)+ 7))
     globalParam.WinnerArrayRotationAngle = 0;
     globalParam.WinnerUseAWGN = 1;
