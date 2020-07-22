@@ -16,7 +16,7 @@ globalParam.OrionCsiSource = 0; % 0 - from csi.mat; 1 - from winner_csi/csi_????
 globalParam.OrionMeasurement = 1;
 globalParam.plotOrionSpectrum = 0;
 
-randomSeedForScenario = 7040:10000;
+randomSeedForScenario = 1:10000;
 numberOfAntennas = [8 4];
 packetNum = [30 10];
 packetPerSpectrum = [2 1];
@@ -30,13 +30,14 @@ expNum = 0;
 
 for r=randomSeedForScenario
     tic
+
+    globalParam.seedForScenario = r;
     
     csi=sprintf('%d',int32(globalParam.seedForScenario)); seed_str = '00000'; seed_str(end+1-length(csi):end) = csi;
     matrixCSI = readfile("../music/experiment/winner_csi/csi_"+seed_str+".txt",28800);
     matrixCSI = reshape(matrixCSI, 120, 8, 30);
     save('data/matrixCSI.mat', 'matrixCSI');
     
-    globalParam.seedForScenario = r;
     for OrionRun = 1
         if saveOrionSpectrum
             globalParam.plotOrionSpectrum = 1;

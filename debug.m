@@ -1,11 +1,11 @@
-algorithm = [0];  % 0 - spotfi; 1 - arraytrack; 2 - orion
-randomSeedForScenario = [5];
-numberOfAntennas = [4];
+algorithm = [2];  % 0 - spotfi; 1 - arraytrack; 2 - orion
+randomSeedForScenario = [2];
+numberOfAntennas = [8];
 useSmothing = [0];
 backwardSmoothingUsed = [0];
 packetNum = [10];
 packetPerSpectrum = [1];
-bandwidth = [20];
+bandwidth = [40];
 subcarrierDecimationUsed = [0];
 
 closePlots = 0;
@@ -263,13 +263,6 @@ for seed = randomSeedForScenario
                                         otherwise
                                             error('band error');
                                     end
-                                    
-                                    directory = "debug/"+"r_"+string(seed)+"/ant_"+string(ant)+"/smoothing_"+string(smoothing)+ ...
-                                        "/Orion/packNum_"+string(p)+"/perSpec_"+string(perSpec)+"/bandwidth_"+ ...
-                                        string(band)+"/dec_" + string(dec)+"/";
-                                    
-                                    [status, msg] = mkdir(directory);
-                                    globalParam.directory = directory;
                                     
                                     Orion();
 
