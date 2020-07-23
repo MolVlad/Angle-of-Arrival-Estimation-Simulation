@@ -2,7 +2,7 @@
  * File: xztgevc.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 17-Jul-2020 17:26:12
+ * C/C++ source code generated on  : 23-Jul-2020 18:38:00
  */
 
 /* Include Files */
@@ -23,12 +23,12 @@ void xztgevc(const emxArray_creal_T *A, emxArray_creal_T *V)
 {
   int n;
   int loop_ub;
-  creal_T work1_data[224];
-  creal_T work2_data[224];
+  creal_T work1_data[406];
+  creal_T work2_data[406];
   double SMALL;
   double BIG;
   double BIGNUM;
-  double rworka_data[224];
+  double rworka_data[406];
   double anorm;
   int i40;
   int j;

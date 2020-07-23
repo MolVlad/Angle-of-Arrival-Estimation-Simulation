@@ -2,7 +2,7 @@
  * File: xzungqr.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 17-Jul-2020 17:26:12
+ * C/C++ source code generated on  : 23-Jul-2020 18:38:00
  */
 
 /* Include Files */
@@ -30,11 +30,11 @@ void xzungqr(int m, int n, int k, emxArray_creal_T *A, int ia0, int lda, const
   int j;
   int itau;
   int ia;
-  unsigned char unnamed_idx_0;
+  short unnamed_idx_0;
   int b_k;
   int i;
   int iaii;
-  creal_T work_data[224];
+  creal_T work_data[406];
   double a_re;
   double a_im;
   double A_re;
@@ -56,7 +56,7 @@ void xzungqr(int m, int n, int k, emxArray_creal_T *A, int ia0, int lda, const
     }
 
     itau = k - 1;
-    unnamed_idx_0 = (unsigned char)A->size[1];
+    unnamed_idx_0 = (short)A->size[1];
     ia = unnamed_idx_0;
     for (i36 = 0; i36 < ia; i36++) {
       work_data[i36].re = 0.0;

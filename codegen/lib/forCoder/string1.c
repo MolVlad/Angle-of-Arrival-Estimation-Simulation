@@ -2,7 +2,7 @@
  * File: string1.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 17-Jul-2020 17:26:12
+ * C/C++ source code generated on  : 23-Jul-2020 18:38:00
  */
 
 /* Include Files */
@@ -40,28 +40,25 @@ void b_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
 /*
  * Arguments    : const char obj1_Value_data[]
  *                const int obj1_Value_size[2]
- *                const char obj2_Value_data[]
- *                const int obj2_Value_size[2]
  *                char obj_Value_data[]
  *                int obj_Value_size[2]
  * Return Type  : void
  */
 void c_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
-                   const char obj2_Value_data[], const int obj2_Value_size[2],
                    char obj_Value_data[], int obj_Value_size[2])
 {
-  int loop_ub;
   int i15;
+  static const char obj2Value[7] = { '_', 'b', 'a', 'c', 'k', 'w', '_' };
+
   obj_Value_size[0] = 1;
-  obj_Value_size[1] = obj1_Value_size[1] + obj2_Value_size[1];
+  obj_Value_size[1] = obj1_Value_size[1] + 7;
   if (0 <= obj1_Value_size[1] - 1) {
     memcpy(&obj_Value_data[0], &obj1_Value_data[0], (unsigned int)
            (obj1_Value_size[1] * (int)sizeof(char)));
   }
 
-  loop_ub = obj2_Value_size[1];
-  for (i15 = 0; i15 < loop_ub; i15++) {
-    obj_Value_data[i15 + obj1_Value_size[1]] = obj2_Value_data[i15];
+  for (i15 = 0; i15 < 7; i15++) {
+    obj_Value_data[i15 + obj1_Value_size[1]] = obj2Value[i15];
   }
 }
 
@@ -76,16 +73,16 @@ void d_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
                    char obj_Value_data[], int obj_Value_size[2])
 {
   int i16;
-  static const char obj2Value[7] = { '_', 'b', 'a', 'c', 'k', 'w', '_' };
+  static const char obj2Value[6] = { '_', 'p', 'a', 'c', 'k', '_' };
 
   obj_Value_size[0] = 1;
-  obj_Value_size[1] = obj1_Value_size[1] + 7;
+  obj_Value_size[1] = obj1_Value_size[1] + 6;
   if (0 <= obj1_Value_size[1] - 1) {
     memcpy(&obj_Value_data[0], &obj1_Value_data[0], (unsigned int)
            (obj1_Value_size[1] * (int)sizeof(char)));
   }
 
-  for (i16 = 0; i16 < 7; i16++) {
+  for (i16 = 0; i16 < 6; i16++) {
     obj_Value_data[i16 + obj1_Value_size[1]] = obj2Value[i16];
   }
 }
@@ -100,19 +97,15 @@ void d_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
 void e_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
                    char obj_Value_data[], int obj_Value_size[2])
 {
-  int i17;
-  static const char obj2Value[6] = { '_', 'p', 'a', 'c', 'k', '_' };
-
   obj_Value_size[0] = 1;
-  obj_Value_size[1] = obj1_Value_size[1] + 6;
+  obj_Value_size[1] = obj1_Value_size[1] + 2;
   if (0 <= obj1_Value_size[1] - 1) {
     memcpy(&obj_Value_data[0], &obj1_Value_data[0], (unsigned int)
            (obj1_Value_size[1] * (int)sizeof(char)));
   }
 
-  for (i17 = 0; i17 < 6; i17++) {
-    obj_Value_data[i17 + obj1_Value_size[1]] = obj2Value[i17];
-  }
+  obj_Value_data[obj1_Value_size[1]] = '1';
+  obj_Value_data[1 + obj1_Value_size[1]] = '0';
 }
 
 /*
@@ -125,7 +118,7 @@ void e_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
 void f_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
                    char obj_Value_data[], int obj_Value_size[2])
 {
-  int i18;
+  int i17;
   static const char obj2Value[7] = { '_', 'p', 'e', 'r', 'S', 'p', '_' };
 
   obj_Value_size[0] = 1;
@@ -135,8 +128,36 @@ void f_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
            (obj1_Value_size[1] * (int)sizeof(char)));
   }
 
-  for (i18 = 0; i18 < 7; i18++) {
-    obj_Value_data[i18 + obj1_Value_size[1]] = obj2Value[i18];
+  for (i17 = 0; i17 < 7; i17++) {
+    obj_Value_data[i17 + obj1_Value_size[1]] = obj2Value[i17];
+  }
+}
+
+/*
+ * Arguments    : const char obj1_Value_data[]
+ *                const int obj1_Value_size[2]
+ *                const char obj2_Value_data[]
+ *                const int obj2_Value_size[2]
+ *                char obj_Value_data[]
+ *                int obj_Value_size[2]
+ * Return Type  : void
+ */
+void g_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
+                   const char obj2_Value_data[], const int obj2_Value_size[2],
+                   char obj_Value_data[], int obj_Value_size[2])
+{
+  int loop_ub;
+  int i18;
+  obj_Value_size[0] = 1;
+  obj_Value_size[1] = obj1_Value_size[1] + obj2_Value_size[1];
+  if (0 <= obj1_Value_size[1] - 1) {
+    memcpy(&obj_Value_data[0], &obj1_Value_data[0], (unsigned int)
+           (obj1_Value_size[1] * (int)sizeof(char)));
+  }
+
+  loop_ub = obj2_Value_size[1];
+  for (i18 = 0; i18 < loop_ub; i18++) {
+    obj_Value_data[i18 + obj1_Value_size[1]] = obj2_Value_data[i18];
   }
 }
 
@@ -147,7 +168,7 @@ void f_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
  *                int obj_Value_size[2]
  * Return Type  : void
  */
-void g_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
+void h_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
                    char obj_Value_data[], int obj_Value_size[2])
 {
   obj_Value_size[0] = 1;
@@ -170,7 +191,7 @@ void g_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
  *                int obj_Value_size[2]
  * Return Type  : void
  */
-void h_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
+void i_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
                    char obj_Value_data[], int obj_Value_size[2])
 {
   obj_Value_size[0] = 1;
@@ -180,7 +201,7 @@ void h_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
            (obj1_Value_size[1] * (int)sizeof(char)));
   }
 
-  obj_Value_data[obj1_Value_size[1]] = '2';
+  obj_Value_data[obj1_Value_size[1]] = '4';
   obj_Value_data[1 + obj1_Value_size[1]] = '0';
 }
 
@@ -191,7 +212,7 @@ void h_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
  *                int obj_Value_size[2]
  * Return Type  : void
  */
-void i_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
+void j_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
                    char obj_Value_data[], int obj_Value_size[2])
 {
   int i19;
@@ -216,7 +237,7 @@ void i_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
  *                int obj_Value_size[2]
  * Return Type  : void
  */
-void j_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
+void k_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
                    char obj_Value_data[], int obj_Value_size[2])
 {
   obj_Value_size[0] = 1;
@@ -240,7 +261,7 @@ void j_string_plus(const char obj1_Value_data[], const int obj1_Value_size[2],
  *                int obj_Value_size[2]
  * Return Type  : void
  */
-void k_string_plus(const char obj1_Value[14], const char obj2_Value_data[],
+void l_string_plus(const char obj1_Value[14], const char obj2_Value_data[],
                    const int obj2_Value_size[2], char obj_Value_data[], int
                    obj_Value_size[2])
 {

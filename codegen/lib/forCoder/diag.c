@@ -2,7 +2,7 @@
  * File: diag.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 17-Jul-2020 17:26:12
+ * C/C++ source code generated on  : 23-Jul-2020 18:38:00
  */
 
 /* Include Files */
@@ -38,7 +38,7 @@ void diag(const emxArray_real_T *v, double d_data[], int d_size[1])
       u0 = 0;
     }
 
-    d_size[0] = (unsigned char)u0;
+    d_size[0] = (short)u0;
     u0--;
     for (u1 = 0; u1 <= u0; u1++) {
       d_data[u1] = v->data[u1 + v->size[0] * u1];

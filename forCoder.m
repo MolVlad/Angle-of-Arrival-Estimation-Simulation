@@ -70,13 +70,13 @@ sourceMatrixCSI = reshape(y,120,8,30);
 
 % reading completed
 
-packetNum = [10 30];
+packetNum = [10];
 packetPerSpectrum = [1 2];
 antennasNum = [4 8];
-bandwidth = [20];
+bandwidth = [40];
 subcarrierDecimationUsed = [0 1];
-backwardSmoothing = [0 1];
-useSmothing = [0 1];
+backwardSmoothing = [0];
+useSmothing = [1];
 
 % packetNum = [10];
 % packetPerSpectrum = [1];
@@ -240,7 +240,7 @@ for ant = antennasNum
                                 % eig completed
                                 
 %                                 Qn = U(:,1:numberOfSourses);
-                                Qn = U(:,1:end-1);
+                                Qn = U(:,1:end-2);
                                 Pn = (Qn*Qn');
                                 
                                 % Pn completed

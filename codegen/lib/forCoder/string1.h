@@ -2,7 +2,7 @@
  * File: string1.h
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 17-Jul-2020 17:26:12
+ * C/C++ source code generated on  : 23-Jul-2020 18:38:00
  */
 
 #ifndef STRING1_H
@@ -18,8 +18,7 @@
 extern void b_string_plus(const char obj1_Value_data[], const int
   obj1_Value_size[2], char obj_Value_data[], int obj_Value_size[2]);
 extern void c_string_plus(const char obj1_Value_data[], const int
-  obj1_Value_size[2], const char obj2_Value_data[], const int obj2_Value_size[2],
-  char obj_Value_data[], int obj_Value_size[2]);
+  obj1_Value_size[2], char obj_Value_data[], int obj_Value_size[2]);
 extern void d_string_plus(const char obj1_Value_data[], const int
   obj1_Value_size[2], char obj_Value_data[], int obj_Value_size[2]);
 extern void e_string_plus(const char obj1_Value_data[], const int
@@ -27,14 +26,17 @@ extern void e_string_plus(const char obj1_Value_data[], const int
 extern void f_string_plus(const char obj1_Value_data[], const int
   obj1_Value_size[2], char obj_Value_data[], int obj_Value_size[2]);
 extern void g_string_plus(const char obj1_Value_data[], const int
-  obj1_Value_size[2], char obj_Value_data[], int obj_Value_size[2]);
+  obj1_Value_size[2], const char obj2_Value_data[], const int obj2_Value_size[2],
+  char obj_Value_data[], int obj_Value_size[2]);
 extern void h_string_plus(const char obj1_Value_data[], const int
   obj1_Value_size[2], char obj_Value_data[], int obj_Value_size[2]);
 extern void i_string_plus(const char obj1_Value_data[], const int
   obj1_Value_size[2], char obj_Value_data[], int obj_Value_size[2]);
 extern void j_string_plus(const char obj1_Value_data[], const int
   obj1_Value_size[2], char obj_Value_data[], int obj_Value_size[2]);
-extern void k_string_plus(const char obj1_Value[14], const char obj2_Value_data[],
+extern void k_string_plus(const char obj1_Value_data[], const int
+  obj1_Value_size[2], char obj_Value_data[], int obj_Value_size[2]);
+extern void l_string_plus(const char obj1_Value[14], const char obj2_Value_data[],
   const int obj2_Value_size[2], char obj_Value_data[], int obj_Value_size[2]);
 extern void string_plus(const char obj1_Value[12], const char obj2_Value_data[],
   const int obj2_Value_size[2], char obj_Value_data[], int obj_Value_size[2]);

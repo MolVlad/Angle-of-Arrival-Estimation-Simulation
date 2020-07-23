@@ -16,7 +16,7 @@ globalParam.OrionCsiSource = 0; % 0 - from csi.mat; 1 - from winner_csi/csi_????
 globalParam.OrionMeasurement = 1;
 globalParam.plotOrionSpectrum = 0;
 
-randomSeedForScenario = 1:10000;
+randomSeedForScenario = 9799:10000;
 numberOfAntennas = [8 4];
 packetNum = [30 10];
 packetPerSpectrum = [2 1];

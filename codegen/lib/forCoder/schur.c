@@ -2,7 +2,7 @@
  * File: schur.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 17-Jul-2020 17:26:12
+ * C/C++ source code generated on  : 23-Jul-2020 18:38:00
  */
 
 /* Include Files */
@@ -27,14 +27,14 @@
 void schur(const emxArray_creal_T *A, emxArray_creal_T *V, emxArray_creal_T *T)
 {
   int i9;
-  unsigned char unnamed_idx_0;
-  unsigned char unnamed_idx_1;
+  short unnamed_idx_0;
+  short unnamed_idx_1;
   int loop_ub;
-  creal_T tau_data[223];
+  creal_T tau_data[405];
   int tau_size[1];
   if (anyNonFinite(A)) {
-    unnamed_idx_0 = (unsigned char)A->size[0];
-    unnamed_idx_1 = (unsigned char)A->size[1];
+    unnamed_idx_0 = (short)A->size[0];
+    unnamed_idx_1 = (short)A->size[1];
     i9 = V->size[0] * V->size[1];
     V->size[0] = unnamed_idx_0;
     V->size[1] = unnamed_idx_1;
@@ -46,8 +46,8 @@ void schur(const emxArray_creal_T *A, emxArray_creal_T *V, emxArray_creal_T *T)
     }
 
     triu(V);
-    unnamed_idx_0 = (unsigned char)A->size[0];
-    unnamed_idx_1 = (unsigned char)A->size[1];
+    unnamed_idx_0 = (short)A->size[0];
+    unnamed_idx_1 = (short)A->size[1];
     i9 = T->size[0] * T->size[1];
     T->size[0] = unnamed_idx_0;
     T->size[1] = unnamed_idx_1;

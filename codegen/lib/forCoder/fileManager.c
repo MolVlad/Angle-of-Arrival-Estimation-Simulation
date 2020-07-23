@@ -2,7 +2,7 @@
  * File: fileManager.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 17-Jul-2020 17:26:12
+ * C/C++ source code generated on  : 23-Jul-2020 18:38:00
  */
 
 /* Include Files */
@@ -90,7 +90,7 @@ signed char c_cfopen(const char cfilename_data[], const int cfilename_size[2],
 {
   signed char fileid;
   signed char j;
-  char ccfilename_data[1477];
+  char ccfilename_data[293];
   FILE * filestar;
   int i21;
   fileid = -1;

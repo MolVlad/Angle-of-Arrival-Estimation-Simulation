@@ -2,7 +2,7 @@
  * File: xgehrd.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 17-Jul-2020 17:26:12
+ * C/C++ source code generated on  : 23-Jul-2020 18:38:00
  */
 
 /* Include Files */
@@ -24,9 +24,9 @@ void xgehrd(emxArray_creal_T *a, creal_T tau_data[], int tau_size[1])
 {
   int n;
   int ntau;
-  unsigned char unnamed_idx_0;
+  short ntau_idx_0;
   int i25;
-  creal_T work_data[224];
+  creal_T work_data[406];
   int im1n;
   int in;
   creal_T alpha1;
@@ -41,8 +41,8 @@ void xgehrd(emxArray_creal_T *a, creal_T tau_data[], int tau_size[1])
   }
 
   tau_size[0] = (short)ntau;
-  unnamed_idx_0 = (unsigned char)a->size[0];
-  ntau = unnamed_idx_0;
+  ntau_idx_0 = (short)a->size[0];
+  ntau = ntau_idx_0;
   for (i25 = 0; i25 < ntau; i25++) {
     work_data[i25].re = 0.0;
     work_data[i25].im = 0.0;

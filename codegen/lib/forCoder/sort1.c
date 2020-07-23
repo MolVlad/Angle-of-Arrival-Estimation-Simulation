@@ -2,7 +2,7 @@
  * File: sort1.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 17-Jul-2020 17:26:12
+ * C/C++ source code generated on  : 23-Jul-2020 18:38:00
  */
 
 /* Include Files */
@@ -29,8 +29,8 @@ void sort(double x_data[], int x_size[1], int idx_data[], int idx_size[1])
   int vwork_size[1];
   int vstride;
   int k;
-  double vwork_data[224];
-  int iidx_data[224];
+  double vwork_data[406];
+  int iidx_data[406];
   int iidx_size[1];
   dim = nonSingletonDim(x_size);
   if (dim <= 1) {
@@ -40,8 +40,8 @@ void sort(double x_data[], int x_size[1], int idx_data[], int idx_size[1])
   }
 
   vlen = i43 - 1;
-  vwork_size[0] = (unsigned char)i43;
-  idx_size[0] = (unsigned char)x_size[0];
+  vwork_size[0] = (short)i43;
+  idx_size[0] = (short)x_size[0];
   vstride = 1;
   for (k = 0; k <= dim - 2; k++) {
     vstride *= x_size[0];

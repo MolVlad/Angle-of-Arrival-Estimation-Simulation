@@ -2,7 +2,7 @@
  * File: eig.c
  *
  * MATLAB Coder version            : 4.1
- * C/C++ source code generated on  : 17-Jul-2020 17:26:12
+ * C/C++ source code generated on  : 23-Jul-2020 18:38:00
  */
 
 /* Include Files */
@@ -175,14 +175,14 @@ void eig(emxArray_creal_T *A, emxArray_creal_T *V)
   };
 
   int i22;
-  unsigned char unnamed_idx_0;
+  short unnamed_idx_0;
   int info;
-  creal_T alpha1_data[224];
+  creal_T alpha1_data[406];
   int alpha1_size[1];
-  creal_T beta1_data[224];
+  creal_T beta1_data[406];
   int beta1_size[1];
   emxArray_creal_T *b_A;
-  unsigned char unnamed_idx_1;
+  short unnamed_idx_1;
   int loop_ub;
   int i23;
   dc0.re = rtGetNaN();
@@ -197,8 +197,8 @@ void eig(emxArray_creal_T *A, emxArray_creal_T *V)
     }
   } else if (anyNonFinite(A)) {
     if ((A->size[0] == 1) && (A->size[1] == 1)) {
-      unnamed_idx_0 = (unsigned char)A->size[0];
-      unnamed_idx_1 = (unsigned char)A->size[1];
+      unnamed_idx_0 = (short)A->size[0];
+      unnamed_idx_1 = (short)A->size[1];
       i22 = V->size[0] * V->size[1];
       V->size[0] = unnamed_idx_0;
       V->size[1] = unnamed_idx_1;
@@ -218,8 +218,8 @@ void eig(emxArray_creal_T *A, emxArray_creal_T *V)
         }
       }
     } else {
-      unnamed_idx_0 = (unsigned char)A->size[0];
-      unnamed_idx_1 = (unsigned char)A->size[1];
+      unnamed_idx_0 = (short)A->size[0];
+      unnamed_idx_1 = (short)A->size[1];
       i22 = V->size[0] * V->size[1];
       V->size[0] = unnamed_idx_0;
       V->size[1] = unnamed_idx_1;
@@ -230,8 +230,8 @@ void eig(emxArray_creal_T *A, emxArray_creal_T *V)
         V->data[i22].im = 0.0;
       }
 
-      unnamed_idx_0 = (unsigned char)A->size[0];
-      unnamed_idx_1 = (unsigned char)A->size[1];
+      unnamed_idx_0 = (short)A->size[0];
+      unnamed_idx_1 = (short)A->size[1];
       i22 = A->size[0] * A->size[1];
       A->size[0] = unnamed_idx_0;
       A->size[1] = unnamed_idx_1;
@@ -248,8 +248,8 @@ void eig(emxArray_creal_T *A, emxArray_creal_T *V)
       setDiag(A, dc0);
     }
   } else if ((A->size[0] == 1) && (A->size[1] == 1)) {
-    unnamed_idx_0 = (unsigned char)A->size[0];
-    unnamed_idx_1 = (unsigned char)A->size[1];
+    unnamed_idx_0 = (short)A->size[0];
+    unnamed_idx_1 = (short)A->size[1];
     i22 = V->size[0] * V->size[1];
     V->size[0] = unnamed_idx_0;
     V->size[1] = unnamed_idx_1;
