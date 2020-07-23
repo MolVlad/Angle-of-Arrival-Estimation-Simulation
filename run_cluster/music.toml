@@ -1,4 +1,4 @@
-name = "music_fixed_eigen_1"
+name = "music_40"
 scenario = "."
 sim_time = 600
 save_data_for_cdf = true
