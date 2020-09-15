@@ -3,22 +3,16 @@ function CreateParams()
 global globalParam;
 
 for runSettings = 1
-    globalParam.runSpotfi = 0;
+    globalParam.runSpotfi = 1;
     globalParam.runClassicalMusic = 0;
     globalParam.runOrion = 0;
     globalParam.runArraytrack = 0;
 end % run Spotfi or/and classical music
-for CSI = 1
-    globalParam.subCarrIndStart = 1;
-    globalParam.subCarrIndStep = 1;
-    globalParam.subCarrIndEnd = 10;
-    globalParam.csiSource = 4; % for Spotfi only. 0 - winner; 1 - sporfi's sample_csi_trace; 2 - csi from Gao; 3 - csi from RF dataset; 4 - from winner_csi/csi_?????.txt
-end % CSI
 for ExperimentSetupSettings = 1
     globalParam.centralFrequency = 5.63e9;
     globalParam.frequencyGap = 312.5e3; % frequency gap in Hz between successive subcarriers in WiFi
     globalParam.separationBetweenAntennas = physconst('LightSpeed')/globalParam.centralFrequency/2; % lambda/2 - distance between antennas
-    globalParam.numberOfAntennas = 8;   % max 10, after reboot - 14 or 19
+    globalParam.numberOfAntennas = 4;   % max 10, after reboot - 14 or 19
 end % experiment setup settings such as central frequency, antennas number, antennas separation
 for outputConfig = 1
     globalParam.printWinnerOutput = 1;
@@ -58,7 +52,7 @@ for PlotConfig = 1
     globalParam.plotArraytrackSpectrum = 1;
     globalParam.saveArraytrackSpectrum = 0;  % to save it's necessary to plot
     globalParam.closeArraytrackSpectrum = 0;
-    globalParam.plotSpotfiSpectrum = 0;
+    globalParam.plotSpotfiSpectrum = 1;
     globalParam.saveSpotfiSpectrum = 0;  % to save it's necessary to plot
     globalParam.closeSpotfiSpectrum = 0;
     globalParam.plotSpotfiPeaks = 0;
@@ -77,7 +71,7 @@ end % PlotConfig
 for ArraytrackConfig = 1
     globalParam.fileForArraytrackResults = 'experiment/ArraytrackResults.txt';
     globalParam.ArraytrackBackwardSmoothingUsed = 0;
-    globalParam.ArraytrackUsedPacketNum = 1;
+    globalParam.ArraytrackUsedPacketNum = 10;
     globalParam.ArraytrackSampleNum = 600; % number of samples used in correlation matrix finding
     globalParam.ArraytrackSubarrayNum = 2;
     globalParam.ArraytrackMode = 0; % 0 - default with threshold, 1 - fixed amount of noise eig value
@@ -115,8 +109,18 @@ for classicalMusicConfig = 1
     globalParam.classicalMusicPeakThresholdRate = 0.1; % for SpotFiPeaksMode = 1
     globalParam.classicalMusicNumberOfPeaksToDetect = 4; % for SpotFiPeaksMode = 2
 end % some params for classical music, such as sampleNum, classicalMusicMode, threshold, peaks mode and etc.
+for CSI = 1
+    globalParam.subCarrIndStart = 1;
+    globalParam.subCarrIndStep = 4;
+    globalParam.subCarrIndEnd = 120;
+    globalParam.csiSource = 5; % for Spotfi only. 0 - winner; 1 - sporfi's sample_csi_trace; 2 - csi from Gao; 3 - csi from RF dataset;
+    % 4 - from winner_csi/csi_?????.txt; 5 - from file
+    globalParam.fileWithCSI = "csi.txt";
+    globalParam.packetsNumInFile = 2;
+    globalParam.csiNumInFile = 242;
+end % CSI
 for spotfiMode = 1
-    globalParam.SpotfiNumberOfIterations = 5;
+    globalParam.SpotfiNumberOfIterations = 2;
     globalParam.numberOfPacketsPerIteration = 1;
     globalParam.SpotfiSubarrayNum = 2;
     globalParam.fileForSpotfiResults = 'experiment/SpotfiResults.txt';

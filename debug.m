@@ -1,16 +1,16 @@
-algorithm = [2];  % 0 - spotfi; 1 - arraytrack; 2 - orion
-randomSeedForScenario = [2];
-numberOfAntennas = [8];
+algorithm = [1];  % 0 - spotfi; 1 - arraytrack; 2 - orion
+randomSeedForScenario = [2004];
+numberOfAntennas = [4];
 useSmothing = [0];
 backwardSmoothingUsed = [0];
 packetNum = [10];
 packetPerSpectrum = [1];
-bandwidth = [40];
-subcarrierDecimationUsed = [0];
+bandwidth = [20];
+subcarrierDecimationUsed = [1];
 
 closePlots = 0;
 closeSpectrums = 1;
-plotSpotfiSpectrums = 1;
+plotSpotfiSpectrums = 0;
 
 directory = "debug/";
 

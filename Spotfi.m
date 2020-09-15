@@ -45,6 +45,11 @@ for readCSIfromFile = 1
             matrixCSI = readfile("../music/experiment/winner_csi/csi_"+seed_str+".txt",28800);
             matrixCSI = reshape(matrixCSI, 120, 8, 30);
             matrixCSI = matrixCSI(subCarrInd,1:globalParam.numberOfAntennas,:);
+        case 5
+            matrixCSI = readfile(globalParam.fileWithCSI, globalParam.numberOfAntennas*globalParam.csiNumInFile*globalParam.packetsNumInFile);
+            matrixCSI = reshape(matrixCSI, globalParam.numberOfAntennas, globalParam.csiNumInFile, globalParam.packetsNumInFile);
+            matrixCSI = permute(matrixCSI, [2 1 3]);
+            matrixCSI = matrixCSI(subCarrInd, 1:globalParam.numberOfAntennas,:);
     end
     
     if globalParam.plotPureCSI == 1
@@ -52,63 +57,6 @@ for readCSIfromFile = 1
     end
     
 end % read CSI from file
-
-% seed = 5;
-% s=sprintf('%d',int32(seed)); str = '00000'; str(end+1-length(s):end) = s;
-% filename = "winner_csi/csi_" + str + ".txt";
-% f = fopen(filename, 'r');
-% fseek(f, 0, 'eof');
-% filelen = int32(ftell(f));
-% fseek(f,0,'bof');
-% maxBufferSize = int32(2^20);
-% buffer = zeros(1, maxBufferSize,'uint8');
-% remaining = filelen;
-% index = int32(1);
-% 
-% while remaining > 0
-%     if remaining + index > size(buffer,2)
-%         fprintf('Attempt to read file which is bigger than internal buffer.\n');
-%         fprintf('Current buffer size is %d bytes and file size is %d bytes.\n', maxBufferSize, filelen);
-%         break
-%     end
-%     
-%     [dataRead, nread] = fread(f,remaining, 'char');
-%     buffer(index:index+nread-1) = dataRead;
-%     n = int32(nread);
-%     if n == 0
-%         break;
-%     end
-%     % Did something went wrong when reading?
-%     if n < 0
-%         fprintf('Could not read from file: %d.\n', n);
-%         break;
-%     end
-%     % Update state variables
-%     remaining = remaining - n;
-%     index = index + n;
-% end
-% 
-% % Close file
-% fclose(f);
-% 
-% str = (char(buffer(1:index)));
-% str = str(1:index-1);
-% 
-% num = 28800;
-% y = complex(zeros(1,num));
-% 
-% k = 1;
-% for i = 1:num
-%     j = k;
-%     while str(j) ~= ' '
-%         j = j + 1;
-%     end
-%     y(i) = str2double(str(k:j-1));
-%     k = j + 1;
-% end
-% 
-% matrixCSI = reshape(y,120,8,30);
-% matrixCSI = matrixCSI(subCarrInd, 1:globalParam.numberOfAntennas,:);
 
 for globalSpotfiParamConfiguration = 1
     globalSpotfiParam = struct;

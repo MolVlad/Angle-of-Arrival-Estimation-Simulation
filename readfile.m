@@ -20,7 +20,7 @@ filelen = int32(ftell(f));
 fseek(f,0,'bof');
 
 % Initialize a buffer
-maxBufferSize = int32(2^21);
+maxBufferSize = int32(2^25);
 buffer = zeros(1, maxBufferSize,'uint8');
 
 % Remaining is the number of bytes to read (from the file)
@@ -63,10 +63,14 @@ str = str(1:index-1);
 
 y = complex(zeros(1,num));
 
+s = length(str);
+
+str = strrep(str, ',', '.');
+
 k = 1;
 for i = 1:num
     j = k;
-    while str(j) ~= ' '
+    while (str(j) ~= ' ') && (j <= s)
         j = j + 1;
     end
     y(i) = str2double(str(k:j-1));
